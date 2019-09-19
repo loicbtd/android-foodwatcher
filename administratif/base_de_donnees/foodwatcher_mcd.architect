@@ -4,7 +4,16 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="PlayPen Database" />
+   <property key="Connection Type" value="PostgreSQL" />
+   <property key="Logical" value="(Target Database)" />
+   <property key="JDBC URL" value="jdbc:postgresql://:5432/" />
+   <property key="UID" value="" />
+   <property key="PWD" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.database" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.port" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.hostname" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.repos.login" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.repos.password" value="" />
   </data-source>
  </project-data-sources>
  <source-databases>
@@ -218,13 +227,10 @@
   <table id="TAB56" populated="true" UUID="eaf166cf-09ff-4574-ae77-0bb693f06668" name="maison_compose_utilisateur" objectType="TABLE" physicalName="maison_compose_utilisateur" >
    <remarks></remarks>
    <folder id="FOLTAB561" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL57" populated="true" UUID="017b725e-39a3-41a8-a544-a36ef6a3ff9b" autoIncrement="true" autoIncrementSequenceName="maison_compose_utilisateur_id_maison_compose_utilisateur_seq" defaultValue="" name="id_maison_compose_utilisateur" nullable="0" physicalName="id_maison_compose_utilisateur" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL57" populated="true" UUID="ec039477-ce1b-4812-b88d-f0aa155a658a" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_maison" nullable="0" physicalName="id_maison" precision="0" primaryKeySeq="0" referenceCount="0" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL58" populated="true" UUID="c9fb80e3-9618-473c-bf96-53afe7e3b980" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_maison" nullable="0" physicalName="id_maison" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
-     <remarks></remarks>
-    </column>
-    <column id="COL59" populated="true" UUID="ae6f6e63-2570-4118-aab4-e541696be5bb" autoIncrement="false" autoIncrementSequenceName="utilisateur_id_utilisateur_seq" defaultValue="" name="id_utilisateur" nullable="0" physicalName="id_utilisateur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL58" populated="true" UUID="454eadc8-7329-4287-8e16-19b2e5a4af5b" autoIncrement="false" autoIncrementSequenceName="utilisateur_id_utilisateur_seq" defaultValue="" name="id_utilisateur" nullable="0" physicalName="id_utilisateur" precision="0" primaryKeySeq="1" referenceCount="0" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -233,8 +239,9 @@
     <folder id="FOLTAB562" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB564" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX60" populated="true" UUID="b75ac1e8-6e2a-43d3-88b1-eb17794e6f16" clustered="false" name="id_maison_compose_utilisateur" physicalName="id_maison_compose_utilisateur" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC61" populated="true" UUID="09f9fec4-a034-4caa-b0b9-3292c1b90fb8" ascendingOrDescending="UNSPECIFIED" column-ref="COL57" name="id_maison_compose_utilisateur" physicalName="id_maison_compose_utilisateur" />
+    <index id="IDX59" populated="true" UUID="b75ac1e8-6e2a-43d3-88b1-eb17794e6f16" clustered="false" name="id_maison_compose_utilisateur" physicalName="id_maison_compose_utilisateur" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC60" populated="true" UUID="73b8a16c-bbc2-4f0c-92e6-e55517ae3aa2" ascendingOrDescending="UNSPECIFIED" column-ref="COL57" name="id_maison" physicalName="id_maison" />
+     <index-column id="IDC61" populated="true" UUID="db8a9fdc-f917-44a2-ae73-ee7cc8434515" ascendingOrDescending="UNSPECIFIED" column-ref="COL58" name="id_utilisateur" physicalName="id_utilisateur" />
     </index>
    </folder>
   </table>
@@ -254,11 +261,11 @@
    <relationship id="REL70" populated="true" UUID="02a5a375-232f-4086-866b-4c4590c16359" deferrability="7" deleteRule="3" fk-table-ref="TAB48" fkCardinality="7" identifying="false" name="maison_maison_compose_produit_fk" physicalName="maison_maison_compose_produit_fk" pk-table-ref="TAB21" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP71" populated="true" UUID="dcbb8c05-d1f7-4025-b35d-56db7f17fee9" fk-column-ref="COL51" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL22" />
    </relationship>
-   <relationship id="REL72" populated="true" UUID="2369086c-985d-4532-bb47-b4eaed83ebf7" deferrability="7" deleteRule="3" fk-table-ref="TAB56" fkCardinality="7" identifying="false" name="maison_maison_compose_utilisateur_fk" physicalName="maison_maison_compose_utilisateur_fk" pk-table-ref="TAB21" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP73" populated="true" UUID="5706b8f9-9788-4119-b87f-dc054bf28e4f" fk-column-ref="COL58" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL22" />
+   <relationship id="REL72" populated="true" UUID="db6d8cf8-cb49-4403-ad2b-e1acc92d09e2" deferrability="7" deleteRule="3" fk-table-ref="TAB56" fkCardinality="7" identifying="true" name="maison_maison_compose_utilisateur_fk" physicalName="maison_maison_compose_utilisateur_fk" pk-table-ref="TAB21" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP73" populated="true" UUID="951c3968-e958-4fe6-9f2a-5b6b819d3179" fk-column-ref="COL57" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL22" />
    </relationship>
-   <relationship id="REL74" populated="true" UUID="ea1ba791-9851-45c4-8903-41b4f1ba96e6" deferrability="7" deleteRule="3" fk-table-ref="TAB56" fkCardinality="7" identifying="false" name="utilisateur_maison_compose_utilisateur_fk" physicalName="utilisateur_maison_compose_utilisateur_fk" pk-table-ref="TAB26" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP75" populated="true" UUID="f3b1ea5e-1fa1-4cdd-9197-f5676667ff2e" fk-column-ref="COL59" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL27" />
+   <relationship id="REL74" populated="true" UUID="f21146e0-ed91-4a11-a90f-930024a8e61e" deferrability="7" deleteRule="3" fk-table-ref="TAB56" fkCardinality="7" identifying="true" name="utilisateur_maison_compose_utilisateur_fk" physicalName="utilisateur_maison_compose_utilisateur_fk" pk-table-ref="TAB26" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP75" populated="true" UUID="b21b12ed-d529-4396-9509-5b9a0f4b7be4" fk-column-ref="COL58" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL27" />
    </relationship>
    <relationship id="REL76" populated="true" UUID="25ac7041-b35d-4c30-807d-5df4bc9aa5da" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="7" identifying="false" name="unite_quantite_produit_fk" physicalName="unite_quantite_produit_fk" pk-table-ref="TAB43" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP77" populated="true" UUID="c2d824ba-96e7-4870-a8d6-8932537108cb" fk-column-ref="COL7" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL44" />
@@ -268,15 +275,15 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.MySqlDDLGenerator" allow-connection="false"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="1.0" viewportX="496" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="421" y="20" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB11" x="799" y="31" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB16" x="20" y="147" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB21" x="53" y="450" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB26" x="861" y="372" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB26" x="792" y="357" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB36" x="725" y="217" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB43" x="65" y="42" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB48" x="295" y="244" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
@@ -287,8 +294,8 @@
   <table-link relationship-ref="REL78" pkConnection="0.72" fkConnection="0.2777777777777778" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL68" pkConnection="0.6666666666666666" fkConnection="0.35555555555555557" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL64" pkConnection="0.65" fkConnection="0.4222222222222222" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="18"/>
-  <table-link relationship-ref="REL72" pkConnection="0.4666666666666667" fkConnection="0.5333333333333333" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL74" pkConnection="0.7777777777777778" fkConnection="0.56" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL72" pkConnection="0.55" fkConnection="0.4" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL74" pkConnection="0.6148148148148148" fkConnection="0.43333333333333335" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="18"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
