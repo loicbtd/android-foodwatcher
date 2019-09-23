@@ -1,4 +1,4 @@
 package ca.qc.cgmatane.foodwatcher.donnees;
 
-public class BaseDeDonnees {
+public class BaseDeDonnees implements BaseDeDonneesSQL {
 }
