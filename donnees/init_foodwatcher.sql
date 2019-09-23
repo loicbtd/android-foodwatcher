@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS historique_maison;
 DROP TABLE IF EXISTS maison_compose_produit;
 DROP TABLE IF EXISTS produit;
 DROP TABLE IF EXISTS unite_quantite;
-DROP TABLE IF EXISTS categorie;
+DROP TABLE IF EXISTS categorie_produit;
 DROP TABLE IF EXISTS emplacement;
 DROP TABLE IF EXISTS maison_compose_utilisateur;
 DROP TABLE IF EXISTS maison;
@@ -81,6 +81,8 @@ CREATE TABLE maison_compose_produit(
     id_maison integer NOT NULL,
     id_emplacement integer,
     present_liste_course boolean NOT NULL,
+    CONSTRAINT maison_produit_pfk
+        PRIMARY KEY(id_produit,id_maison),
     CONSTRAINT produit_maison_compose_produit_fk
         FOREIGN KEY (id_produit)
         REFERENCES produit(id_produit)
@@ -100,11 +102,13 @@ CREATE TABLE maison_compose_produit(
 
 CREATE TABLE historique_maison(
     id_historique_maison serial PRIMARY KEY,
-    date_saisie timestamp with time zone NOT NULL,
-    id_maison_compose_produit integer NOT NULL,
+    quantite float NOT NULL,
+    date_saisie date NOT NULL,
+    id_produit integer NOT NULL,
+    id_maison integer NOT NULL,
     CONSTRAINT maison_compose_produit_historique_maison_fk
-        FOREIGN KEY (id_maison_compose_produit)
-        REFERENCES maison_compose_produit(id_maison_compose_produit)
+        FOREIGN KEY (id_produit,id_maison)
+        REFERENCES maison_compose_produit(id_produit,id_maison)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
