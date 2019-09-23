@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='FoodWatcher'
+rootProject.name='android_foodwatcher'
