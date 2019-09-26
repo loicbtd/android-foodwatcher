@@ -3,42 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_maison">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_maison"
         android:name="ca.qc.cgmatane.foodwatcher.vue.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_maison"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="ca.qc.cgmatane.foodwatcher.vue.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_gallery"-->
+<!--        android:name="ca.qc.cgmatane.foodwatcher.vue.gallery.GalleryFragment"-->
+<!--        android:label="@string/menu_gallery"-->
+<!--        tools:layout="@layout/fragment_gallery" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_slideshow"-->
+<!--        android:name="ca.qc.cgmatane.foodwatcher.vue.slideshow.SlideshowFragment"-->
+<!--        android:label="@string/menu_slideshow"-->
+<!--        tools:layout="@layout/fragment_slideshow" />-->
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="ca.qc.cgmatane.foodwatcher.vue.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_carte"
         android:name="ca.qc.cgmatane.foodwatcher.vue.carte.MapFragment"
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_map" />
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="ca.qc.cgmatane.foodwatcher.vue.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_share"-->
+<!--        android:name="ca.qc.cgmatane.foodwatcher.vue.share.ShareFragment"-->
+<!--        android:label="@string/menu_share"-->
+<!--        tools:layout="@layout/fragment_share" />-->
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="ca.qc.cgmatane.foodwatcher.vue.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_send"-->
+<!--        android:name="ca.qc.cgmatane.foodwatcher.vue.send.SendFragment"-->
+<!--        android:label="@string/menu_send"-->
+<!--        tools:layout="@layout/fragment_send" />-->
 
 </navigation>
