@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.ui.tools;
+package ca.qc.cgmatane.foodwatcher.vue.carte;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

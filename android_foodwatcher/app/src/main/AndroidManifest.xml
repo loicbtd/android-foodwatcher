@@ -36,18 +36,14 @@
             android:name=".vue.VueCarte"
             android:label="@string/titre_activite_vue_carte" />
 
-        <activity android:name=".vue.Maison">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
