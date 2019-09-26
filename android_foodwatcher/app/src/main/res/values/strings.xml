@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Foodwatcher</string>
-    <string name="titre_activite_vue_carte">Lieux ou faire vos courses</string>
     <string name="normal_map">Normal Map</string>
     <string name="hybrid_map">Hybrid Map</string>
     <string name="title_activity_main">MainActivity</string>
@@ -14,7 +13,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_map">Où faire vos courses ?</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 </resources>

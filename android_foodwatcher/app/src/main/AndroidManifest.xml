@@ -32,18 +32,11 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity
-            android:name=".vue.VueCarte"
-            android:label="@string/titre_activite_vue_carte" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
-
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true"/>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 

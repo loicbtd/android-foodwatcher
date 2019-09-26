@@ -13,42 +13,38 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import ca.qc.cgmatane.foodwatcher.R;
 
-public class FragmentCarte extends Fragment  {
+public class MapFragment extends Fragment  {
 
-    private ToolsViewModel toolsViewModel;
+    private MapViewModel mapViewModel;
 
-    public FragmentCarte() {
+    public MapFragment() {
         // Required empty public constructor
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        toolsViewModel =
-//                ViewModelProviders.of(this).get(ToolsViewModel.class);
-//        View root = inflater.inflate(R.layout.fragment_carte, container, false);
+//        mapViewModel =
+//                ViewModelProviders.of(this).get(MapViewModel.class);
+//        View root = inflater.inflate(R.layout.fragment_map, container, false);
 //        final TextView textView = root.findViewById(R.id.text_tools);
-//        toolsViewModel.getText().observe(this, new Observer<String>() {
+//        mapViewModel.getText().observe(this, new Observer<String>() {
 //            @Override
 //            public void onChanged(@Nullable String s) {
 //                textView.setText(s);
 //            }
 //        });
 
-        View root = inflater.inflate(R.layout.fragment_carte, container, false);
+        View root = inflater.inflate(R.layout.fragment_map, container, false);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.frg);  //use SuppoprtMapFragment for using in fragment instead of activity  MapFragment = activity   SupportMapFragment = fragment
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_map);  //use SuppoprtMapFragment for using in fragment instead of activity  MapFragment = activity   SupportMapFragment = fragment
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap mMap) {
