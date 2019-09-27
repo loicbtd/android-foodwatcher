@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-<!--    <item android:title="Maisons"-->
-<!--        android:checkable="false"-->
-<!--        android:id="@+id/home_group">-->
-<!--        <menu>-->
-<!--            &lt;!&ndash; filled at runtime &ndash;&gt;-->
-<!--        </menu>-->
-<!--    </item>-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_subMenu"
+            android:title="TITRE">
+            <menu>
+
+            </menu>
+        </item>
+    </group>
+
 
     <group>
         <item
