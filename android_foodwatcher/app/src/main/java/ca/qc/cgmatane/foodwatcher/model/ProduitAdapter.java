@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.data;
+package ca.qc.cgmatane.foodwatcher.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -23,6 +23,8 @@ public class ProduitAdapter extends
         // for any view that will be set as you render a row
         public TextView nameTextView;
         public Button messageButton;
+        public Button bouton2;
+        public TextView nbRestantsTextView;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -32,7 +34,9 @@ public class ProduitAdapter extends
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.nom_produit);
+            nbRestantsTextView = itemView.findViewById(R.id.nbrestants);
             messageButton = (Button) itemView.findViewById(R.id.bouton_test);
+            bouton2 = itemView.findViewById(R.id.bouton_test2);
         }
     }
     @Override
@@ -57,9 +61,13 @@ public class ProduitAdapter extends
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
         textView.setText("nom du produit");
+        TextView nbRestants = viewHolder.nbRestantsTextView;
+        nbRestants.setText("3");
         Button button = viewHolder.messageButton;
-        button.setText("bouton");
+        Button button2 = viewHolder.bouton2;
+        button.setText("-");
         button.setEnabled(true);
+        button2.setText("+");
     }
 
     // Returns the total count of items in the list

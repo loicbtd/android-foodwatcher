@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.data.ProduitAdapter;
+import ca.qc.cgmatane.foodwatcher.model.ProduitAdapter;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
