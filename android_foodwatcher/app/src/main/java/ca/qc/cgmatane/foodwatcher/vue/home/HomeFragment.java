@@ -15,7 +15,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitAdapter;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -48,23 +52,16 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerView.Adapter() {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
-            }
 
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        // Create adapter passing in the sample user data
+        List<String> listeProduits = new ArrayList<>();
+        ProduitAdapter adapter = new ProduitAdapter( listeProduits);
+        // Attach the adapter to the recyclerview to populate items
+        recyclerView.setAdapter(adapter);
+        // Set layout manager to position the items
+        recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        // That's all!
 
-            }
-
-            @Override
-            public int getItemCount() {
-                return 0;
-            }
-        };
         recyclerView.setAdapter(mAdapter);
 
         return root;
