@@ -11,6 +11,12 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/nav_home_test"
+        android:name="ca.qc.cgmatane.foodwatcher.view.HomeTestFragment"
+        android:label="MenuHomeTest"
+        tools:layout="@layout/fragment_home" />
+
 
     <fragment
         android:id="@+id/nav_map"
