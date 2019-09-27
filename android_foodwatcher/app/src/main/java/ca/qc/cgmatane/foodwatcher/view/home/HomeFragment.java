@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.donnees.ProduitAdapter;
+import ca.qc.cgmatane.foodwatcher.data.ProduitAdapter;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;

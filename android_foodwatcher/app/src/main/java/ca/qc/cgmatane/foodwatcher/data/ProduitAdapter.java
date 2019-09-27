@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.donnees;
+package ca.qc.cgmatane.foodwatcher.data;
 
 import android.content.Context;
 import android.view.LayoutInflater;
