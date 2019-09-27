@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,7 +26,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
+import ca.qc.cgmatane.foodwatcher.view.home.HomeFragment;
+
 public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
+
+    Fragment fragment;
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
@@ -34,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
             subMenuHome.getItem(i).setOnMenuItemClickListener(this);
             subMenuHome.getItem(i).setCheckable(true);
             subMenuHome.getItem(i).setEnabled(true);
+            subMenuHome.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_menu_home));
         }
 
         // Passing each menu ID as a set of Ids because each
@@ -96,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnMenuIt
             subMenuHome.getItem(i).setChecked(false);
         }
         item.setChecked(true);
+        fragment = new HomeFragment();
+        fragment.startActivity(getIntent());
         drawerLayout.closeDrawers();
         return false;
     }
