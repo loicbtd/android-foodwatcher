@@ -10,17 +10,34 @@
 
     <TextView
         android:id="@+id/nom_produit"
-        android:layout_width="0dp"
+        android:gravity="center_horizontal"
+        android:layout_width="234dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/bouton_test"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:textSize="10sp"
-        />
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/nbrestants"
+        android:gravity="center_horizontal"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/bouton_test2"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textSize="10sp" />
+
 </LinearLayout>
