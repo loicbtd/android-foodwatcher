@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_maison">
+    app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_maison"
+        android:id="@+id/nav_home"
         android:name="ca.qc.cgmatane.foodwatcher.vue.home.HomeFragment"
         android:label="@string/menu_maison"
         tools:layout="@layout/fragment_home" />
@@ -24,7 +24,7 @@
 <!--        tools:layout="@layout/fragment_slideshow" />-->
 
     <fragment
-        android:id="@+id/nav_carte"
+        android:id="@+id/nav_map"
         android:name="ca.qc.cgmatane.foodwatcher.vue.carte.MapFragment"
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_map" />
