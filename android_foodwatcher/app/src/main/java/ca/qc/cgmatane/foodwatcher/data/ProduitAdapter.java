@@ -52,7 +52,7 @@ public class ProduitAdapter extends
     @Override
     public void onBindViewHolder(ProduitAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-
+        String str = listeProds.get(position);
 
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
@@ -65,7 +65,7 @@ public class ProduitAdapter extends
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return 10;
+        return listeProds.size();
     }
     public ProduitAdapter(List<String> produits) {
         listeProds = produits;
