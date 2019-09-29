@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activity_master_drawer_section_home"
+            android:title="Mes Maisons">
+            <menu>
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activity_master_drawer_action_add_home"
+            android:icon="@drawable/ic_add"
+            android:title="Ajouter une maison"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activity_master_drawer_action_display_shopping_list"
+            android:icon="@drawable/ic_caddie"
+            android:title="Ma liste de courses"/>
+        <item
+            android:id="@+id/activity_master_drawer_action_find_store"
+            android:icon="@drawable/ic_store"
+            android:title="Où faire mes courses ?"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activity_master_drawer_action_display_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Paramètres"/>
+        <item
+            android:id="@+id/activity_master_drawer_action_display_help"
+            android:icon="@drawable/ic_help"
+            android:title="Aide"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activity_master_drawer_action_display_sample"
+            android:icon="@drawable/ic_android"
+            android:title="Sample"/>
+    </group>
+
+</menu>
