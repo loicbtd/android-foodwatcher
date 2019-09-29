@@ -1,24 +1,17 @@
 package ca.qc.cgmatane.foodwatcher.view;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +19,7 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.model.ProduitAdapter;
 
-public class HomeActivity extends MasterActivity {
+public class StockActivity extends MasterActivity {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
     private List<String> listeProduits;
@@ -36,8 +29,9 @@ public class HomeActivity extends MasterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.view_home);
-        recyclerView = findViewById(R.id.my_recycler_view);
+        super.configureActivityContent(R.layout.view_stock);
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         listeProduits = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             listeProduits.add("test");

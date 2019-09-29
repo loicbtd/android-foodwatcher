@@ -23,7 +23,7 @@
             android:background="?attr/colorPrimary"
             app:theme="@style/ToolBarStyle"/>
 
-        <!-- ConstraintLayout for differents -->
+        <!-- ConstraintLayout for differents view -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_master_constraint_layout"
             android:layout_width="match_parent"
