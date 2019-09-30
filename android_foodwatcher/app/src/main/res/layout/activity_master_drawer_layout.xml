@@ -21,12 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:theme="@style/ToolBarStyle"/>
+            app:theme="@style/ToolBarStyle" />
 
         <!-- ConstraintLayout for differents view -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_master_constraint_layout"
             android:layout_width="match_parent"
+            android:background="?attr/colorPrimary"
             android:layout_height="match_parent">
 
         </androidx.constraintlayout.widget.ConstraintLayout>

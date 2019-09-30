@@ -31,7 +31,7 @@ public class StockActivity extends MasterActivity {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.view_stock);
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView = findViewById(R.id.my_recycler_view);
         listeProduits = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             listeProduits.add("test");
@@ -61,7 +61,7 @@ public class StockActivity extends MasterActivity {
             if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
                 Paint p = new Paint();
                 View itemView = viewHolder.itemView;
-                //creer a drawable a partir de ic_delete_36 et conversion du drawable en bitmap
+                //créé un drawable a partir de ic_delete_36 et conversion du drawable en bitmap
                 Drawable d = getResources().getDrawable(R.drawable.ic_delete_36);
                 icon = drawableToBitmap(d);
                 if (dX>0){
