@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ca.qc.cgmatane.foodwatcher">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDe95EYplpsun4haV6tRdwBj-t4Q97cqbw" />
+
         <activity android:name=".view.StockActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.SampleActivity"/>
+        <activity android:name=".view.SampleActivity" />
         <activity android:name=".view.AddHomeActivity" />
         <activity android:name=".view.FindStoreActivity" />
     </application>
+
+
 
 </manifest>
