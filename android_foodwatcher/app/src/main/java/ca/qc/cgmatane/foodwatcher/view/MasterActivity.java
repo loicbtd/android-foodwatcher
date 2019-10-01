@@ -56,8 +56,6 @@ public class MasterActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.activity_master_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
 
         // Configure Drawer Layout
         drawerLayout = (DrawerLayout) findViewById(R.id.activity_master_drawer_layout);
