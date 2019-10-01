@@ -5,7 +5,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -91,8 +90,8 @@ public class CameraCapture extends MasterActivity {
 
             rotateCamera();
 
-            final Button switchCameraButton = (Button)findViewById(R.id.take_picture);
-            switchCameraButton.setOnClickListener(new View.OnClickListener() {
+            final Button takePictureCameraButton = (Button)findViewById(R.id.take_picture);
+            takePictureCameraButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
@@ -178,6 +177,20 @@ public class CameraCapture extends MasterActivity {
 
     }
 
+    public PictureCallback mPicture = new PictureCallback() {
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+            bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+
+            //TODO Intent comme j'avais fais mais je pense que ça ne marchera pas donc plutôt un finish()
+//            Intent intent = new Intent(CameraCapture.this,AddProductActivity.class);
+//            startActivity(intent);
+
+            finish();
+
+        }
+    };
+
     private void rotateCamera(){
 
         if (mCamera != null){
@@ -216,14 +229,7 @@ public class CameraCapture extends MasterActivity {
 
     }
 
-    public PictureCallback mPicture = new PictureCallback() {
-        @Override
-        public void onPictureTaken(byte[] data, Camera camera) {
-            bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-            Intent intent = new Intent(CameraCapture.this,AddProductActivity.class);
-            startActivity(intent);
-        }
-    };
+
 
 
 

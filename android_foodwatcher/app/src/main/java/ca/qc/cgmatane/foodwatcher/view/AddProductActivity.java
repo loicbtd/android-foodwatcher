@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -26,20 +27,33 @@ public class AddProductActivity extends MasterActivity {
     MaterialButton boutonAjouterProduit;
     MaterialButton boutonRetour;
 
+    private ImageView imageViewProduct;
+
     private Bitmap bitmap;
 
-    //TODO Ajouter unr ImageView et un setOnclickListener pour afficher une CameraCapture
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.view_add_product);
-        boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
-        boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
-        textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
-        textFieldQuantite = findViewById(R.id.edit_text_quantite);
-        textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
-        boutonAjouterProduit.setOnClickListener(new View.OnClickListener() {
+
+//        boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
+//        boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
+//        textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
+//        textFieldQuantite = findViewById(R.id.edit_text_quantite);
+//        textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
+        imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
+
+
+        imageViewProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentNavCameraCapture = new Intent(getApplicationContext(), CameraCapture.class);
+                startActivity(intentNavCameraCapture);
+            }
+        });
+
+        /*boutonAjouterProduit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println(textFieldIntitule.getText());
@@ -49,6 +63,7 @@ public class AddProductActivity extends MasterActivity {
                 bitmap = CameraCapture.bitmap;
 
                 saveImage(bitmap); //Sauvegarde l'image
+                CameraCapture.bitmap = null;
 
                 naviguerRetourMaison();
             }
@@ -58,7 +73,19 @@ public class AddProductActivity extends MasterActivity {
             public void onClick(View view) {
                 naviguerRetourMaison();
             }
-        });
+        });*/
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+
+        if (CameraCapture.bitmap != null){
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            imageViewProduct.setImageBitmap(bitmap);
+        }
+
     }
 
     public void naviguerRetourMaison(){
