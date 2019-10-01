@@ -1,6 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.view;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,40 +18,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.controller.StockController;
 import ca.qc.cgmatane.foodwatcher.model.ProduitAdapter;
 
 public class StockActivity extends MasterActivity {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
-    private List<String> listeProduits;
+    private List<String> productsList;
     private Bitmap icon;
     private Button btn_view_stock_add_product;
+    private StockController stockController = new StockController(this);
     //TODO: create and add controller as attribute
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.view_stock);
+
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(getBaseContext(), AddProductActivity.class), 1);
+                stockController.navigateToViewAddProduct();
             }
         });
         recyclerView = findViewById(R.id.my_recycler_view);
-        listeProduits = new ArrayList<>();
+        productsList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            listeProduits.add("test");
+            productsList.add("test");
         }
-        adapter = new ProduitAdapter( listeProduits);
+        adapter = new ProduitAdapter(productsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-
+        stockController.onCreate(getApplicationContext());
 //        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
         // TODO: call the controller onCreate method
     }
+
+    public void addProductList(){
+        productsList.add("element ajouté");
+        adapter.notifyItemInserted(productsList.size()-1);
+    }
+
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -62,7 +69,7 @@ public class StockActivity extends MasterActivity {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            listeProduits.remove(viewHolder.getAdapterPosition());
+            productsList.remove(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
 
@@ -87,7 +94,6 @@ public class StockActivity extends MasterActivity {
                 }
 
             }
-
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };

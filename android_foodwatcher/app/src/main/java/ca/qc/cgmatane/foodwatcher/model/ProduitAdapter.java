@@ -57,7 +57,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
         TextView textViewNbRestants = viewHolder.nbRestants;
-        textView.setText("nom du produit");
+        textView.setText(listeProds.get(position));
         textViewNbRestants.setText("3");
         Button button = viewHolder.messageButton;
         Button bouton2 = viewHolder.boutonPlus;
