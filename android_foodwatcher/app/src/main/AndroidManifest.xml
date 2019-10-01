@@ -31,6 +31,7 @@
         <activity android:name=".view.AddHomeActivity" />
         <activity android:name=".view.AddProductActivity" />
         <activity android:name=".view.FindStoreActivity" />
+        <activity android:name=".view.CameraCapture" />
     </application>
 
 
