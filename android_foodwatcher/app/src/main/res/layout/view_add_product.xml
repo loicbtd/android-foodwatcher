@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AjouterProduit">
+    tools:context=".view.AddProductActivity">
 
 
 
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/bouton_ajouter_produit"
+                android:id="@+id/btn_view_add_product_action_add"
                 app:backgroundTint="@color/colorButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,14 +78,14 @@
                 android:text="@string/bouton_ajouter" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/bouton_annuler_produit"
+                android:id="@+id/btn_view_add_product_action_cancel"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
-                android:layout_toStartOf="@id/bouton_ajouter_produit"
-                android:layout_toLeftOf="@id/bouton_ajouter_produit"
+                android:layout_toStartOf="@id/btn_view_add_product_action_add"
+                android:layout_toLeftOf="@id/btn_view_add_product_action_add"
                 android:text="@string/bouton_annuler" />
 
         </RelativeLayout>

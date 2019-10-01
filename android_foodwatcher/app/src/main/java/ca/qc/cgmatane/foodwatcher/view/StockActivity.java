@@ -1,5 +1,6 @@
 package ca.qc.cgmatane.foodwatcher.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -7,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -25,13 +27,20 @@ public class StockActivity extends MasterActivity {
     private ProduitAdapter adapter;
     private List<String> listeProduits;
     private Bitmap icon;
+    private Button btn_view_stock_add_product;
     //TODO: create and add controller as attribute
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.view_stock);
-
+        btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
+        btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(getBaseContext(), AddProductActivity.class), 1);
+            }
+        });
         recyclerView = findViewById(R.id.my_recycler_view);
         listeProduits = new ArrayList<>();
         for (int i = 0; i < 20; i++) {

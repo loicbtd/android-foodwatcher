@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="913d4a94-30c8-4e6f-8795-770f72cff637" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/programmation-mobile-2019-projet-java-foodwatcher.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/programmation-mobile-2019-projet-java-foodwatcher.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_foodwatcher/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android_foodwatcher/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/view/AjouterProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/view/AddProductActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/view/StockActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/view/StockActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_foodwatcher/app/src/main/res/layout/view_add_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android_foodwatcher/app/src/main/res/layout/view_add_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_foodwatcher/app/src/main/res/layout/view_stock.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android_foodwatcher/app/src/main/res/layout/view_stock.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android_foodwatcher/app/src/main/res/layout/vue_ajouter_produit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android_foodwatcher/app/src/main/res/layout/view_add_product.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +52,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="540" />
-    <option name="y" value="-25" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -64,6 +68,11 @@
             <path>
               <item name="programmation-mobile-2019-projet-java-foodwatcher" type="b2602c69:ProjectViewProjectNode" />
               <item name="programmation-mobile-2019-projet-java-foodwatcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="programmation-mobile-2019-projet-java-foodwatcher" type="b2602c69:ProjectViewProjectNode" />
+              <item name="programmation-mobile-2019-projet-java-foodwatcher" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -114,10 +123,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="762" y="0" width="781" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27986577" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.57836336" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
