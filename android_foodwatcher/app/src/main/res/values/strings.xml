@@ -17,4 +17,5 @@
     <string name="hint_intitule_produit">Intitulé du produit</string>
     <string name="bouton_ajouter_maison">Ajouter</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_btn_picture">Prendre une photo</string>
 </resources>
