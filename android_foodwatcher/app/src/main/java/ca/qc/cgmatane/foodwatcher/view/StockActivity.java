@@ -94,7 +94,6 @@ public class StockActivity extends MasterActivity {
                 }
 
             }
-
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };
