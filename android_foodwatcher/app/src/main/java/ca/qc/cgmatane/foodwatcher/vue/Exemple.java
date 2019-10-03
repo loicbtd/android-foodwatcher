@@ -6,7 +6,7 @@ import android.widget.TextView;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurExemple;
 
-public class Exemple extends ActiviteMaitresse {
+public class Exemple extends ActiviteMaitresse implements ExempleVue{
 
     ControleurExemple sampleActivityController = new ControleurExemple(this);
 
