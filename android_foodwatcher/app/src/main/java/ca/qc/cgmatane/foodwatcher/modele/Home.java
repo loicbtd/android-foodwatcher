@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.model;
+package ca.qc.cgmatane.foodwatcher.modele;
 
 public class Home {
 

@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.view;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,22 +20,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controller.StockController;
-import ca.qc.cgmatane.foodwatcher.model.ProduitAdapter;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurStock;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
 
-public class StockActivity extends MasterActivity {
+public class Stock extends ActiviteMaitresse {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
     private List<String> productsList;
     private Bitmap icon;
     private Button btn_view_stock_add_product;
-    private StockController stockController = new StockController(this);
+    private ControleurStock stockController = new ControleurStock(this);
     //TODO: create and add controller as attribute
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.view_stock);
+        super.configureActivityContent(R.layout.vue_stock);
 
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +117,7 @@ public class StockActivity extends MasterActivity {
     }
 
     public void navigateAddProduct(){
-        startActivityForResult(new Intent(this, AddProductActivity.class), StockController.ADD_PRODUCT_ACTIVITY);
+        startActivityForResult(new Intent(this, AjouterProduit.class), ControleurStock.ADD_PRODUCT_ACTIVITY);
     }
 
     @Override

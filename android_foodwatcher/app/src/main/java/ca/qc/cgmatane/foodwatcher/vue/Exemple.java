@@ -1,14 +1,14 @@
-package ca.qc.cgmatane.foodwatcher.view;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controller.SampleActivityController;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurExemple;
 
-public class SampleActivity extends MasterActivity {
+public class Exemple extends ActiviteMaitresse {
 
-    SampleActivityController sampleActivityController = new SampleActivityController(this);
+    ControleurExemple sampleActivityController = new ControleurExemple(this);
 
     private TextView textView;
 
@@ -19,8 +19,8 @@ public class SampleActivity extends MasterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.view_sample);
-        super.configureToolbarMenu(R.menu.view_sample_toolbar);
+        super.configureActivityContent(R.layout.vue_exemple);
+        super.configureToolbarMenu(R.menu.vue_exemple_toolbar);
 
         textView = (TextView) findViewById(R.id.view_sample_textview);
 

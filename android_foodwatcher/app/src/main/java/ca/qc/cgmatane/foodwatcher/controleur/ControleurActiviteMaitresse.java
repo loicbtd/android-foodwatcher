@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.controller;
+package ca.qc.cgmatane.foodwatcher.controleur;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,15 +11,15 @@ import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.data.DataBase;
-import ca.qc.cgmatane.foodwatcher.data.HomeDAO;
-import ca.qc.cgmatane.foodwatcher.view.AjouterMaison;
-import ca.qc.cgmatane.foodwatcher.view.FindStoreActivity;
-import ca.qc.cgmatane.foodwatcher.view.MasterActivity;
-import ca.qc.cgmatane.foodwatcher.view.SampleActivity;
-import ca.qc.cgmatane.foodwatcher.view.StockActivity;
+import ca.qc.cgmatane.foodwatcher.donnees.DataBase;
+import ca.qc.cgmatane.foodwatcher.donnees.HomeDAO;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
+import ca.qc.cgmatane.foodwatcher.vue.AjouterMaison;
+import ca.qc.cgmatane.foodwatcher.vue.TrouverMagasin;
+import ca.qc.cgmatane.foodwatcher.vue.Exemple;
+import ca.qc.cgmatane.foodwatcher.vue.Stock;
 
-public class MasterActivityController implements Controller, NavigationView.OnNavigationItemSelectedListener {
+public class ControleurActiviteMaitresse implements Controleur, NavigationView.OnNavigationItemSelectedListener {
 
     static final public int ACTIVITY_SAMPLE = -1;
     static final public int ACTIVITY_STOCK = 1;
@@ -28,11 +28,11 @@ public class MasterActivityController implements Controller, NavigationView.OnNa
 
     protected static int currentHome;
 
-    protected MasterActivity view;
+    protected ActiviteMaitresse view;
 
     protected HomeDAO homeDAO;
 
-    public MasterActivityController(MasterActivity view) {
+    public ControleurActiviteMaitresse(ActiviteMaitresse view) {
         this.view = view;
     }
 
@@ -87,15 +87,15 @@ public class MasterActivityController implements Controller, NavigationView.OnNa
         if (0 <= itemId && itemId < view.getListHome().size()) {
             if (itemId != currentHome) {
                 itemId = currentHome;
-                intent = new Intent(view.getApplicationContext(), StockActivity.class);
+                intent = new Intent(view.getApplicationContext(), Stock.class);
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity
         else {
             switch (itemId) {
-                    // start SampleActivity
+                    // start Exemple
                 case R.id.activity_master_drawer_action_display_sample:
-                    intent = new Intent(view.getApplicationContext(), SampleActivity.class);
+                    intent = new Intent(view.getApplicationContext(), Exemple.class);
                     view.startActivityForResult(intent, ACTIVITY_SAMPLE);
                     break;
                     // start AjouterMaison
@@ -103,9 +103,9 @@ public class MasterActivityController implements Controller, NavigationView.OnNa
                     intent = new Intent(view.getApplicationContext(), AjouterMaison.class);
                     view.startActivityForResult(intent, ACTIVITY_ADD_HOME);
                     break;
-                    // start FindStoreActivity
+                    // start TrouverMagasin
                 case R.id.activity_master_drawer_action_find_store:
-                    intent = new Intent(view.getApplicationContext(), FindStoreActivity.class);
+                    intent = new Intent(view.getApplicationContext(), TrouverMagasin.class);
                     view.startActivityForResult(intent, ACTIVITY_FIND_STORE);
                     break;
                     // return false if item id does not correspond to any activity

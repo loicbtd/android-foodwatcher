@@ -1,8 +1,8 @@
-package ca.qc.cgmatane.foodwatcher.controller;
+package ca.qc.cgmatane.foodwatcher.controleur;
 
 import android.content.Context;
 
-public interface Controller {
+public interface Controleur {
     void onCreate(Context applicationContext);
     void onPause();
     void onResume();

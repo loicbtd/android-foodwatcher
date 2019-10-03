@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.view;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,7 +20,7 @@ import java.util.Date;
 
 import ca.qc.cgmatane.foodwatcher.R;
 
-public class AddProductActivity extends MasterActivity {
+public class AjouterProduit extends ActiviteMaitresse {
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
@@ -35,7 +35,7 @@ public class AddProductActivity extends MasterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.view_add_product);
+        super.configureActivityContent(R.layout.vue_ajouter_produit);
 
         boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
         boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
@@ -48,7 +48,7 @@ public class AddProductActivity extends MasterActivity {
         imageViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentNavCameraCapture = new Intent(getApplicationContext(), CameraCapture.class);
+                Intent intentNavCameraCapture = new Intent(getApplicationContext(), PrisePhoto.class);
                 startActivity(intentNavCameraCapture);
             }
         });
@@ -60,10 +60,10 @@ public class AddProductActivity extends MasterActivity {
                 System.out.println(textFieldQuantite.getText());
                 System.out.println(textFieldCodeBarre.getText());
 
-                bitmap = CameraCapture.bitmap;
+                bitmap = PrisePhoto.bitmap;
 
                 saveImage(bitmap); //Sauvegarde l'image
-                CameraCapture.bitmap = null;
+                PrisePhoto.bitmap = null;
 
                 naviguerRetourMaison();
             }
@@ -81,7 +81,7 @@ public class AddProductActivity extends MasterActivity {
 
         super.onResume();
 
-        if (CameraCapture.bitmap != null){
+        if (PrisePhoto.bitmap != null){
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             imageViewProduct.setImageBitmap(bitmap);
         }

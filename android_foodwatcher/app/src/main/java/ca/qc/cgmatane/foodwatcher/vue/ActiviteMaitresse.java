@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.view;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,12 +18,12 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controller.MasterActivityController;
-import ca.qc.cgmatane.foodwatcher.model.Home;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteMaitresse;
+import ca.qc.cgmatane.foodwatcher.modele.Home;
 
-public class MasterActivity extends AppCompatActivity {
+public class ActiviteMaitresse extends AppCompatActivity {
 
-    protected MasterActivityController masterActivityController = new MasterActivityController(this);
+    protected ControleurActiviteMaitresse controleurActiviteMaitresse = new ControleurActiviteMaitresse(this);
 
     protected Toolbar toolbar;
     protected int menuToolbarResource;
@@ -52,7 +52,7 @@ public class MasterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_master_drawer_layout);
+        setContentView(R.layout.activite_maitresse_drawer_layout);
 
         toolbar = (Toolbar) findViewById(R.id.activity_master_toolbar);
         setSupportActionBar(toolbar);
@@ -65,14 +65,14 @@ public class MasterActivity extends AppCompatActivity {
 
         // Configure NavigationView
         navigationView = (NavigationView) findViewById(R.id.activity_master_nav_view);
-        navigationView.setNavigationItemSelectedListener(masterActivityController);
+        navigationView.setNavigationItemSelectedListener(controleurActiviteMaitresse);
 
-        masterActivityController.onCreate(getApplicationContext());
+        controleurActiviteMaitresse.onCreate(getApplicationContext());
     }
 
     @Override
     public void onBackPressed() {
-        masterActivityController.onBackPressed();
+        controleurActiviteMaitresse.onBackPressed();
     }
 
     @Override

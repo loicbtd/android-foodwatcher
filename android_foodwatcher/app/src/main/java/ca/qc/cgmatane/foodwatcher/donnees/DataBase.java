@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.data;
+package ca.qc.cgmatane.foodwatcher.donnees;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

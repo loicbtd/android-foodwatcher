@@ -1,9 +1,9 @@
-package ca.qc.cgmatane.foodwatcher.data;
+package ca.qc.cgmatane.foodwatcher.donnees;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.qc.cgmatane.foodwatcher.model.Home;
+import ca.qc.cgmatane.foodwatcher.modele.Home;
 
 public class HomeDAO implements HomeSQL {
 

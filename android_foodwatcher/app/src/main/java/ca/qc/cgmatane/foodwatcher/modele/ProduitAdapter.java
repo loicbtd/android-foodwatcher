@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.model;
+package ca.qc.cgmatane.foodwatcher.modele;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -43,7 +43,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.item_produit, parent, false);
+        View contactView = inflater.inflate(R.layout.vue_stock_recycler_view_item_produit, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(contactView);

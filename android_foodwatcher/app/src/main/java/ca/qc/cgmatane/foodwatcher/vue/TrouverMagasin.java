@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.view;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 import ca.qc.cgmatane.foodwatcher.R;
 
-public class FindStoreActivity extends MasterActivity implements OnMapReadyCallback {
+public class TrouverMagasin extends ActiviteMaitresse implements OnMapReadyCallback {
 
     public Location currentLocation;
     public FusedLocationProviderClient fusedLocationProviderClient;
@@ -32,7 +32,7 @@ public class FindStoreActivity extends MasterActivity implements OnMapReadyCallb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.view_find_store);
+        super.configureActivityContent(R.layout.vue_trouver_magasin);
 
         navigationView.getMenu().findItem(R.id.activity_master_drawer_action_find_store).setChecked(true);
 
@@ -92,7 +92,7 @@ public class FindStoreActivity extends MasterActivity implements OnMapReadyCallb
 //                    Toast.makeText(getApplicationContext(),currentLocation.getLatitude()+", "+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
 
-                    supportMapFragment.getMapAsync(FindStoreActivity.this);
+                    supportMapFragment.getMapAsync(TrouverMagasin.this);
 
                 }
             }

@@ -22,18 +22,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDe95EYplpsun4haV6tRdwBj-t4Q97cqbw" />
 
-        <activity android:name=".view.StockActivity">
+        <activity android:name=".vue.Stock">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.SampleActivity" />
-        <activity android:name=".view.AjouterMaison" />
-        <activity android:name=".view.AddProductActivity" />
-        <activity android:name=".view.FindStoreActivity" />
-        <activity android:name=".view.CameraCapture" />
+        <activity android:name=".vue.Exemple" />
+        <activity android:name=".vue.AjouterMaison" />
+        <activity android:name=".vue.AjouterProduit" />
+        <activity android:name=".vue.TrouverMagasin" />
+        <activity android:name=".vue.PrisePhoto" />
     </application>
 
 

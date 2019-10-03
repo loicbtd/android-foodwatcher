@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.view;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 
 import android.Manifest;
@@ -26,7 +26,7 @@ import java.io.IOException;
 import ca.qc.cgmatane.foodwatcher.R;
 
 
-public class CameraCapture extends MasterActivity {
+public class PrisePhoto extends ActiviteMaitresse {
 
     private static final String[] PERMISSIONS = {
             Manifest.permission.CAMERA,
@@ -59,7 +59,7 @@ public class CameraCapture extends MasterActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.view_camera_capture);
+        super.configureActivityContent(R.layout.vue_prise_photo);
 
         navigationView.getMenu().findItem(R.id.activity_master_drawer_action_find_store).setChecked(true); //TODO R.id.'...' A changer
 
@@ -183,7 +183,7 @@ public class CameraCapture extends MasterActivity {
             bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
 
             //TODO Intent comme j'avais fais mais je pense que ça ne marchera pas donc plutôt un finish()
-//            Intent intent = new Intent(CameraCapture.this,AddProductActivity.class);
+//            Intent intent = new Intent(PrisePhoto.this,AjouterProduit.class);
 //            startActivity(intent);
 
             finish();

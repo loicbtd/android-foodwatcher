@@ -1,16 +1,14 @@
-package ca.qc.cgmatane.foodwatcher.controller;
+package ca.qc.cgmatane.foodwatcher.controleur;
 
 import android.content.Context;
-import android.content.Intent;
 
-import ca.qc.cgmatane.foodwatcher.view.AddProductActivity;
-import ca.qc.cgmatane.foodwatcher.view.StockActivity;
+import ca.qc.cgmatane.foodwatcher.vue.Stock;
 
-public class StockController implements Controller {
-    private StockActivity view;
+public class ControleurStock implements Controleur {
+    private Stock view;
     public static final int ADD_PRODUCT_ACTIVITY = 1;
 
-    public StockController(StockActivity vue){
+    public ControleurStock(Stock vue){
         this.view = vue;
     }
 
