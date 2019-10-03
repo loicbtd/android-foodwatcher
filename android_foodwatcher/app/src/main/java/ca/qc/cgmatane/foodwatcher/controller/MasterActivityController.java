@@ -26,6 +26,8 @@ public class MasterActivityController implements Controller, NavigationView.OnNa
     static final public int ACTIVITY_ADD_HOME = 2;
     static final public int ACTIVITY_FIND_STORE = 3;
 
+    protected static int currentHome;
+
     protected MasterActivity view;
 
     protected HomeDAO homeDAO;
@@ -83,8 +85,11 @@ public class MasterActivityController implements Controller, NavigationView.OnNa
 
         // if itemId corresponds to a stock
         if (0 <= itemId && itemId < view.getListHome().size()) {
-            intent = new Intent(view.getApplicationContext(), StockActivity.class);
-            view.startActivityForResult(intent, ACTIVITY_STOCK);
+            if (itemId != currentHome) {
+                itemId = currentHome;
+                intent = new Intent(view.getApplicationContext(), StockActivity.class);
+                view.startActivityForResult(intent, ACTIVITY_STOCK);
+            }
         } // else if it corresponds to another activity
         else {
             switch (itemId) {
