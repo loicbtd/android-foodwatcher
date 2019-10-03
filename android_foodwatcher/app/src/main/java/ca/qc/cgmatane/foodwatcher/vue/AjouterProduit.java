@@ -81,7 +81,6 @@ public class AjouterProduit extends ActiviteMaitresse {
 
         super.onResume();
 
-<<<<<<< Updated upstream:android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/vue/AjouterProduit.java
         if (PrisePhoto.bitmap != null){
             bitmap = PrisePhoto.bitmap;
             imageViewProduct.setImageBitmap(bitmap);
