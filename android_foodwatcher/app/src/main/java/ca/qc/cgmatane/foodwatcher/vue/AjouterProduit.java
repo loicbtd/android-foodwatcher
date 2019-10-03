@@ -82,7 +82,7 @@ public class AjouterProduit extends ActiviteMaitresse {
         super.onResume();
 
         if (PrisePhoto.bitmap != null){
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            bitmap = PrisePhoto.bitmap;
             imageViewProduct.setImageBitmap(bitmap);
         }
 
