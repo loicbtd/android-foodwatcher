@@ -1,5 +1,6 @@
 package ca.qc.cgmatane.foodwatcher.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +41,7 @@ public class StockActivity extends MasterActivity {
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stockController.navigateToViewAddProduct();
+                stockController.actionNavigateToViewAddProduct();
             }
         });
         recyclerView = findViewById(R.id.my_recycler_view);
@@ -112,5 +114,15 @@ public class StockActivity extends MasterActivity {
         drawable.draw(canvas);
 
         return bitmap;
+    }
+
+    public void navigateAddProduct(){
+        startActivityForResult(new Intent(this, AddProductActivity.class), StockController.ADD_PRODUCT_ACTIVITY);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        stockController.onActivityResult(requestCode);
     }
 }

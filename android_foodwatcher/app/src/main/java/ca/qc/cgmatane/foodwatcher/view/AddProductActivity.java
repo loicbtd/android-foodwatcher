@@ -37,11 +37,11 @@ public class AddProductActivity extends MasterActivity {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.view_add_product);
 
-//        boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
-//        boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
-//        textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
-//        textFieldQuantite = findViewById(R.id.edit_text_quantite);
-//        textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
+        boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
+        boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
+        textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
+        textFieldQuantite = findViewById(R.id.edit_text_quantite);
+        textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
         imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
 
 
@@ -53,7 +53,7 @@ public class AddProductActivity extends MasterActivity {
             }
         });
 
-        /*boutonAjouterProduit.setOnClickListener(new View.OnClickListener() {
+        boutonAjouterProduit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println(textFieldIntitule.getText());
@@ -73,7 +73,7 @@ public class AddProductActivity extends MasterActivity {
             public void onClick(View view) {
                 naviguerRetourMaison();
             }
-        });*/
+        });
     }
 
     @Override

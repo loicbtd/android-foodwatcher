@@ -8,15 +8,14 @@ import ca.qc.cgmatane.foodwatcher.view.StockActivity;
 
 public class StockController implements Controller {
     private StockActivity view;
-    private static final int ADD_PRODUCT_ACTIVITY = 1;
+    public static final int ADD_PRODUCT_ACTIVITY = 1;
 
     public StockController(StockActivity vue){
         this.view = vue;
     }
 
-    public void navigateToViewAddProduct(){
-        view.addProductList();
-        view.startActivityForResult(new Intent(this.view.getBaseContext(), AddProductActivity.class), ADD_PRODUCT_ACTIVITY);
+    public void actionNavigateToViewAddProduct(){
+        view.navigateAddProduct();
     }
 
     @Override
@@ -41,6 +40,7 @@ public class StockController implements Controller {
 
     @Override
     public void onActivityResult(int activite) {
+        System.out.println("ON ACTIVITY RESULT");
         switch (activite){
             case ADD_PRODUCT_ACTIVITY:
                 System.out.println("ajouter un élément à la liste");
