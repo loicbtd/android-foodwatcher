@@ -1,15 +1,12 @@
 package ca.qc.cgmatane.foodwatcher.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.button.MaterialButton;
-
 import ca.qc.cgmatane.foodwatcher.R;
 
-public class AddHomeActivity extends MasterActivity {
+public class AjouterMaison extends MasterActivity {
     Button boutonAjouterMaison;
     Button boutonAnnuler;
     //TODO: create and add controller as attribute

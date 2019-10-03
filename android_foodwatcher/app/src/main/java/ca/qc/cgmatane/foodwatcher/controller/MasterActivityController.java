@@ -13,7 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.data.DataBase;
 import ca.qc.cgmatane.foodwatcher.data.HomeDAO;
-import ca.qc.cgmatane.foodwatcher.view.AddHomeActivity;
+import ca.qc.cgmatane.foodwatcher.view.AjouterMaison;
 import ca.qc.cgmatane.foodwatcher.view.FindStoreActivity;
 import ca.qc.cgmatane.foodwatcher.view.MasterActivity;
 import ca.qc.cgmatane.foodwatcher.view.SampleActivity;
@@ -98,9 +98,9 @@ public class MasterActivityController implements Controller, NavigationView.OnNa
                     intent = new Intent(view.getApplicationContext(), SampleActivity.class);
                     view.startActivityForResult(intent, ACTIVITY_SAMPLE);
                     break;
-                    // start AddHomeActivity
+                    // start AjouterMaison
                 case R.id.activity_master_drawer_action_add_home:
-                    intent = new Intent(view.getApplicationContext(), AddHomeActivity.class);
+                    intent = new Intent(view.getApplicationContext(), AjouterMaison.class);
                     view.startActivityForResult(intent, ACTIVITY_ADD_HOME);
                     break;
                     // start FindStoreActivity
