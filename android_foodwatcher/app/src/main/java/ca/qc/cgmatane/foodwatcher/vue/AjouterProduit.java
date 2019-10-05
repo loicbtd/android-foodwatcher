@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterProduit;
 
 public class AjouterProduit extends ActiviteMaitresse {
     TextInputEditText textFieldIntitule;
@@ -26,6 +27,7 @@ public class AjouterProduit extends ActiviteMaitresse {
     TextInputEditText textFieldCodeBarre;
     MaterialButton boutonAjouterProduit;
     MaterialButton boutonRetour;
+    ControleurAjouterProduit controleur;
 
     private ImageView imageViewProduct;
 
@@ -36,7 +38,7 @@ public class AjouterProduit extends ActiviteMaitresse {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.vue_ajouter_produit);
-
+        controleur = new ControleurAjouterProduit(this);
         boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
         boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
         textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
@@ -44,7 +46,7 @@ public class AjouterProduit extends ActiviteMaitresse {
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
         imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
 
-
+        controleur.onCreate(getApplicationContext());
         imageViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,13 +67,13 @@ public class AjouterProduit extends ActiviteMaitresse {
                 saveImage(bitmap); //Sauvegarde l'image
                 PrisePhoto.bitmap = null;
 
-                naviguerRetourMaison();
+                controleur.naviguerVersStockAjouter();
             }
         });
         boutonRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                naviguerRetourMaison();
+                controleur.naviguerVerStockAnnuler();
             }
         });
     }
@@ -81,7 +83,6 @@ public class AjouterProduit extends ActiviteMaitresse {
 
         super.onResume();
 
-<<<<<<< Updated upstream:android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/vue/AjouterProduit.java
         if (PrisePhoto.bitmap != null){
             bitmap = PrisePhoto.bitmap;
             imageViewProduct.setImageBitmap(bitmap);
