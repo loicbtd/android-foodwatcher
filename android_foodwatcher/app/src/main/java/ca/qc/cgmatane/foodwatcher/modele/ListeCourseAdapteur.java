@@ -1,27 +1,26 @@
-package ca.qc.cgmatane.foodwatcher.vue;
+package ca.qc.cgmatane.foodwatcher.modele;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 
-class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewHolder>{
+public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewHolder>{
     List<String> listeProds;
+    private int checkedPosition = 0;
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         // for an        // Your holder should contain a member variabley view that will be set as you render a row
-//        public TextView nameTextView;
-//        public TextView nbRestants;
-//        public Button messageButton;
-//        public Button boutonPlus;
-
+        public TextView nameTextView;
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
@@ -29,10 +28,33 @@ class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewH
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            /*nameTextView = (TextView) itemView.findViewById(R.id.nom_produit);
-            nbRestants = itemView.findViewById(R.id.nbrestants);
+            nameTextView = (TextView) itemView.findViewById(R.id.nom_produit_liste_course);
+            /*nbRestants = itemView.findViewById(R.id.nbrestants);
             messageButton = (Button) itemView.findViewById(R.id.bouton_test);
             boutonPlus = itemView.findViewById(R.id.bouton_test2);*/
+//            itemView.setOnClickListener(view -> toggleItemSelection());
+        }
+        public void bind(String produit) {
+            if (checkedPosition == -1) {
+                nameTextView.setText("non selectionné");
+            } else {
+                if (checkedPosition == getAdapterPosition()) {
+                    nameTextView.setText("selectionné");
+                } else {
+                    nameTextView.setText("non selectionné");
+                }
+            }
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nameTextView.setText("selectionné");
+                    if (checkedPosition != getAdapterPosition()) {
+                        notifyItemChanged(checkedPosition);
+                        checkedPosition = getAdapterPosition();
+                    }
+                }
+            });
         }
     }
     @Override
@@ -42,7 +64,6 @@ class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewH
 
         // Inflate the custom layout
         View contactView = inflater.inflate(R.layout.vue_liste_course_recycler_view_item_produit, parent, false);
-
         // Return a new holder instance
         ListeCourseAdapteur.ViewHolder viewHolder = new ListeCourseAdapteur.ViewHolder(contactView);
         return viewHolder;
@@ -61,7 +82,10 @@ class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewH
 //        Button bouton2 = viewHolder.boutonPlus;
 //        button.setText("-");
 //        bouton2.setText("+");
+        viewHolder.bind(listeProds.get(position));
     }
+
+
 
     // Returns the total count of items in the list
     @Override

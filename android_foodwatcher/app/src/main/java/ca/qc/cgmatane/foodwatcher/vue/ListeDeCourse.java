@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
+import ca.qc.cgmatane.foodwatcher.modele.ListeCourseAdapteur;
 
 public class ListeDeCourse extends ActiviteMaitresse implements ListeDeCourseVue {
     private RecyclerView recyclerView;
