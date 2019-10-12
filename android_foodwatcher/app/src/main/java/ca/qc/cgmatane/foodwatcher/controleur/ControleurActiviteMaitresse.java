@@ -15,6 +15,7 @@ import ca.qc.cgmatane.foodwatcher.donnees.DataBase;
 import ca.qc.cgmatane.foodwatcher.donnees.HomeDAO;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
 import ca.qc.cgmatane.foodwatcher.vue.AjouterMaison;
+import ca.qc.cgmatane.foodwatcher.vue.ListeDeCourse;
 import ca.qc.cgmatane.foodwatcher.vue.TrouverMagasin;
 import ca.qc.cgmatane.foodwatcher.vue.Exemple;
 import ca.qc.cgmatane.foodwatcher.vue.Stock;
@@ -108,6 +109,9 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
                     intent = new Intent(view.getApplicationContext(), TrouverMagasin.class);
                     view.startActivityForResult(intent, ACTIVITY_FIND_STORE);
                     break;
+                case R.id.activity_master_drawer_action_display_shopping_list:
+                    intent = new Intent(view.getApplicationContext(), ListeDeCourse.class);
+                    view.startActivity(intent);
                     // return false if item id does not correspond to any activity
                 default:
                     return false;

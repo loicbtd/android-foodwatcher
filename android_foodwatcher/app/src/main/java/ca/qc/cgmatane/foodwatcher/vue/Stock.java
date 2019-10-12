@@ -26,7 +26,7 @@ import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
 public class Stock extends ActiviteMaitresse implements StockVue {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
-    private List<String> productsList;
+    private List<String> listeProduits;
     private Bitmap icon;
     private Button btn_view_stock_add_product;
     private ControleurStock stockController = new ControleurStock(this);
@@ -45,11 +45,11 @@ public class Stock extends ActiviteMaitresse implements StockVue {
             }
         });
         recyclerView = findViewById(R.id.my_recycler_view);
-        productsList = new ArrayList<>();
+        listeProduits = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            productsList.add("test");
+            listeProduits.add("test");
         }
-        adapter = new ProduitAdapter(productsList);
+        adapter = new ProduitAdapter(listeProduits);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
@@ -59,8 +59,8 @@ public class Stock extends ActiviteMaitresse implements StockVue {
     }
 
     public void ajouterProduitListe(){
-        productsList.add("element ajouté");
-        adapter.notifyItemInserted(productsList.size()-1);
+        listeProduits.add("element ajouté");
+        adapter.notifyItemInserted(listeProduits.size()-1);
     }
 
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -71,7 +71,7 @@ public class Stock extends ActiviteMaitresse implements StockVue {
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            productsList.remove(viewHolder.getAdapterPosition());
+            listeProduits.remove(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
         }
 
