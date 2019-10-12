@@ -95,4 +95,10 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
     public ListeCourseAdapteur(List<String> produits) {
         listeProds = produits;
     }
+    public void supprSelectionne(){
+        if (checkedPosition != -1) {
+             listeProds.remove(checkedPosition);
+             notifyItemRemoved(checkedPosition);
+        }
+    }
 }
