@@ -5,15 +5,15 @@ import android.content.Context;
 import ca.qc.cgmatane.foodwatcher.vue.Stock;
 
 public class ControleurStock implements Controleur {
-    private Stock view;
+    private Stock vue;
     public static final int ADD_PRODUCT_ACTIVITY = 1;
 
     public ControleurStock(Stock vue){
-        this.view = vue;
+        this.vue = vue;
     }
 
     public void actionNavigateToViewAddProduct(){
-        view.navigateAddProduct();
+        vue.naviguerVueAjouterProduit();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ControleurStock implements Controleur {
         switch (activite){
             case ADD_PRODUCT_ACTIVITY:
                 System.out.println("ajouter un élément à la liste");
-                view.addProductList();
+                vue.ajouterProduitListe();
                 break;
         }
     }

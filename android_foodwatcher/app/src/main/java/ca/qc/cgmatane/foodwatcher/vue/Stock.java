@@ -23,7 +23,7 @@ import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurStock;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
 
-public class Stock extends ActiviteMaitresse {
+public class Stock extends ActiviteMaitresse implements StockVue {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
     private List<String> productsList;
@@ -58,7 +58,7 @@ public class Stock extends ActiviteMaitresse {
         // TODO: call the controller onCreate method
     }
 
-    public void addProductList(){
+    public void ajouterProduitListe(){
         productsList.add("element ajouté");
         adapter.notifyItemInserted(productsList.size()-1);
     }
@@ -116,7 +116,7 @@ public class Stock extends ActiviteMaitresse {
         return bitmap;
     }
 
-    public void navigateAddProduct(){
+    public void naviguerVueAjouterProduit(){
         startActivityForResult(new Intent(this, AjouterProduit.class), ControleurStock.ADD_PRODUCT_ACTIVITY);
     }
 

@@ -21,7 +21,7 @@ import java.util.Date;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterProduit;
 
-public class AjouterProduit extends ActiviteMaitresse {
+public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitVue {
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
@@ -73,9 +73,15 @@ public class AjouterProduit extends ActiviteMaitresse {
         boutonRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                controleur.naviguerVerStockAnnuler();
+                controleur.retourVerStockAnnuler();
             }
         });
+    }
+
+    @Override
+    public void naviguerVersStockAnnuler(){
+        Intent intent = new Intent(getApplicationContext(), Stock.class);
+        startActivity(intent);
     }
 
     @Override

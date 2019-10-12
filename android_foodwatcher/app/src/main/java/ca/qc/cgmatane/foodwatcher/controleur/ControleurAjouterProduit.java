@@ -18,14 +18,13 @@ public class ControleurAjouterProduit implements Controleur {
 
     }
 
-    public void naviguerVerStockAnnuler(){
-        Intent intent = new Intent(vue.getApplicationContext(), Stock.class);
-        vue.startActivity(intent);
+    public void retourVerStockAnnuler(){
+        vue.naviguerVersStockAnnuler();
     }
 
     public void naviguerVersStockAjouter(){
 
-        vue.finish();
+        vue.naviguerRetourMaison();
     }
 
     @Override
