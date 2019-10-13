@@ -19,17 +19,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
-public class ActiviteAjouterProduit extends ActiviteMaitresse implements ActiviteAjouterProduitVue {
+public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
     TextInputEditText textInputJoursConservation;
     MaterialButton boutonAjouterProduit;
     MaterialButton boutonRetour;
-    ControleurAjouterProduit controleur;
+    ControleurActiviteAjouterProduit controleur;
 
     private ImageView imageViewProduct;
 
@@ -39,8 +39,8 @@ public class ActiviteAjouterProduit extends ActiviteMaitresse implements Activit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.vue_ajouter_produit);
-        controleur = new ControleurAjouterProduit(this);
+        super.configureActivityContent(R.layout.activite_ajouter_produit);
+        controleur = new ControleurActiviteAjouterProduit(this);
         boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
         boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
         textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
@@ -83,7 +83,7 @@ public class ActiviteAjouterProduit extends ActiviteMaitresse implements Activit
 
     @Override
     public void naviguerVersStockAnnuler(){
-        Intent intent = new Intent(getApplicationContext(), ActiviteMaison.class);
+        Intent intent = new Intent(getApplicationContext(), ActiviteStock.class);
         startActivity(intent);
     }
 

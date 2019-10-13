@@ -5,14 +5,14 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterMaison;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
 
 
-public class ControleurAjouterMaison implements Controleur {
+public class ControleurActiviteAjouterStock implements Controleur {
 
-    private ActiviteAjouterMaison vue;
+    private ActiviteAjouterStock vue;
 
-    public ControleurAjouterMaison(ActiviteAjouterMaison vue) {
+    public ControleurActiviteAjouterStock(ActiviteAjouterStock vue) {
        this.vue = vue;
     }
 

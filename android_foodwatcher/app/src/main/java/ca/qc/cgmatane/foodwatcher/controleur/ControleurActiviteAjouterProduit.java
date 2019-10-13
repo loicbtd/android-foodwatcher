@@ -7,11 +7,11 @@ import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterProduit;
 
-public class ControleurAjouterProduit implements Controleur {
+public class ControleurActiviteAjouterProduit implements Controleur {
     private ActiviteAjouterProduit vue;
     protected ProduitDAO accesseurProduit;
 
-    public ControleurAjouterProduit(ActiviteAjouterProduit vue){
+    public ControleurActiviteAjouterProduit(ActiviteAjouterProduit vue){
         this.vue = vue;
     }
 

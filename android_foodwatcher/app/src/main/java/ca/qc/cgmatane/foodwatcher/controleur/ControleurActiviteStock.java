@@ -4,14 +4,14 @@ import android.content.Context;
 
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaison;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
 
-public class ControleurStock implements Controleur {
-    private ActiviteMaison vue;
+public class ControleurActiviteStock implements Controleur {
+    private ActiviteStock vue;
     public static final int ADD_PRODUCT_ACTIVITY = 1;
     protected ProduitDAO accesseurProduit;
 
-    public ControleurStock(ActiviteMaison vue){
+    public ControleurActiviteStock(ActiviteStock vue){
         this.vue = vue;
     }
 

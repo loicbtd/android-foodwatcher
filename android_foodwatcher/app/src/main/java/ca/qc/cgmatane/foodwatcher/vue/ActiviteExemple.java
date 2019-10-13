@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurExemple;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteExemple;
 
-public class ActiviteActiviteExemple extends ActiviteMaitresse implements ActiviteExempleVue {
+public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExempleVue {
 
-    ControleurExemple sampleActivityController = new ControleurExemple(this);
+    ControleurActiviteExemple sampleActivityController = new ControleurActiviteExemple(this);
 
     private TextView textView;
 
@@ -19,7 +19,7 @@ public class ActiviteActiviteExemple extends ActiviteMaitresse implements Activi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.vue_exemple);
+        super.configureActivityContent(R.layout.activite_exemple);
         super.configureToolbarMenu(R.menu.vue_exemple_toolbar);
 
         textView = (TextView) findViewById(R.id.view_sample_textview);

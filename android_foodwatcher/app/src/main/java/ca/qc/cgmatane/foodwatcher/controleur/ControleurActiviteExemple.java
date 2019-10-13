@@ -6,13 +6,13 @@ import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteActiviteExemple;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteExemple;
 
-public class ControleurExemple implements Controleur, Toolbar.OnMenuItemClickListener {
+public class ControleurActiviteExemple implements Controleur, Toolbar.OnMenuItemClickListener {
 
-    protected ActiviteActiviteExemple view;
+    protected ActiviteExemple view;
 
-    public ControleurExemple(ActiviteActiviteExemple view) {
+    public ControleurActiviteExemple(ActiviteExemple view) {
         this.view = view;
     }
 

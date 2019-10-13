@@ -5,21 +5,21 @@ import android.view.View;
 import android.widget.Button;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterMaison;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterStock;
 
-public class ActiviteAjouterMaison extends ActiviteMaitresse implements ActiviteAjouterMaisonVue {
+public class ActiviteAjouterStock extends ConteneurPrincipal implements ActiviteAjouterStockVue {
     Button boutonAjouterMaison;
     Button boutonAnnuler;
-    ControleurAjouterMaison controleur;
+    ControleurActiviteAjouterStock controleur;
     //TODO: create and add controller as attribute
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.vue_ajouter_maison);
+        super.configureActivityContent(R.layout.activite_ajouter_maison);
 //        super.configureToolbarMenu(R.menu.vue_exemple_toolbar);
 //        toolbar.setOnMenuItemClickListener();
-        controleur = new ControleurAjouterMaison(this);
+        controleur = new ControleurActiviteAjouterStock(this);
         boutonAjouterMaison = findViewById(R.id.bouton_ajouter_maison);
         boutonAjouterMaison.setOnClickListener(new View.OnClickListener() {
             @Override

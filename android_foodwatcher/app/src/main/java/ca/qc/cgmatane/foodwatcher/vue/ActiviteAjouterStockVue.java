@@ -1,5 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-public interface ActiviteAjouterMaisonVue {
+public interface ActiviteAjouterStockVue {
     void retourActiviteMaitresse();
 }

@@ -19,24 +19,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurStock;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
 
-public class ActiviteMaison extends ActiviteMaitresse implements ActiviteMaisonVue {
+public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
     private Bitmap icon;
     private Button btn_view_stock_add_product;
     protected List<Produit> listeProduits;
     protected int id_maison;
-    private ControleurStock stockController = new ControleurStock(this);
+    private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
     //TODO: create and add controller as attribute
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.vue_stock);
+        super.configureActivityContent(R.layout.activite_stock);
 //        Bundle parametres = this.getIntent().getExtras();
 //        id_maison = (int) parametres.get("id_maison");
 //        Toast.makeText(this, "id maison "+id_maison, Toast.LENGTH_SHORT).show();
@@ -134,7 +134,7 @@ public class ActiviteMaison extends ActiviteMaitresse implements ActiviteMaisonV
     }
 
     public void naviguerVueAjouterProduit(){
-        startActivityForResult(new Intent(this, ActiviteAjouterProduit.class), ControleurStock.ADD_PRODUCT_ACTIVITY);
+        startActivityForResult(new Intent(this, ActiviteAjouterProduit.class), ControleurActiviteStock.ADD_PRODUCT_ACTIVITY);
     }
 
     @Override

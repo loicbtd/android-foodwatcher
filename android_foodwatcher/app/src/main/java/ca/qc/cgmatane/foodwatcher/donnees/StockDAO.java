@@ -7,66 +7,66 @@ import android.database.sqlite.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.qc.cgmatane.foodwatcher.modele.Maison;
+import ca.qc.cgmatane.foodwatcher.modele.Stock;
 
-public class MaisonDAO implements MaisonSQL {
+public class StockDAO implements StockSQL {
 
-    private static MaisonDAO instance = null;
-    protected List<Maison> listeMaison;
+    private static StockDAO instance = null;
+    protected List<Stock> listeStock;
 
     private BaseDeDonnees baseDeDonnees;
 
-    public static MaisonDAO getInstance() {
+    public static StockDAO getInstance() {
         if (null == instance) {
-            instance = new MaisonDAO();
+            instance = new StockDAO();
         }
         return instance;
     }
 
-    public MaisonDAO() {
+    public StockDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
-        listeMaison = new ArrayList<>();
+        listeStock = new ArrayList<>();
 
         // mock
         ajouterListeMaisonMock();
     }
 
-    public List<Maison> recupererListeMaison() {
+    public List<Stock> recupererListeMaison() {
         Cursor curseur = baseDeDonnees.getReadableDatabase()
                 .rawQuery(SQL_LISTER_MAISON, null);
-        this.listeMaison.clear();
+        this.listeStock.clear();
 
-        Maison maison;
-        int indexId_maison = curseur.getColumnIndex(Maison.CLE_ID_MAISON);
-        int indexEtiquette = curseur.getColumnIndex(Maison.CLE_ETIQUETTE);
+        Stock stock;
+        int indexId_maison = curseur.getColumnIndex(Stock.CLE_ID_MAISON);
+        int indexEtiquette = curseur.getColumnIndex(Stock.CLE_ETIQUETTE);
 
         for (curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
             int id_maison = curseur.getInt(indexId_maison);
             String etiquette = curseur.getString(indexEtiquette);
-            maison = new Maison(id_maison, etiquette);
-            this.listeMaison.add(maison);
+            stock = new Stock(id_maison, etiquette);
+            this.listeStock.add(stock);
         }
-        return listeMaison;
+        return listeStock;
     }
 
-    public void ajouterMaison(Maison maison) {
+    public void ajouterMaison(Stock stock) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_MAISON);
-        sqLiteStatement.bindString(1, maison.getEtiquette());
+        sqLiteStatement.bindString(1, stock.getEtiquette());
         sqLiteStatement.execute();
     }
 
-    public void modifierMaison(Maison maison) {
+    public void modifierMaison(Stock stock) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODFIFIER_MAISON);
-        sqLiteStatement.bindString(1, maison.getEtiquette());
-        sqLiteStatement.bindString(2, ""+maison.getId_maison());
+        sqLiteStatement.bindString(1, stock.getEtiquette());
+        sqLiteStatement.bindString(2, ""+ stock.getId_maison());
         sqLiteStatement.execute();
     }
 
     public void ajouterListeMaisonMock() {
-        ajouterMaison(new Maison(0, "Domicile"));
-        ajouterMaison(new Maison(1, "ActiviteMaison vacances"));
-        ajouterMaison(new Maison(2, "Mon restaurant"));
+        ajouterMaison(new Stock(0, "Domicile"));
+        ajouterMaison(new Stock(1, "ActiviteStock vacances"));
+        ajouterMaison(new Stock(2, "Mon restaurant"));
     }
 }

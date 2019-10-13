@@ -63,7 +63,7 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.vue_liste_course_recycler_view_item_produit, parent, false);
+        View contactView = inflater.inflate(R.layout.activite_liste_course_recycler_view_item_produit, parent, false);
         // Return a new holder instance
         ListeCourseAdapteur.ViewHolder viewHolder = new ListeCourseAdapteur.ViewHolder(contactView);
         return viewHolder;

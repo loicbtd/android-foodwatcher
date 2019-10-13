@@ -17,23 +17,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".vue.ActiviteListeDeCourse"></activity>
+        <activity android:name=".vue.ActiviteListeCourse"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDe95EYplpsun4haV6tRdwBj-t4Q97cqbw" />
 
-        <activity android:name=".vue.ActiviteMaison">
+        <activity android:name=".vue.ActiviteStock">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vue.ActiviteActiviteExemple" />
-        <activity android:name=".vue.ActiviteAjouterMaison" />
+        <activity android:name=".vue.ActiviteExemple" />
+        <activity android:name=".vue.ActiviteAjouterStock" />
         <activity android:name=".vue.ActiviteAjouterProduit" />
-        <activity android:name=".vue.ActiviteCarteMagasin" />
+        <activity android:name=".vue.ActiviteTrouverMagasin" />
         <activity android:name=".vue.ActivitePrisePhoto" />
     </application>
 

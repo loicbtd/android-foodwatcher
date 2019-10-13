@@ -12,15 +12,15 @@ import com.google.android.material.navigation.NavigationView;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
-import ca.qc.cgmatane.foodwatcher.donnees.MaisonDAO;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteActiviteExemple;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaison;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterMaison;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeDeCourse;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteCarteMagasin;
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteExemple;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
+import ca.qc.cgmatane.foodwatcher.vue.ConteneurPrincipal;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeCourse;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteTrouverMagasin;
 
-public class ControleurActiviteMaitresse implements Controleur, NavigationView.OnNavigationItemSelectedListener {
+public class ControleurConteneurPrincipal implements Controleur, NavigationView.OnNavigationItemSelectedListener {
 
     static final public int ACTIVITY_SAMPLE = -1;
     static final public int ACTIVITY_STOCK = 1;
@@ -29,11 +29,11 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
 
     protected static int currentHome;
 
-    protected ActiviteMaitresse view;
+    protected ConteneurPrincipal view;
 
-    protected MaisonDAO maisonDAO;
+    protected StockDAO stockDAO;
 
-    public ControleurActiviteMaitresse(ActiviteMaitresse view) {
+    public ControleurConteneurPrincipal(ConteneurPrincipal view) {
         this.view = view;
     }
 
@@ -41,8 +41,8 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
     @Override
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
-        maisonDAO = MaisonDAO.getInstance();
-        view.setListMaison(maisonDAO.recupererListeMaison());
+        stockDAO = StockDAO.getInstance();
+        view.setListStock(stockDAO.recupererListeMaison());
         view.populateHomeInMenuDrawer();
     }
 
@@ -87,35 +87,35 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
         view.getDrawerLayout().closeDrawer(GravityCompat.START);
 
         // if itemId corresponds to a stock
-        if (0 <= itemId && itemId < view.getListMaison().size()) {
+        if (0 <= itemId && itemId < view.getListStock().size()) {
             if (itemId != currentHome) {
                 int id = itemId;
                 itemId = currentHome;
-                intent = new Intent(view.getApplicationContext(), ActiviteMaison.class);
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListMaison().get(id).getId_maison());
-                intent.putExtra("id_maison", view.getListMaison().get(id).getId_maison());
+                intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getId_maison());
+                intent.putExtra("id_maison", view.getListStock().get(id).getId_maison());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity
         else {
             switch (itemId) {
-                    // start ActiviteActiviteExemple
+                    // start ActiviteExemple
                 case R.id.activity_master_drawer_action_display_sample:
-                    intent = new Intent(view.getApplicationContext(), ActiviteActiviteExemple.class);
+                    intent = new Intent(view.getApplicationContext(), ActiviteExemple.class);
                     view.startActivityForResult(intent, ACTIVITY_SAMPLE);
                     break;
-                    // start ActiviteAjouterMaison
+                    // start ActiviteAjouterStock
                 case R.id.activity_master_drawer_action_add_home:
-                    intent = new Intent(view.getApplicationContext(), ActiviteAjouterMaison.class);
+                    intent = new Intent(view.getApplicationContext(), ActiviteAjouterStock.class);
                     view.startActivityForResult(intent, ACTIVITY_ADD_HOME);
                     break;
-                    // start ActiviteCarteMagasin
+                    // start ActiviteTrouverMagasin
                 case R.id.activity_master_drawer_action_find_store:
-                    intent = new Intent(view.getApplicationContext(), ActiviteCarteMagasin.class);
+                    intent = new Intent(view.getApplicationContext(), ActiviteTrouverMagasin.class);
                     view.startActivityForResult(intent, ACTIVITY_FIND_STORE);
                     break;
                 case R.id.activity_master_drawer_action_display_shopping_list:
-                    intent = new Intent(view.getApplicationContext(), ActiviteListeDeCourse.class);
+                    intent = new Intent(view.getApplicationContext(), ActiviteListeCourse.class);
                     view.startActivity(intent);
                     // return false if item id does not correspond to any activity
                 default:
