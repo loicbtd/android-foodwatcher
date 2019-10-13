@@ -43,15 +43,18 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
                 }
             }
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+
+
                 @Override
-                public void onClick(View view) {
+                public boolean onLongClick(View view) {
                     nameTextView.setText("selectionné");
                     elementListe.setCardBackgroundColor(Color.argb(255,150,150,150));
                     if (checkedPosition != getAdapterPosition()) {
                         notifyItemChanged(checkedPosition);
                         checkedPosition = getAdapterPosition();
                     }
+                    return false;
                 }
             });
         }
@@ -96,6 +99,7 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
     }
     public void supprSelectionne(){
         if (checkedPosition != -1) {
+            //ToDo: appeler le DAO;
              listeProds.remove(checkedPosition);
              notifyItemRemoved(checkedPosition);
         }
