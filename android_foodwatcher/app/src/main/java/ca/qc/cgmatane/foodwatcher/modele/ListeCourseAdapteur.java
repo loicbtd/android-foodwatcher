@@ -1,12 +1,15 @@
 package ca.qc.cgmatane.foodwatcher.modele;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -19,29 +22,24 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // for an        // Your holder should contain a member variabley view that will be set as you render a row
-        public TextView nameTextView;
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
-        public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
-            super(itemView);
 
+        public TextView nameTextView;
+        public CardView elementListe;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            elementListe = itemView.findViewById(R.id.element_liste_vue_liste_course);
             nameTextView = (TextView) itemView.findViewById(R.id.nom_produit_liste_course);
-            /*nbRestants = itemView.findViewById(R.id.nbrestants);
-            messageButton = (Button) itemView.findViewById(R.id.bouton_test);
-            boutonPlus = itemView.findViewById(R.id.bouton_test2);*/
-//            itemView.setOnClickListener(view -> toggleItemSelection());
         }
         public void bind(String produit) {
             if (checkedPosition == -1) {
                 nameTextView.setText("non selectionné");
+                elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
             } else {
                 if (checkedPosition == getAdapterPosition()) {
                     nameTextView.setText("selectionné");
                 } else {
                     nameTextView.setText("non selectionné");
+                    elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
                 }
             }
 
@@ -49,6 +47,7 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
                 @Override
                 public void onClick(View view) {
                     nameTextView.setText("selectionné");
+                    elementListe.setCardBackgroundColor(Color.argb(255,150,150,150));
                     if (checkedPosition != getAdapterPosition()) {
                         notifyItemChanged(checkedPosition);
                         checkedPosition = getAdapterPosition();
