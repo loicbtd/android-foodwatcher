@@ -26,6 +26,7 @@ public class MaisonDAO implements MaisonSQL {
     public MaisonDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeMaison = new ArrayList<>();
+        ajouterListeMaisonMock();
     }
 
     public List<Maison> recupererListeMaison() {
