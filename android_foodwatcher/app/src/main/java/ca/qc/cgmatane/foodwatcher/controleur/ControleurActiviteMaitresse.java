@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.MaisonDAO;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
 import ca.qc.cgmatane.foodwatcher.vue.AjouterMaison;
 import ca.qc.cgmatane.foodwatcher.vue.Exemple;
@@ -36,6 +37,7 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
     public ControleurActiviteMaitresse(ActiviteMaitresse view) {
         this.view = view;
     }
+
 
     @Override
     public void onCreate(Context applicationContext) {
@@ -88,8 +90,11 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
         // if itemId corresponds to a stock
         if (0 <= itemId && itemId < view.getListMaison().size()) {
             if (itemId != currentHome) {
+                int id = itemId;
                 itemId = currentHome;
                 intent = new Intent(view.getApplicationContext(), Stock.class);
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListMaison().get(id).getId_maison());
+                intent.putExtra("id_maison", view.getListMaison().get(id).getId_maison());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity

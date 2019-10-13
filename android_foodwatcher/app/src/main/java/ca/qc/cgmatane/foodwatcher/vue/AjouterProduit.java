@@ -20,11 +20,13 @@ import java.util.Date;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
 public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitVue {
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
+    TextInputEditText textInputJoursConservation;
     MaterialButton boutonAjouterProduit;
     MaterialButton boutonRetour;
     ControleurAjouterProduit controleur;
@@ -44,6 +46,7 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
         textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
         textFieldQuantite = findViewById(R.id.edit_text_quantite);
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
+        textInputJoursConservation = findViewById(R.id.jours_conservation_text_input);
         imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
 
         controleur.onCreate(getApplicationContext());
@@ -67,7 +70,7 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
                 saveImage(bitmap); //Sauvegarde l'image
                 PrisePhoto.bitmap = null;
 
-                controleur.naviguerVersStockAjouter();
+                enregistrerProduit();
             }
         });
         boutonRetour.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +97,11 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
             imageViewProduct.setImageBitmap(bitmap);
         }
 
+    }
+
+    private void enregistrerProduit(){
+        Produit produit = new Produit(0, textFieldCodeBarre.getText().toString(),textFieldIntitule.getText().toString(), Integer.parseInt(textInputJoursConservation.getText().toString()), "image", Integer.parseInt(textFieldQuantite.getText().toString()), 1 );
+        controleur.actionEnregistrerProduit(produit);
     }
 
     public void naviguerRetourMaison(){
