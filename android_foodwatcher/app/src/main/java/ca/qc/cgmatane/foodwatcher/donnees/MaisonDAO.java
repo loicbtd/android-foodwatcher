@@ -8,9 +8,9 @@ import ca.qc.cgmatane.foodwatcher.modele.Maison;
 public class MaisonDAO implements MaisonSQL {
 
     private static MaisonDAO instance = null;
-    protected List<Maison> listMaison;
+    protected List<Maison> listeMaison;
 
-    private BaseDeDonneesDeDonnees baseDeDonnees;
+    private BaseDeDonneesDAO baseDeDonneesDAO;
 
     public static MaisonDAO getInstance() {
         if (null == instance) {
@@ -20,23 +20,19 @@ public class MaisonDAO implements MaisonSQL {
     }
 
     public MaisonDAO() {
-        this.baseDeDonnees = BaseDeDonneesDeDonnees.getInstance();
-        listMaison = new ArrayList<>();
+        this.baseDeDonneesDAO = BaseDeDonneesDAO.getInstance();
+        listeMaison = new ArrayList<>();
     }
 
-    public List<Maison> pickupListHome() {
-        listMaison = new ArrayList<>();
-        mockListHome();
-        return listMaison;
+    public List<Maison> recupererListeMaison() {
+        listeMaison = new ArrayList<>();
+        mockListeMaison();
+        return listeMaison;
     }
 
-    public void mockListHome() {
-        Maison maison;
-        for (int i = 0; i < 5; i++) {
-            int id_maison = i;
-            String etiquette = "Maison " + i;
-            maison = new Maison(id_maison, etiquette);
-            listMaison.add(maison);
-        }
+    public void mockListeMaison() {
+        listeMaison.add(new Maison(0, "Domicile"));
+        listeMaison.add(new Maison(1, "Maison vacances"));
+        listeMaison.add(new Maison(2, "Mon restaurant"));
     }
 }
