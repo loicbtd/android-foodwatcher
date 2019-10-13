@@ -2,6 +2,8 @@ package ca.qc.cgmatane.foodwatcher.controleur;
 
 import android.content.Context;
 
+import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonneesDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
 import ca.qc.cgmatane.foodwatcher.vue.Stock;
 
 public class ControleurStock implements Controleur {
@@ -16,9 +18,13 @@ public class ControleurStock implements Controleur {
         vue.naviguerVueAjouterProduit();
     }
 
+    protected ProduitDAO produitDAO;
+
     @Override
     public void onCreate(Context applicationContext) {
-
+        BaseDeDonneesDAO.getInstance(applicationContext);
+        produitDAO = ProduitDAO.getInstance();
+        vue.setListeProduits(produitDAO.recupererListeProduit());
     }
 
     @Override

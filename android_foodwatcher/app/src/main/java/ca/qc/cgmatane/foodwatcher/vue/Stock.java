@@ -40,11 +40,10 @@ public class Stock extends ActiviteMaitresse implements StockVue {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.vue_stock);
-        Bundle parametres = this.getIntent().getExtras();
-        id_maison = (int) parametres.get("id_maison");
-        Toast.makeText(this, "id maison "+id_maison, Toast.LENGTH_SHORT).show();
-        listeProduits = new ArrayList<>();
-        mockListProduit();
+//        Bundle parametres = this.getIntent().getExtras();
+//        id_maison = (int) parametres.get("id_maison");
+//        Toast.makeText(this, "id maison "+id_maison, Toast.LENGTH_SHORT).show();
+
 
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
@@ -54,41 +53,39 @@ public class Stock extends ActiviteMaitresse implements StockVue {
             }
         });
         recyclerView = findViewById(R.id.my_recycler_view);
-
+        stockController.onCreate(getApplicationContext());
         adapter = new ProduitAdapter(listeProduits);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-        stockController.onCreate(getApplicationContext());
 //        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
         // TODO: call the controller onCreate method
     }
 
     public void ajouterProduitListe(){
-        listeProduits.add(new Produit(1, "test", "test", "2", "image", 1,1));
+        listeProduits.add(new Produit(1, "test", "test", 2, "image", 1,1));
         adapter.notifyItemInserted(listeProduits.size()-1);
     }
 
-    public void mockListProduit() {
+/*    public void mockListProduit() {
         Produit produit;
         for (int i = 0; i < 10
                 ; i++) {
             int id_produit = i;
             String etiquette = "Produit " + i;
             String gencode = "genCode"+i;
-            String nbJoursConservation = i+"jours";
+            int nbJoursConservation = i;
             String cheminImage = "image"+i;
             int uniteQuantite = i;
             int id_categorie = 1;
             produit = new Produit(id_produit,gencode, etiquette, nbJoursConservation, cheminImage, uniteQuantite, id_categorie );
             listeProduits.add(produit);
         }
+    }*/
+
+    public void setListeProduits(List<Produit> listeProduit){
+        this.listeProduits = listeProduit;
     }
-
-
-
-
-
 
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override

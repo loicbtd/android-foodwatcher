@@ -90,6 +90,7 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
                 int id = itemId;
                 itemId = currentHome;
                 intent = new Intent(view.getApplicationContext(), Stock.class);
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListMaison().get(id).getId_maison());
                 intent.putExtra("id_maison", view.getListMaison().get(id).getId_maison());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
