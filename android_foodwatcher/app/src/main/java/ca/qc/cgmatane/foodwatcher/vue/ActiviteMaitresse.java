@@ -19,7 +19,7 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteMaitresse;
-import ca.qc.cgmatane.foodwatcher.modele.Home;
+import ca.qc.cgmatane.foodwatcher.modele.Maison;
 
 public class ActiviteMaitresse extends AppCompatActivity {
 
@@ -31,7 +31,7 @@ public class ActiviteMaitresse extends AppCompatActivity {
     protected NavigationView navigationView;
     protected ConstraintLayout constraintLayout;
 
-    protected List<Home> listHome;
+    protected List<Maison> listMaison;
 
     public DrawerLayout getDrawerLayout() {
         return drawerLayout;
@@ -42,11 +42,11 @@ public class ActiviteMaitresse extends AppCompatActivity {
     public ConstraintLayout getConstraintLayout() {
         return constraintLayout;
     }
-    public List<Home> getListHome() {
-        return listHome;
+    public List<Maison> getListMaison() {
+        return listMaison;
     }
-    public void setListHome(List<Home> listHome) {
-        this.listHome = listHome;
+    public void setListMaison(List<Maison> listMaison) {
+        this.listMaison = listMaison;
     }
 
     @Override
@@ -104,8 +104,8 @@ public class ActiviteMaitresse extends AppCompatActivity {
         Menu menu = navigationView.getMenu();
         MenuItem menuItem = menu.findItem(R.id.activity_master_drawer_section_home);
         SubMenu subMenuHome = menuItem.getSubMenu();
-        for (int i = 0; i < listHome.size(); i++) {
-            subMenuHome.add(0, i, i, listHome.get(i).getEtiquette());
+        for (int i = 0; i < listMaison.size(); i++) {
+            subMenuHome.add(0, i, i, listMaison.get(i).getEtiquette());
             subMenuHome.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
         }
     }

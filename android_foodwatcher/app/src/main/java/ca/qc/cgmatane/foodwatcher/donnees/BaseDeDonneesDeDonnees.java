@@ -4,26 +4,26 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DataBase extends SQLiteOpenHelper implements DataBaseSQL {
+public class BaseDeDonneesDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL {
 
     public static final String DATABASE_NAME = "foodwatcher";
 
-    private static DataBase instance;
+    private static BaseDeDonneesDeDonnees instance;
 
-    public static DataBase getInstance(Context context) {
-        instance = new DataBase(context);
+    public static BaseDeDonneesDeDonnees getInstance(Context context) {
+        instance = new BaseDeDonneesDeDonnees(context);
         return instance;
     }
 
-    public static DataBase getInstance() {
+    public static BaseDeDonneesDeDonnees getInstance() {
         return instance;
     }
 
-    public DataBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public BaseDeDonneesDeDonnees(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public DataBase(Context contexte) {
+    public BaseDeDonneesDeDonnees(Context contexte) {
         super(contexte, DATABASE_NAME, null, 1);
     }
 

@@ -11,8 +11,8 @@ import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.donnees.DataBase;
-import ca.qc.cgmatane.foodwatcher.donnees.HomeDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonneesDeDonnees;
+import ca.qc.cgmatane.foodwatcher.donnees.MaisonDAO;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
 import ca.qc.cgmatane.foodwatcher.vue.AjouterMaison;
 import ca.qc.cgmatane.foodwatcher.vue.ListeDeCourse;
@@ -31,7 +31,7 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
 
     protected ActiviteMaitresse view;
 
-    protected HomeDAO homeDAO;
+    protected MaisonDAO maisonDAO;
 
     public ControleurActiviteMaitresse(ActiviteMaitresse view) {
         this.view = view;
@@ -39,9 +39,9 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
 
     @Override
     public void onCreate(Context applicationContext) {
-        DataBase.getInstance(applicationContext);
-        homeDAO = HomeDAO.getInstance();
-        view.setListHome(homeDAO.pickupListHome());
+        BaseDeDonneesDeDonnees.getInstance(applicationContext);
+        maisonDAO = MaisonDAO.getInstance();
+        view.setListMaison(maisonDAO.pickupListHome());
         view.populateHomeInMenuDrawer();
     }
 
@@ -85,7 +85,7 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
         view.getDrawerLayout().closeDrawer(GravityCompat.START);
 
         // if itemId corresponds to a stock
-        if (0 <= itemId && itemId < view.getListHome().size()) {
+        if (0 <= itemId && itemId < view.getListMaison().size()) {
             if (itemId != currentHome) {
                 itemId = currentHome;
                 intent = new Intent(view.getApplicationContext(), Stock.class);

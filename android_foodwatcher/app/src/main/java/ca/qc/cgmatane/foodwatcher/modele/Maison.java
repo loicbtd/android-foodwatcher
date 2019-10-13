@@ -1,6 +1,6 @@
 package ca.qc.cgmatane.foodwatcher.modele;
 
-public class Home {
+public class Maison {
 
     public static final String CLE_ID_MAISON = "id_maison";
     public static final String CLE_ETIQUETTE = "etiquette";
@@ -8,7 +8,7 @@ public class Home {
     protected int id_maison;
     protected String etiquette;
 
-    public Home(int id_maison, String etiquette) {
+    public Maison(int id_maison, String etiquette) {
         this.id_maison = id_maison;
         this.etiquette = etiquette;
     }
