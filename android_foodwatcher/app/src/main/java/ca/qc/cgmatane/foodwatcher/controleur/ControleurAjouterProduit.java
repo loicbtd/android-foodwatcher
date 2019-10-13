@@ -5,13 +5,13 @@ import android.content.Context;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
-import ca.qc.cgmatane.foodwatcher.vue.AjouterProduit;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterProduit;
 
 public class ControleurAjouterProduit implements Controleur {
-    private AjouterProduit vue;
+    private ActiviteAjouterProduit vue;
     protected ProduitDAO accesseurProduit;
 
-    public ControleurAjouterProduit(AjouterProduit vue){
+    public ControleurAjouterProduit(ActiviteAjouterProduit vue){
         this.vue = vue;
     }
 

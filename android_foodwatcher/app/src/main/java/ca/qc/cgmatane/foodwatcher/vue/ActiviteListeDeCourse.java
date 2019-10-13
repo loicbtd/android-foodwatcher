@@ -1,6 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,7 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.modele.ListeCourseAdapteur;
 
-public class ListeDeCourse extends ActiviteMaitresse implements ListeDeCourseVue {
+public class ActiviteListeDeCourse extends ActiviteMaitresse implements VueListeDeCourse {
     private RecyclerView recyclerView;
     private ListeCourseAdapteur adapteur;
     private List<String> listeProduits;

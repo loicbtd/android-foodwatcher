@@ -26,6 +26,8 @@ public class UtilisateurDAO implements UtilisateurSQL {
     public UtilisateurDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeUtilisateur = new ArrayList<>();
+
+        // mock
         ajouterListeUtilisateurMock();
     }
 

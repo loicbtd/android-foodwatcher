@@ -26,6 +26,8 @@ public class MaisonDAO implements MaisonSQL {
     public MaisonDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeMaison = new ArrayList<>();
+
+        // mock
         ajouterListeMaisonMock();
     }
 
@@ -64,7 +66,7 @@ public class MaisonDAO implements MaisonSQL {
 
     public void ajouterListeMaisonMock() {
         ajouterMaison(new Maison(0, "Domicile"));
-        ajouterMaison(new Maison(1, "Maison vacances"));
+        ajouterMaison(new Maison(1, "ActiviteMaison vacances"));
         ajouterMaison(new Maison(2, "Mon restaurant"));
     }
 }

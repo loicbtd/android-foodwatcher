@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 
 import ca.qc.cgmatane.foodwatcher.R;
 
-public class TrouverMagasin extends ActiviteMaitresse implements OnMapReadyCallback {
+public class ActiviteCarteMagasin extends ActiviteMaitresse implements OnMapReadyCallback {
 
     public Location currentLocation;
     public FusedLocationProviderClient fusedLocationProviderClient;
@@ -92,7 +92,7 @@ public class TrouverMagasin extends ActiviteMaitresse implements OnMapReadyCallb
 //                    Toast.makeText(getApplicationContext(),currentLocation.getLatitude()+", "+currentLocation.getLongitude(),Toast.LENGTH_SHORT).show();
                     SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
 
-                    supportMapFragment.getMapAsync(TrouverMagasin.this);
+                    supportMapFragment.getMapAsync(ActiviteCarteMagasin.this);
 
                 }
             }

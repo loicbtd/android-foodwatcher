@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,16 +16,14 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurStock;
-import ca.qc.cgmatane.foodwatcher.modele.Maison;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
 
-public class Stock extends ActiviteMaitresse implements StockVue {
+public class ActiviteMaison extends ActiviteMaitresse implements ActiviteMaisonVue {
     private RecyclerView recyclerView;
     private ProduitAdapter adapter;
     private Bitmap icon;
@@ -137,7 +134,7 @@ public class Stock extends ActiviteMaitresse implements StockVue {
     }
 
     public void naviguerVueAjouterProduit(){
-        startActivityForResult(new Intent(this, AjouterProduit.class), ControleurStock.ADD_PRODUCT_ACTIVITY);
+        startActivityForResult(new Intent(this, ActiviteAjouterProduit.class), ControleurStock.ADD_PRODUCT_ACTIVITY);
     }
 
     @Override

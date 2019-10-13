@@ -22,7 +22,7 @@ import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterProduit;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
-public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitVue {
+public class ActiviteAjouterProduit extends ActiviteMaitresse implements ActiviteAjouterProduitVue {
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
@@ -53,7 +53,7 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
         imageViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentNavCameraCapture = new Intent(getApplicationContext(), PrisePhoto.class);
+                Intent intentNavCameraCapture = new Intent(getApplicationContext(), ActivitePrisePhoto.class);
                 startActivity(intentNavCameraCapture);
             }
         });
@@ -65,10 +65,10 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
                 System.out.println(textFieldQuantite.getText());
                 System.out.println(textFieldCodeBarre.getText());
 
-                bitmap = PrisePhoto.bitmap;
+                bitmap = ActivitePrisePhoto.bitmap;
 
                 saveImage(bitmap); //Sauvegarde l'image
-                PrisePhoto.bitmap = null;
+                ActivitePrisePhoto.bitmap = null;
 
                 enregistrerProduit();
             }
@@ -83,7 +83,7 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
 
     @Override
     public void naviguerVersStockAnnuler(){
-        Intent intent = new Intent(getApplicationContext(), Stock.class);
+        Intent intent = new Intent(getApplicationContext(), ActiviteMaison.class);
         startActivity(intent);
     }
 
@@ -92,8 +92,8 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
 
         super.onResume();
 
-        if (PrisePhoto.bitmap != null){
-            bitmap = PrisePhoto.bitmap;
+        if (ActivitePrisePhoto.bitmap != null){
+            bitmap = ActivitePrisePhoto.bitmap;
             imageViewProduct.setImageBitmap(bitmap);
         }
 

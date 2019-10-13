@@ -28,6 +28,8 @@ public interface BaseDeDonneesSQL {
             "id_maison integer, " +
             "id_utilisateur integer," +
             "PRIMARY KEY(id_maison, id_utilisateur)" +
+            "FOREIGN KEY(id_maison) REFERENCES maison(id_maison)" +
+            "FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)" +
             ")";
     String SQL_DETRUIRE_TABLE_MAISON_COMPOSE_UTILISATEUR = "DROP TABLE IF EXISTS maison_compose_utilisateur";
 

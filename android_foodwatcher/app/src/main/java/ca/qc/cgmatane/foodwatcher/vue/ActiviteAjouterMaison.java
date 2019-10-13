@@ -1,6 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,7 +7,7 @@ import android.widget.Button;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterMaison;
 
-public class AjouterMaison extends ActiviteMaitresse implements AjouterMaisonVue {
+public class ActiviteAjouterMaison extends ActiviteMaitresse implements ActiviteAjouterMaisonVue {
     Button boutonAjouterMaison;
     Button boutonAnnuler;
     ControleurAjouterMaison controleur;

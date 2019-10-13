@@ -1,4 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-public interface TrouverMaisonVue {
+public interface ActiviteExempleVue {
+
 }

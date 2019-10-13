@@ -26,7 +26,7 @@ import java.io.IOException;
 import ca.qc.cgmatane.foodwatcher.R;
 
 
-public class PrisePhoto extends ActiviteMaitresse {
+public class ActivitePrisePhoto extends ActiviteMaitresse {
 
     private static final String[] PERMISSIONS = {
             Manifest.permission.CAMERA,
@@ -183,7 +183,7 @@ public class PrisePhoto extends ActiviteMaitresse {
             bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
 
             //TODO Intent comme j'avais fais mais je pense que ça ne marchera pas donc plutôt un finish()
-//            Intent intent = new Intent(PrisePhoto.this,AjouterProduit.class);
+//            Intent intent = new Intent(ActivitePrisePhoto.this,ActiviteAjouterProduit.class);
 //            startActivity(intent);
 
             finish();

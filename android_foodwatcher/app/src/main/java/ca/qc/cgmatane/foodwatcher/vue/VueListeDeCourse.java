@@ -1,5 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-public interface ExempleVue {
+public interface VueListeDeCourse {
 
 }
