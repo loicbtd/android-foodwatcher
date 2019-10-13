@@ -14,7 +14,7 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 
 public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHolder> {
-        List<String> listeProds;
+        List<Produit> listeProds;
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -57,8 +57,8 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
         TextView textViewNbRestants = viewHolder.nbRestants;
-        textView.setText(listeProds.get(position));
-        textViewNbRestants.setText("3");
+        textView.setText(listeProds.get(position).getEtiquette());
+        textViewNbRestants.setText(Integer.toString(listeProds.get(position).getId_unite_quantite()));
         Button button = viewHolder.messageButton;
         Button bouton2 = viewHolder.boutonPlus;
         button.setText("-");
@@ -70,7 +70,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
     public int getItemCount() {
         return listeProds.size();
     }
-    public ProduitAdapter(List<String> produits) {
+    public ProduitAdapter(List<Produit> produits) {
         listeProds = produits;
     }
 }

@@ -87,8 +87,10 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
         // if itemId corresponds to a stock
         if (0 <= itemId && itemId < view.getListMaison().size()) {
             if (itemId != currentHome) {
+                int id = itemId;
                 itemId = currentHome;
                 intent = new Intent(view.getApplicationContext(), Stock.class);
+                intent.putExtra("id_maison", view.getListMaison().get(id).getId_maison());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity
