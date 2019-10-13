@@ -30,6 +30,10 @@ public class ProduitDAO {
         return listeProduit;
     }
 
+    public void ajouterProduit(Produit produit){
+        listeProduit.add(produit);
+    }
+
     public void mockListeProduit() {
         listeProduit.add(new Produit(
                 0,

@@ -49,7 +49,7 @@ public class Stock extends ActiviteMaitresse implements StockVue {
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stockController.actionNavigateToViewAddProduct();
+                stockController.actionNaviguerVueAjouterProduit();
             }
         });
         recyclerView = findViewById(R.id.my_recycler_view);
@@ -62,10 +62,6 @@ public class Stock extends ActiviteMaitresse implements StockVue {
         // TODO: call the controller onCreate method
     }
 
-    public void ajouterProduitListe(){
-        listeProduits.add(new Produit(1, "test", "test", 2, "image", 1,1));
-        adapter.notifyItemInserted(listeProduits.size()-1);
-    }
 
 /*    public void mockListProduit() {
         Produit produit;

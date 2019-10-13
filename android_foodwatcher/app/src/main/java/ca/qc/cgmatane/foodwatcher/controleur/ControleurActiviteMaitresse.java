@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonneesDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.MaisonDAO;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
 import ca.qc.cgmatane.foodwatcher.vue.AjouterMaison;
 import ca.qc.cgmatane.foodwatcher.vue.ListeDeCourse;
@@ -36,6 +37,7 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
     public ControleurActiviteMaitresse(ActiviteMaitresse view) {
         this.view = view;
     }
+
 
     @Override
     public void onCreate(Context applicationContext) {
