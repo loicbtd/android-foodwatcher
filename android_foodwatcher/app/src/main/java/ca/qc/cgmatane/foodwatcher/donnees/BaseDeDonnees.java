@@ -17,12 +17,9 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
         return instance;
     }
 
-    public BaseDeDonnees(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
-
     public BaseDeDonnees(Context contexte) {
         super(contexte, SQL_NOM_BASE_DE_DONNEES, null, 1);
+        contexte.deleteDatabase(SQL_NOM_BASE_DE_DONNEES);
     }
 
     @Override
