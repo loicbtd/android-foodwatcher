@@ -13,12 +13,12 @@ public class Produit {
     protected int id_produit;
     protected String gencode;
     protected String etiquette;
-    protected String nombre_jour_conservation;
+    protected int nombre_jour_conservation;
     protected String chemin_image;
     protected int id_unite_quantite;
     protected int id_categorie_produit;
 
-    public Produit(int id_produit, String gencode, String etiquette, String nombre_jour_conservation, String chemin_image, int id_unite_quantite, int id_categorie_produit) {
+    public Produit(int id_produit, String gencode, String etiquette, int nombre_jour_conservation, String chemin_image, int id_unite_quantite, int id_categorie_produit) {
         this.id_produit = id_produit;
         this.gencode = gencode;
         this.etiquette = etiquette;
@@ -46,10 +46,10 @@ public class Produit {
     public void setEtiquette(String etiquette) {
         this.etiquette = etiquette;
     }
-    public String getNombre_jour_conservation() {
+    public int getNombre_jour_conservation() {
         return nombre_jour_conservation;
     }
-    public void setNombre_jour_conservation(String nombre_jour_conservation) {
+    public void setNombre_jour_conservation(int nombre_jour_conservation) {
         this.nombre_jour_conservation = nombre_jour_conservation;
     }
     public String getChemin_image() {
