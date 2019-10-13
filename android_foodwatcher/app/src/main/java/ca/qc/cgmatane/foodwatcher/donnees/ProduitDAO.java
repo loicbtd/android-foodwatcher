@@ -10,7 +10,7 @@ public class ProduitDAO {
     private static ProduitDAO instance = null;
     protected List<Produit> listeProduit;
 
-    private BaseDeDonneesDAO baseDeDonneesDAO;
+    private BaseDeDonnees baseDeDonnees;
 
     public static ProduitDAO getInstance() {
         if (null == instance) {
@@ -20,7 +20,7 @@ public class ProduitDAO {
     }
 
     public ProduitDAO() {
-        this.baseDeDonneesDAO = BaseDeDonneesDAO.getInstance();
+        this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeProduit = new ArrayList<>();
     }
 

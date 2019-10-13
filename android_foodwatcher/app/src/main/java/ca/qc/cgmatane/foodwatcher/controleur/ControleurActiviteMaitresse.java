@@ -11,14 +11,14 @@ import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonneesDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.MaisonDAO;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteMaitresse;
 import ca.qc.cgmatane.foodwatcher.vue.AjouterMaison;
-import ca.qc.cgmatane.foodwatcher.vue.ListeDeCourse;
-import ca.qc.cgmatane.foodwatcher.vue.TrouverMagasin;
 import ca.qc.cgmatane.foodwatcher.vue.Exemple;
+import ca.qc.cgmatane.foodwatcher.vue.ListeDeCourse;
 import ca.qc.cgmatane.foodwatcher.vue.Stock;
+import ca.qc.cgmatane.foodwatcher.vue.TrouverMagasin;
 
 public class ControleurActiviteMaitresse implements Controleur, NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,7 +39,7 @@ public class ControleurActiviteMaitresse implements Controleur, NavigationView.O
 
     @Override
     public void onCreate(Context applicationContext) {
-        BaseDeDonneesDAO.getInstance(applicationContext);
+        BaseDeDonnees.getInstance(applicationContext);
         maisonDAO = MaisonDAO.getInstance();
         view.setListMaison(maisonDAO.recupererListeMaison());
         view.populateHomeInMenuDrawer();

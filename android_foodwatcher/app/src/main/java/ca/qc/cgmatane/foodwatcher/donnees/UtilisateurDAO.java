@@ -14,7 +14,7 @@ public class UtilisateurDAO implements UtilisateurSQL {
     private static UtilisateurDAO instance = null;
     protected List<Utilisateur> listeUtilisateur;
 
-    private BaseDeDonneesDAO baseDeDonneesDAO;
+    private BaseDeDonnees baseDeDonnees;
 
     public static UtilisateurDAO getInstance() {
         if (null == instance) {
@@ -24,12 +24,12 @@ public class UtilisateurDAO implements UtilisateurSQL {
     }
 
     public UtilisateurDAO() {
-        this.baseDeDonneesDAO = BaseDeDonneesDAO.getInstance();
+        this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeUtilisateur = new ArrayList<>();
     }
 
     public List<Utilisateur> recupererListeUtilisateur() {
-        Cursor curseur = baseDeDonneesDAO.getReadableDatabase()
+        Cursor curseur = baseDeDonnees.getReadableDatabase()
                 .rawQuery(SQL_LISTER_UTILISATEUR, null);
         this.listeUtilisateur.clear();
 
@@ -37,7 +37,7 @@ public class UtilisateurDAO implements UtilisateurSQL {
         int indexId_utilisateur = curseur.getColumnIndex(Utilisateur.CLE_ID_UTILISATEUR);
         int indexEmail = curseur.getColumnIndex(Utilisateur.CLE_EMAIL);
         int indexMot_de_passe = curseur.getColumnIndex(Utilisateur.CLE_MOT_DE_PASSE);
-        int indexNom = curseur.getColumnIndex(Utilisateur.CLE_MOT_DE_PASSE);
+        int indexNom = curseur.getColumnIndex(Utilisateur.CLE_NOM);
         int indexPrenom = curseur.getColumnIndex(Utilisateur.CLE_PRENOM);
         int indexTelephone = curseur.getColumnIndex(Utilisateur.CLE_TELEPHONE);
         int indexDate_de_naissance = curseur.getColumnIndex(Utilisateur.CLE_DATE_NAISSANCE);
@@ -57,7 +57,7 @@ public class UtilisateurDAO implements UtilisateurSQL {
     }
 
     public void ajouterUtilisateur(Utilisateur utilisateur) {
-        SQLiteDatabase sqLiteDatabase = baseDeDonneesDAO.getWritableDatabase();
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_UTILISATEUR);
         sqLiteStatement.bindString(1, utilisateur.getEmail());
         sqLiteStatement.bindString(2, utilisateur.getMot_de_passe());
@@ -69,8 +69,8 @@ public class UtilisateurDAO implements UtilisateurSQL {
     }
 
     public void modifierUtilisateur(Utilisateur utilisateur) {
-        SQLiteDatabase sqLiteDatabase = baseDeDonneesDAO.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_UTILISATEUR);
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODFIFIER_UTILISATEUR);
         sqLiteStatement.bindString(1, utilisateur.getEmail());
         sqLiteStatement.bindString(2, utilisateur.getMot_de_passe());
         sqLiteStatement.bindString(3, utilisateur.getNom());
@@ -79,5 +79,37 @@ public class UtilisateurDAO implements UtilisateurSQL {
         sqLiteStatement.bindString(6, utilisateur.getDate_naissance());
         sqLiteStatement.bindString(7, ""+utilisateur.getId_utilisateur());
         sqLiteStatement.execute();
+    }
+
+    public void ajouterListeUtilisateurMock() {
+        ajouterUtilisateur(new Utilisateur(
+                0,
+                "gilles.berre@mail.com",
+                "motdepasse",
+                "Berre",
+                "Gilles",
+                "0192837438",
+                "1994-01-23"
+        ));
+
+        ajouterUtilisateur(new Utilisateur(
+                1,
+                "julie.corne@mail.com",
+                "motdepasse",
+                "Corne",
+                "Julie",
+                "0923874839",
+                "1991-04-25"
+        ));
+
+        ajouterUtilisateur(new Utilisateur(
+                2,
+                "jean.braise@mail.com",
+                "motdepasse",
+                "Braise",
+                "Jean",
+                "0478394432",
+                "1990-04-14"
+        ));
     }
 }
