@@ -1,9 +1,11 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
+import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +32,9 @@ public class ListeDeCourse extends ActiviteMaitresse implements ListeDeCourseVue
         adapteur = new ListeCourseAdapteur(listeProduits);
         recyclerView.setAdapter(adapteur);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        DividerItemDecoration itemDecor = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecor);
         boutonListeCourseActionSupprimer = findViewById(R.id.btn_vue_liste_course_action_supprimer);
         boutonListeCourseActionSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
