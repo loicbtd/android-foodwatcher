@@ -65,7 +65,7 @@ public class StockDAO implements StockSQL {
     }
 
     public void ajouterListeStockMock() {
-        ajouterStock(new Stock(0, "Domicile"));
+        ajouterStock(new Stock(0, "Missile"));
         ajouterStock(new Stock(1, "Maison vacances"));
         ajouterStock(new Stock(2, "Mon restaurant"));
     }

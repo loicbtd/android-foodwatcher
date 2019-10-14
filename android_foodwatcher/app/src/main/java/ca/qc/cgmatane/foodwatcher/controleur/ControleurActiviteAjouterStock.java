@@ -77,7 +77,7 @@ public class ControleurActiviteAjouterStock implements Controleur {
 
     public void actionEnregistrerStock(Stock stock) {
         accesseurStock = StockDAO.getInstance();
-        accesseurStock.ajouterMaison(stock);
+        accesseurStock.ajouterStock(stock);
         vue.retourActiviteMaitresse();
     }
 }

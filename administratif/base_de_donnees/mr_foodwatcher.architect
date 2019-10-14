@@ -85,13 +85,13 @@
     </index>
    </folder>
   </table>
-  <table id="TAB21" populated="true" UUID="d599dcb0-e8fe-491e-bbd9-15f0afbe0f1a" name="maison" objectType="TABLE" physicalName="maison" >
+  <table id="TAB21" populated="true" UUID="d599dcb0-e8fe-491e-bbd9-15f0afbe0f1a" name="stock" objectType="TABLE" physicalName="stock" >
    <remarks></remarks>
    <folder id="FOLTAB211" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL22" populated="true" UUID="fac9e6f9-5e27-4890-aa89-b0e66a0a75ee" autoIncrement="true" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_maison" nullable="0" physicalName="id_maison" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL22" populated="true" UUID="fac9e6f9-5e27-4890-aa89-b0e66a0a75ee" autoIncrement="true" autoIncrementSequenceName="stock_id_stock_seq" defaultValue="" name="id_stock" nullable="0" physicalName="id_stock" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL23" populated="true" UUID="f5420d3b-e6cf-4ad0-a265-2f4a7ad47721" autoIncrement="false" autoIncrementSequenceName="maison_etiquette_seq" defaultValue="" name="etiquette" nullable="0" physicalName="etiquette" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL23" populated="true" UUID="f5420d3b-e6cf-4ad0-a265-2f4a7ad47721" autoIncrement="false" autoIncrementSequenceName="stock_etiquette_seq" defaultValue="" name="etiquette" nullable="0" physicalName="etiquette" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
@@ -100,8 +100,8 @@
     <folder id="FOLTAB212" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB214" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX24" populated="true" UUID="7d03e36b-f26c-4b76-9acb-43ae0ebd3df5" clustered="false" name="id_maison" physicalName="id_maison" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC25" populated="true" UUID="8bca8617-c630-4762-9cc3-5f99602a4d84" ascendingOrDescending="UNSPECIFIED" column-ref="COL22" name="id_maison" physicalName="id_maison" />
+    <index id="IDX24" populated="true" UUID="7d03e36b-f26c-4b76-9acb-43ae0ebd3df5" clustered="false" name="id_stock" physicalName="id_maison" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC25" populated="true" UUID="8bca8617-c630-4762-9cc3-5f99602a4d84" ascendingOrDescending="UNSPECIFIED" column-ref="COL22" name="id_stock" physicalName="id_stock" />
     </index>
    </folder>
   </table>
@@ -140,22 +140,22 @@
     </index>
    </folder>
   </table>
-  <table id="TAB36" populated="true" UUID="d907b920-f342-41f1-bf03-a87481768a5a" name="historique_maison" objectType="TABLE" physicalName="historique_maison" >
+  <table id="TAB36" populated="true" UUID="d907b920-f342-41f1-bf03-a87481768a5a" name="historique_stock" objectType="TABLE" physicalName="historique_stock" >
    <remarks></remarks>
    <folder id="FOLTAB361" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL37" populated="true" UUID="85cfa716-e4f5-4b4b-88ea-2ba3cb2be6fa" autoIncrement="true" autoIncrementSequenceName="historique_maison_id_historique_maison_seq" defaultValue="" name="id_historique_maison" nullable="0" physicalName="id_historique_maison" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL37" populated="true" UUID="85cfa716-e4f5-4b4b-88ea-2ba3cb2be6fa" autoIncrement="true" autoIncrementSequenceName="historique_stock_id_historique_stock_seq" defaultValue="" name="id_historique_stock" nullable="0" physicalName="id_historique_stock" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL38" populated="true" UUID="1cd2bb06-1e71-40d6-ac0a-b34bee93f84e" autoIncrement="false" autoIncrementSequenceName="historique_maison_quantite_seq" defaultValue="" name="quantite" nullable="0" physicalName="quantite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL38" populated="true" UUID="1cd2bb06-1e71-40d6-ac0a-b34bee93f84e" autoIncrement="false" autoIncrementSequenceName="historique_stock_quantite_seq" defaultValue="" name="quantite" nullable="0" physicalName="quantite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL39" populated="true" UUID="e3958d30-edb1-458f-a68e-a2e3898b395e" autoIncrement="false" autoIncrementSequenceName="historique_maison_date_saisie_seq" defaultValue="" name="date_saisie" nullable="0" physicalName="date_saisie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+    <column id="COL39" populated="true" UUID="e3958d30-edb1-458f-a68e-a2e3898b395e" autoIncrement="false" autoIncrementSequenceName="historique_stock_date_saisie_seq" defaultValue="" name="date_saisie" nullable="0" physicalName="date_saisie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
-    <column id="COL40" populated="true" UUID="70688e97-9f6f-4c2c-b69c-95833a4e1891" autoIncrement="false" autoIncrementSequenceName="produit_id_produit_seq" defaultValue="" name="id_produit" nullable="0" physicalName="id_produit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL40" populated="true" UUID="70688e97-9f6f-4c2c-b69c-95833a4e1891" autoIncrement="false" autoIncrementSequenceName="historique_stock_id_produit_seq" defaultValue="" name="id_produit" nullable="0" physicalName="id_produit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL41" populated="true" UUID="13e58a17-5767-44cb-8838-9e2c782ccb24" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_maison" nullable="0" physicalName="id_maison" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL41" populated="true" UUID="13e58a17-5767-44cb-8838-9e2c782ccb24" autoIncrement="false" autoIncrementSequenceName="historique_stock_id_maison_seq" defaultValue="" name="id_stock" nullable="0" physicalName="id_stock" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -164,8 +164,8 @@
     <folder id="FOLTAB362" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB364" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX42" populated="true" UUID="15963453-72d9-4e41-a47c-d33adbd651a9" clustered="false" name="id_historique_maison" physicalName="id_historique_maison" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC43" populated="true" UUID="e3d83032-e119-4fbb-a864-15fbad62f884" ascendingOrDescending="UNSPECIFIED" column-ref="COL37" name="id_historique_maison" physicalName="id_historique_maison" />
+    <index id="IDX42" populated="true" UUID="15963453-72d9-4e41-a47c-d33adbd651a9" clustered="false" name="id_historique_stock" physicalName="id_historique_maison" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC43" populated="true" UUID="e3d83032-e119-4fbb-a864-15fbad62f884" ascendingOrDescending="UNSPECIFIED" column-ref="COL37" name="id_historique_stock" physicalName="id_historique_stock" />
     </index>
    </folder>
   </table>
@@ -189,16 +189,16 @@
     </index>
    </folder>
   </table>
-  <table id="TAB49" populated="true" UUID="0848369b-c283-468e-baff-95fbc17b05c4" name="maison_compose_produit" objectType="TABLE" physicalName="maison_compose_produit" >
+  <table id="TAB49" populated="true" UUID="0848369b-c283-468e-baff-95fbc17b05c4" name="stock_compose_produit" objectType="TABLE" physicalName="stock_compose_produit" >
    <remarks></remarks>
    <folder id="FOLTAB491" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL50" populated="true" UUID="f822f4cd-9158-4bc2-8c04-b0b140c64024" autoIncrement="false" autoIncrementSequenceName="produit_id_produit_seq" defaultValue="" name="id_produit" nullable="0" physicalName="id_produit" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL50" populated="true" UUID="f822f4cd-9158-4bc2-8c04-b0b140c64024" autoIncrement="false" autoIncrementSequenceName="stock_compose_produit_id_produit_seq" defaultValue="" name="id_produit" nullable="0" physicalName="id_produit" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL51" populated="true" UUID="6a420f1e-9ec2-409b-ba3e-2d18b4c281ee" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_maison" nullable="0" physicalName="id_maison" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL51" populated="true" UUID="6a420f1e-9ec2-409b-ba3e-2d18b4c281ee" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_stock" nullable="0" physicalName="id_stock" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL52" populated="true" UUID="13eb8b30-e5ca-4e53-921a-44556a2d884f" autoIncrement="false" autoIncrementSequenceName="maison_compose_produit_present_liste_course_seq" defaultValue="" name="present_liste_course" nullable="0" physicalName="present_liste_course" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
+    <column id="COL52" populated="true" UUID="13eb8b30-e5ca-4e53-921a-44556a2d884f" autoIncrement="false" autoIncrementSequenceName="stock_compose_produit_present_liste_course_seq" defaultValue="" name="present_liste_course" nullable="0" physicalName="present_liste_course" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
      <remarks></remarks>
     </column>
     <column id="COL53" populated="true" UUID="6c7cfba6-178a-4f08-8146-1dea3545d33a" autoIncrement="false" autoIncrementSequenceName="piece_id_piece_seq" defaultValue="" name="id_emplacement" nullable="1" physicalName="id_emplacement" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -210,19 +210,19 @@
     <folder id="FOLTAB492" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB494" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX54" populated="true" UUID="fc2be796-f32f-45c4-b35f-ca8657dbd4ab" clustered="false" name="id_maison_compose_produit" physicalName="id_maison_compose_produit" primaryKeyIndex="true" unique="false" >
+    <index id="IDX54" populated="true" UUID="fc2be796-f32f-45c4-b35f-ca8657dbd4ab" clustered="false" name="id_stock_compose_produit" physicalName="id_maison_compose_produit" primaryKeyIndex="true" unique="false" >
      <index-column id="IDC55" populated="true" UUID="f5812e8e-6340-42a8-9c9d-78fa5d441054" ascendingOrDescending="UNSPECIFIED" column-ref="COL50" name="id_produit" physicalName="id_produit" />
-     <index-column id="IDC56" populated="true" UUID="fd8d71bf-863b-49d6-b9a5-58df717f2a2e" ascendingOrDescending="UNSPECIFIED" column-ref="COL51" name="id_maison" physicalName="id_maison" />
+     <index-column id="IDC56" populated="true" UUID="fd8d71bf-863b-49d6-b9a5-58df717f2a2e" ascendingOrDescending="UNSPECIFIED" column-ref="COL51" name="id_stock" physicalName="id_stock" />
     </index>
    </folder>
   </table>
-  <table id="TAB57" populated="true" UUID="eaf166cf-09ff-4574-ae77-0bb693f06668" name="maison_compose_utilisateur" objectType="TABLE" physicalName="maison_compose_utilisateur" >
+  <table id="TAB57" populated="true" UUID="eaf166cf-09ff-4574-ae77-0bb693f06668" name="stock_compose_utilisateur" objectType="TABLE" physicalName="stock_compose_utilisateur" >
    <remarks></remarks>
    <folder id="FOLTAB571" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL58" populated="true" UUID="ec039477-ce1b-4812-b88d-f0aa155a658a" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_maison" nullable="0" physicalName="id_maison" precision="0" primaryKeySeq="0" referenceCount="0" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL58" populated="true" UUID="ec039477-ce1b-4812-b88d-f0aa155a658a" autoIncrement="false" autoIncrementSequenceName="maison_id_maison_seq" defaultValue="" name="id_stock" nullable="0" physicalName="id_stock" precision="0" primaryKeySeq="0" referenceCount="0" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL59" populated="true" UUID="454eadc8-7329-4287-8e16-19b2e5a4af5b" autoIncrement="false" autoIncrementSequenceName="utilisateur_id_utilisateur_seq" defaultValue="" name="id_utilisateur" nullable="0" physicalName="id_utilisateur" precision="0" primaryKeySeq="1" referenceCount="0" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL59" populated="true" UUID="454eadc8-7329-4287-8e16-19b2e5a4af5b" autoIncrement="false" autoIncrementSequenceName="stock_compose_utilisateur_id_utilisateur_seq" defaultValue="" name="id_utilisateur" nullable="0" physicalName="id_utilisateur" precision="0" primaryKeySeq="1" referenceCount="0" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -231,8 +231,8 @@
     <folder id="FOLTAB572" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB574" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX60" populated="true" UUID="b75ac1e8-6e2a-43d3-88b1-eb17794e6f16" clustered="false" name="id_maison_compose_utilisateur" physicalName="id_maison_compose_utilisateur" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC61" populated="true" UUID="73b8a16c-bbc2-4f0c-92e6-e55517ae3aa2" ascendingOrDescending="UNSPECIFIED" column-ref="COL58" name="id_maison" physicalName="id_maison" />
+    <index id="IDX60" populated="true" UUID="b75ac1e8-6e2a-43d3-88b1-eb17794e6f16" clustered="false" name="id_stock_compose_utilisateur" physicalName="id_maison_compose_utilisateur" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC61" populated="true" UUID="73b8a16c-bbc2-4f0c-92e6-e55517ae3aa2" ascendingOrDescending="UNSPECIFIED" column-ref="COL58" name="id_stock" physicalName="id_stock" />
      <index-column id="IDC62" populated="true" UUID="db8a9fdc-f917-44a2-ae73-ee7cc8434515" ascendingOrDescending="UNSPECIFIED" column-ref="COL59" name="id_utilisateur" physicalName="id_utilisateur" />
     </index>
    </folder>
@@ -268,7 +268,7 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.MySqlDDLGenerator" allow-connection="false"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.MySqlDDLGenerator" allow-connection="true"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
