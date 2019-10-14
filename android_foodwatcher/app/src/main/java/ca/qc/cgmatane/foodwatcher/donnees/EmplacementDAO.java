@@ -80,8 +80,8 @@ public class EmplacementDAO implements EmplacementSQL {
     }
 
     private void ajouterListeEmplacementMock() {
-        ajouterEmplacement(new Emplacement(0, "Réserve"));
-        ajouterEmplacement(new Emplacement(1, "Réfrigérateur"));
-        ajouterEmplacement(new Emplacement(2, "Cuisine"));
+        ajouterEmplacement(new Emplacement(0, "EmplacementMock1"));
+        ajouterEmplacement(new Emplacement(1, "EmplacementMock2"));
+        ajouterEmplacement(new Emplacement(2, "EmplacementMock3"));
     }
 }

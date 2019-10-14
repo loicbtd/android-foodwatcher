@@ -1,6 +1,6 @@
 package ca.qc.cgmatane.foodwatcher.donnees;
 
-public interface StockComposeProduitSQL {
+public interface ProduitStockeSQL {
     String SQL_CREER_STOCK_COMPOSE_PRODUIT = "INSERT INTO stock_compose_produit(id_produit,idStock,quantite,id_emplacement,present_liste_course) VALUES (?,?,?,?,?)";
     String SQL_LISTER_STOCK_COMPOSE_PRODUIT = "SELECT id_produit, idStock, quantite, id_emplacement, present_liste_course FROM stock_compose_produit";
     String SQL_MODIFIER_STOCK_COMPOSE_PRODUIT = "UPDATE stock_compose_produit SET quantite=?,id_emplacement=?,present_liste_course=? WHERE id_produit=? AND idStock=?";
