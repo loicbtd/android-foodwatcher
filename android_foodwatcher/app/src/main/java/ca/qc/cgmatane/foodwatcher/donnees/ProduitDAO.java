@@ -68,6 +68,14 @@ public class ProduitDAO implements ProduitSQL {
         return listeProduit;
     }
 
+    public Produit recupererProduitParGencode(String gencodeRecherche) {
+        recupererListeProduit();
+        for (Produit produit: listeProduit) {
+            if (gencodeRecherche.equals(produit.getGencode())) return produit;
+        }
+        return null;
+    }
+
     public void ajouterProduit(Produit produit){
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_CREER_PRODUIT);
