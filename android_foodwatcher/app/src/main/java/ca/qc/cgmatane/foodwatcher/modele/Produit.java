@@ -17,6 +17,7 @@ public class Produit {
     protected String chemin_image;
     protected int id_unite_quantite;
     protected int id_categorie_produit;
+    protected boolean selectionne;
 
     public Produit(int id_produit, String gencode, String etiquette, int nombre_jour_conservation, String chemin_image, int id_unite_quantite, int id_categorie_produit) {
         this.id_produit = id_produit;
@@ -26,6 +27,7 @@ public class Produit {
         this.chemin_image = chemin_image;
         this.id_unite_quantite = id_unite_quantite;
         this.id_categorie_produit = id_categorie_produit;
+        this.selectionne = false;
     }
 
     public int getId_produit() {
@@ -69,6 +71,13 @@ public class Produit {
     }
     public void setId_categorie_produit(int id_categorie_produit) {
         this.id_categorie_produit = id_categorie_produit;
+    }
+    public boolean estSelectionne(){
+        return selectionne;
+    }
+
+    public void setSelectionne(boolean estSelectionne){
+        this.selectionne = estSelectionne;
     }
 
     public boolean isValide() {
