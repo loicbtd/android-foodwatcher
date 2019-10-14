@@ -5,12 +5,16 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
+import ca.qc.cgmatane.foodwatcher.modele.Stock;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
 
 
 public class ControleurActiviteAjouterStock implements Controleur {
 
     private ActiviteAjouterStock vue;
+
+    StockDAO accesseurStock;
 
     public ControleurActiviteAjouterStock(ActiviteAjouterStock vue) {
        this.vue = vue;
@@ -69,5 +73,11 @@ public class ControleurActiviteAjouterStock implements Controleur {
     @Override
     public void onBackPressed() {
 
+    }
+
+    public void actionEnregistrerStock(Stock stock) {
+        accesseurStock = StockDAO.getInstance();
+        accesseurStock.ajouterMaison(stock);
+        vue.retourActiviteMaitresse();
     }
 }
