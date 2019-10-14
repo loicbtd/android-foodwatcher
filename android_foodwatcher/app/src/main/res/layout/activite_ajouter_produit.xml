@@ -87,6 +87,37 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <Spinner
+                android:id="@+id/choix_unite_quantite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <Spinner
+                android:id="@+id/choix_categorie_produit"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <Spinner
+                android:id="@+id/choix_emplacement"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -129,6 +160,7 @@
             android:src="@mipmap/ic_launcher"
             android:contentDescription="Image" />
     </LinearLayout>
+
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

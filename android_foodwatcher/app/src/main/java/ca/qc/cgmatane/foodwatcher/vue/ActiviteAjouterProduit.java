@@ -6,7 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -27,6 +29,9 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
     TextInputEditText textInputJoursConservation;
+    Spinner choixUniteQuantite;
+    Spinner choixCategorieProduit;
+    Spinner choixEmplacement;
     MaterialButton boutonAjouterProduit;
     MaterialButton boutonRetour;
     ControleurActiviteAjouterProduit controleur;
@@ -48,6 +53,24 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
         textInputJoursConservation = findViewById(R.id.jours_conservation_text_input);
         imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
+
+        choixUniteQuantite = findViewById(R.id.choix_unite_quantite);
+        String[] unites={"Kg","G", "L", "Oz", "unité"};
+        ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,unites);
+        dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        choixUniteQuantite.setAdapter(dataAdapterR);
+
+        choixCategorieProduit = findViewById(R.id.choix_categorie_produit);
+        String[] categories={"liquide","Viande", "Légume", "Fruit", "Féculent"};
+        ArrayAdapter<String> adapterCategories = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,categories);
+        adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        choixCategorieProduit.setAdapter(adapterCategories);
+
+        choixEmplacement = findViewById(R.id.choix_emplacement);
+        String[] emplacaments={"Cuisine","Cave", "Frigo"};
+        ArrayAdapter<String> adapteurEmplacement = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,emplacaments);
+        adapteurEmplacement.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        choixEmplacement.setAdapter(adapteurEmplacement);
 
         controleur.onCreate(getApplicationContext());
         imageViewProduct.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +123,10 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     }
 
     private void enregistrerProduit(){
-        Produit produit = new Produit(0, textFieldCodeBarre.getText().toString(),textFieldIntitule.getText().toString(), Integer.parseInt(textInputJoursConservation.getText().toString()), "image", Integer.parseInt(textFieldQuantite.getText().toString()), 1 );
+        //recuperer la valeur d'un spinner:
+//        String uniteQuantite;
+//        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
+        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1,1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,true  );
         controleur.actionEnregistrerProduit(produit);
     }
 
