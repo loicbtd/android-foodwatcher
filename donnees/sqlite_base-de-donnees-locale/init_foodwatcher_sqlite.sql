@@ -1,10 +1,8 @@
-DROP TABLE IF EXISTS historique_stock;
 DROP TABLE IF EXISTS stock_compose_produit;
 DROP TABLE IF EXISTS produit;
 DROP TABLE IF EXISTS unite_quantite;
 DROP TABLE IF EXISTS categorie_produit;
 DROP TABLE IF EXISTS emplacement;
-DROP TABLE IF EXISTS stock_compose_utilisateur;
 DROP TABLE IF EXISTS stock;
 
 CREATE TABLE stock(

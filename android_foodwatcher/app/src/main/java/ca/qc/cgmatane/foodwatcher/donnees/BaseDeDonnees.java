@@ -33,24 +33,18 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
     }
 
     private void genererBaseDeDonneesVierge(SQLiteDatabase db) {
-        db.execSQL(SQL_DETRUIRE_TABLE_HISTORIQUE_STOCK);
         db.execSQL(SQL_DETRUIRE_TABLE_STOCK_COMPOSE_PRODUIT);
         db.execSQL(SQL_DETRUIRE_TABLE_PRODUIT);
         db.execSQL(SQL_DETRUIRE_TABLE_UNITE_QUANTITE);
         db.execSQL(SQL_DETRUIRE_TABLE_CATEGORIE_PRODUIT);
         db.execSQL(SQL_DETRUIRE_TABLE_EMPLACEMENT);
-        db.execSQL(SQL_DETRUIRE_TABLE_STOCK_COMPOSE_UTILISATEUR);
         db.execSQL(SQL_DETRUIRE_TABLE_STOCK);
-        db.execSQL(SQL_DETRUIRE_TABLE_UTILISATEUR);
 
-        db.execSQL(SQL_CREER_TABLE_UTILISATEUR);
         db.execSQL(SQL_CREER_TABLE_STOCK);
-        db.execSQL(SQL_CREER_TABLE_STOCK_COMPOSE_UTILISATEUR);
         db.execSQL(SQL_CREER_TABLE_EMPLACEMENT);
         db.execSQL(SQL_CREER_TABLE_CATEGORIE_PRODUIT);
         db.execSQL(SQL_CREER_TABLE_UNITE_QUANTITE);
         db.execSQL(SQL_CREER_TABLE_PRODUIT);
         db.execSQL(SQL_CREER_TABLE_STOCK_COMPOSE_PRODUIT);
-        db.execSQL(SQL_CREER_TABLE_HISTORIQUE_STOCK);
     }
 }
