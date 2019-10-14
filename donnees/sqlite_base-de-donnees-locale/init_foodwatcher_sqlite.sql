@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS utilisateur;
 
 
 CREATE TABLE utilisateur(
-    id_utilisateur serial PRIMARY KEY,
+    id_utilisateur integer PRIMARY KEY,
     email text,
     mot_de_passe text,
     nom text,
@@ -20,15 +20,14 @@ CREATE TABLE utilisateur(
 );
 
 CREATE TABLE stock(
-    id_stock serial PRIMARY KEY,
+    id_stock integer PRIMARY KEY,
     etiquette text
 );
 
 CREATE TABLE stock_compose_utilisateur(
     id_stock integer NOT NULL,
     id_utilisateur integer NOT NULL,
-    CONSTRAINT stock_utilisateur_pfk
-        PRIMARY KEY(id_stock,id_utilisateur),
+    PRIMARY KEY(id_stock,id_utilisateur),
     CONSTRAINT stock_stock_compose_utilisateur_fk
         FOREIGN KEY (id_stock)
         REFERENCES stock(id_stock)
@@ -42,22 +41,22 @@ CREATE TABLE stock_compose_utilisateur(
 );
 
 CREATE TABLE emplacement(
-    id_emplacement serial PRIMARY KEY,
+    id_emplacement integer PRIMARY KEY,
     etiquette text
 );
 
 CREATE TABLE categorie_produit(
-    id_categorie_produit serial PRIMARY KEY,
+    id_categorie_produit integer PRIMARY KEY,
     etiquette text
 );
 
 CREATE TABLE unite_quantite(
-    id_unite_quantite serial PRIMARY KEY,
+    id_unite_quantite integer PRIMARY KEY,
     etiquette text
 );
 
 CREATE TABLE produit(
-    id_produit serial PRIMARY KEY,
+    id_produit integer PRIMARY KEY,
     gencode integer,
     etiquette text,
     nombre_jour_conservation integer,
@@ -81,8 +80,7 @@ CREATE TABLE stock_compose_produit(
     id_stock integer NOT NULL,
     id_emplacement integer,
     present_liste_course boolean NOT NULL,
-    CONSTRAINT stock_produit_pfk
-        PRIMARY KEY(id_produit,id_stock),
+    PRIMARY KEY(id_produit,id_stock),
     CONSTRAINT produit_stock_compose_produit_fk
         FOREIGN KEY (id_produit)
         REFERENCES produit(id_produit)
@@ -101,7 +99,7 @@ CREATE TABLE stock_compose_produit(
 );
 
 CREATE TABLE historique_stock(
-    id_historique_stock serial PRIMARY KEY,
+    id_historique_stock integer PRIMARY KEY,
     quantite float NOT NULL,
     date_saisie date NOT NULL,
     id_produit integer NOT NULL,
