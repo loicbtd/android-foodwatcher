@@ -4,7 +4,7 @@ public class ProduitStocke extends Produit {
 
     public static final String CLE_PRESENT_LISTE_COURSE = "present_liste_course";
     public static final String CLE_QUANTITE = "quantite";
-    public static final String CLE_ID_STOCK = "idStock";
+    public static final String CLE_ID_STOCK = "id_stock";
     public static final String CLE_ID_EMPLACEMENT = "id_emplacement";
 
     protected Stock stock;

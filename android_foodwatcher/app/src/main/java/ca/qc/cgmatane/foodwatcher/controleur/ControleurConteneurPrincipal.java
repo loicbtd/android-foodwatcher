@@ -27,7 +27,7 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
     static final public int ACTIVITY_ADD_HOME = 2;
     static final public int ACTIVITY_FIND_STORE = 3;
 
-    protected static int currentHome;
+    public static int stockCourant;
 
     protected ConteneurPrincipal view;
 
@@ -88,9 +88,9 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 
         // if itemId corresponds to a stock
         if (0 <= itemId && itemId < view.getListStock().size()) {
-            if (itemId != currentHome) {
+            if (itemId != stockCourant) {
                 int id = itemId;
-                itemId = currentHome;
+                itemId = stockCourant;
                 intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
                 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getIdStock());
                 intent.putExtra("idStock", view.getListStock().get(id).getIdStock());

@@ -81,45 +81,50 @@ INSERT INTO produit(gencode,etiquette,id_unite_quantite,id_categorie_produit) VA
 INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (1,1,1.5,1,0);
 
 -- lire
-SELECT id_stock, etiquette FROM stock;
+-- SELECT id_stock, etiquette FROM stock;
 
-SELECT id_emplacement, etiquette FROM emplacement;
+-- SELECT id_emplacement, etiquette FROM emplacement;
 
-SELECT id_categorie_produit, etiquette FROM categorie_produit;
+-- SELECT id_categorie_produit, etiquette FROM categorie_produit;
 
-SELECT id_unite_quantite, etiquette FROM unite_quantite;
+-- SELECT id_unite_quantite, etiquette FROM unite_quantite;
 
-SELECT id_produit, gencode, etiquette, id_unite_quantite, id_categorie_produit FROM produit;
+-- SELECT id_produit, gencode, etiquette, id_unite_quantite, id_categorie_produit FROM produit;
 
-SELECT id_produit, id_stock, quantite, id_emplacement, present_liste_course FROM stock_compose_produit;
+-- SELECT id_produit, id_stock, quantite, id_emplacement, present_liste_course FROM stock_compose_produit;
+
+-- lire avec conditions
+
+-- SELECT id_stock, etiquette FROM stock WHERE id_stock=1;
+
+-- SELECT id_emplacement, etiquette FROM emplacement WHERE id_emplacement=1;
+
+-- SELECT id_categorie_produit, etiquette FROM categorie_produit WHERE id_categorie_produit=1;
+
+-- SELECT id_unite_quantite, etiquette FROM unite_quantite WHERE id_unite_quantite=1;
+
 
 -- lire (requêtes avec jointures)
 -- trouver liste produit par id_stock
-SELECT produit.id_produit, produit.gencode, produit.etiquette, produit.id_unite_quantite, produit.id_categorie_produit
+SELECT produit.id_produit, produit.gencode, produit.etiquette, produit.id_unite_quantite, produit.id_categorie_produit, stock_compose_produit.id_stock, stock_compose_produit.quantite, stock_compose_produit.id_emplacement, stock_compose_produit.present_liste_course
 FROM stock_compose_produit
 INNER JOIN produit ON stock_compose_produit.id_produit = produit.id_produit
 WHERE stock_compose_produit.id_stock=1;
--- trouver unite_quantite par id_produit
-SELECT unite_quantite.id_unite_quantite, unite_quantite.etiquette
-FROM produit
-INNER JOIN unite_quantite ON produit.id_unite_quantite = unite_quantite.id_unite_quantite
-WHERE produit.id_produit = 1;
--- trouver categorie_produit par id_produit
-SELECT categorie_produit.id_categorie_produit, categorie_produit.etiquette
-FROM produit
-INNER JOIN categorie_produit ON produit.id_categorie_produit = categorie_produit.id_categorie_produit
-WHERE produit.id_categorie_produit = 1;
--- trouver emplacement par id_produit et id_stock
-SELECT emplacement.id_emplacement, emplacement.etiquette
-FROM stock_compose_produit
-INNER JOIN emplacement ON stock_compose_produit.id_emplacement = emplacement.id_emplacement
-WHERE stock_compose_produit.id_produit=1 AND stock_compose_produit.id_stock=1;
-
-
-
-
-
-
+-- -- trouver unite_quantite par id_produit
+-- SELECT unite_quantite.id_unite_quantite, unite_quantite.etiquette
+-- FROM produit
+-- INNER JOIN unite_quantite ON produit.id_unite_quantite = unite_quantite.id_unite_quantite
+-- WHERE produit.id_produit=1;
+-- -- trouver categorie_produit par id_produit
+-- SELECT categorie_produit.id_categorie_produit, categorie_produit.etiquette
+-- FROM produit
+-- INNER JOIN categorie_produit ON produit.id_categorie_produit = categorie_produit.id_categorie_produit
+-- WHERE produit.id_categorie_produit=1;
+-- -- trouver emplacement par id_produit et id_stock
+-- SELECT emplacement.id_emplacement, emplacement.etiquette
+-- FROM stock_compose_produit
+-- INNER JOIN emplacement ON stock_compose_produit.id_emplacement = emplacement.id_emplacement
+-- WHERE stock_compose_produit.id_produit=1 AND stock_compose_produit.id_stock=1;
 
 -- modifier
 UPDATE stock SET etiquette='Restaurant' WHERE id_stock=1;

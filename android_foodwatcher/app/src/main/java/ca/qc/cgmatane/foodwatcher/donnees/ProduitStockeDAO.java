@@ -37,7 +37,7 @@ public class ProduitStockeDAO implements ProduitStockeSQL {
     }
 
     public List<ProduitStocke> recupererListeProduitStockeParIdStock(int idStockRecherche) {
-        Cursor curseur = baseDeDonnees.getReadableDatabase()
+        Cursor curseur = baseDeDonnees.getWritableDatabase()
                 .rawQuery(SQL_TROUVER_LISTE_PRODUIT_PAR_ID_STOCK, new String[] {""+idStockRecherche});
         this.listeProduitStocke.clear();
 

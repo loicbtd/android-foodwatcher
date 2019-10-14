@@ -18,7 +18,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
     }
 
     public BaseDeDonnees(Context contexte) {
-        super(contexte, SQL_NOM_BASE_DE_DONNEES, null, 3);
+        super(contexte, SQL_NOM_BASE_DE_DONNEES, null, 4);
         contexte.deleteDatabase(SQL_NOM_BASE_DE_DONNEES);
     }
 

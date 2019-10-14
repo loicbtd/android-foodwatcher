@@ -2,7 +2,7 @@ package ca.qc.cgmatane.foodwatcher.modele;
 
 public class Stock {
 
-    public static final String CLE_ID_STOCK = "idStock";
+    public static final String CLE_ID_STOCK = "id_stock";
     public static final String CLE_ETIQUETTE = "etiquette";
 
     protected int idStock;
