@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 
 import ca.qc.cgmatane.foodwatcher.R;
@@ -23,7 +24,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
-    CheckBox checkBoxAjouterListeCourse;
+    MaterialCheckBox checkBoxAjouterListeCourse;
     Spinner choixUniteQuantite;
     Spinner choixCategorieProduit;
     Spinner choixEmplacement;
