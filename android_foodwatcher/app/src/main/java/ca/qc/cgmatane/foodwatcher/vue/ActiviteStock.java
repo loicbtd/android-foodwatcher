@@ -89,6 +89,10 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             listeProduits.remove(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+
+            //TODO Faire un test du nombre d'élément dans la liste de produit
+            //TODO Ajouter une notification ici qui envoie vers la liste de course (selon le test)
+
         }
 
         @Override
