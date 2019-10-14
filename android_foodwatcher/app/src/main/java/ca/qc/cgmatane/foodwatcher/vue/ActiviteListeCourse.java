@@ -12,22 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteListeDeCourse;
 import ca.qc.cgmatane.foodwatcher.modele.ListeCourseAdapteur;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
 public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteListeCourseVue {
     private RecyclerView recyclerView;
     private ListeCourseAdapteur adapteur;
-    private List<String> listeProduits;
+    private List<Produit> listeProduits;
     private Button boutonListeCourseActionSupprimer;
+    private ControleurActiviteListeDeCourse controleur;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_liste_course);
+        controleur = new ControleurActiviteListeDeCourse(this);
         recyclerView = findViewById(R.id.recycler_view_liste_de_courses);
-        listeProduits = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            listeProduits.add("test");
-        }
+        controleur.onCreate(getApplicationContext());
         adapteur = new ListeCourseAdapteur(listeProduits);
         recyclerView.setAdapter(adapteur);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -39,7 +40,11 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
             @Override
             public void onClick(View view) {
                 adapteur.supprSelectionne();
+                adapteur.notifyDataSetChanged();
             }
         });
+    }
+    public void setListeProduits(List<Produit> listeProduits){
+        this.listeProduits = listeProduits;
     }
 }
