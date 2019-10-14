@@ -8,24 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.modele.Stock;
+import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
 
-public class StockDAO implements StockSQL {
+public class UniteQuantiteDAO implements UniteQuantiteSQL{
 
-    private static StockDAO instance = null;
-    protected List<Stock> listeStock;
+    private static UniteQuantiteDAO instance = null;
+    protected List<UniteQuantite> listeUniteQuantite;
 
     private BaseDeDonnees baseDeDonnees;
 
-    public static StockDAO getInstance() {
+    public static UniteQuantiteDAO getInstance() {
         if (null == instance) {
-            instance = new StockDAO();
+            instance = new UniteQuantiteDAO();
         }
         return instance;
     }
 
-    public StockDAO() {
+    public UniteQuantiteDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
-        listeStock = new ArrayList<>();
+        listeUniteQuantite = new ArrayList<>();
 
         // mock
         ajouterListeStockMock();

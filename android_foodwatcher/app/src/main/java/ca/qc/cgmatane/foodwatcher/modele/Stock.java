@@ -25,9 +25,4 @@ public class Stock {
     public void setEtiquette(String etiquette) {
         this.etiquette = etiquette;
     }
-
-    public boolean isValide() {
-        //TODO : implémenter isValide
-        return true;
-    }
 }
