@@ -1,6 +1,8 @@
 package ca.qc.cgmatane.foodwatcher.donnees;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,10 +86,32 @@ public class ProduitDAO implements ProduitSQL {
         return listeProduit;
     }
 
-
-
     public void ajouterProduit(Produit produit){
-        listeProduit.add(produit);
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_CREER_PRODUIT);
+        sqLiteStatement.bindString(1, produit.getGencode());
+        sqLiteStatement.bindString(2, ""+produit.getEtiquette());
+        sqLiteStatement.bindString(3, ""+produit.getUniteQuantite().getIdUniteQuantite());
+        sqLiteStatement.bindString(4, ""+produit.getCategorieProduit().getIdCategorieProduit());
+        sqLiteStatement.execute();
+    }
+
+    public void modifierProduit(Produit produit) {
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODIFIER_PRODUIT);
+        sqLiteStatement.bindString(1, produit.getGencode());
+        sqLiteStatement.bindString(2, ""+produit.getEtiquette());
+        sqLiteStatement.bindString(3, ""+produit.getUniteQuantite().getIdUniteQuantite());
+        sqLiteStatement.bindString(4, ""+produit.getCategorieProduit().getIdCategorieProduit());
+        sqLiteStatement.bindString(5, ""+produit.getIdProduit());
+        sqLiteStatement.execute();
+    }
+
+    public void supprimerProduit(Produit produit) {
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_SUPPRIMER_PRODUIT);
+        sqLiteStatement.bindString(1, ""+produit.getIdProduit());
+        sqLiteStatement.execute();
     }
 
     public void ajouterListeProduitMock() {
