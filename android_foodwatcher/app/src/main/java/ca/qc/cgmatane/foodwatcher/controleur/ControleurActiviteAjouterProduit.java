@@ -36,6 +36,10 @@ public class ControleurActiviteAjouterProduit implements Controleur {
         vue.naviguerRetourMaison();
     }
 
+    public void scanner(){
+        vue.scanner();
+    }
+
     @Override
     public void onPause() {
 

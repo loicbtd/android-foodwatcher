@@ -59,7 +59,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
         TextView textView = viewHolder.nameTextView;
         TextView textViewNbRestants = viewHolder.nbRestants;
         textView.setText(listeProds.get(position).getEtiquette());
-        textViewNbRestants.setText(Integer.toString(listeProds.get(position).getId_unite_quantite()));
+        textViewNbRestants.setText(Double.toString(listeProds.get(position).getQuantite()));
         Button button = viewHolder.messageButton;
         Button bouton2 = viewHolder.boutonPlus;
         button.setText("-");

@@ -34,7 +34,7 @@
                 android:id="@+id/intitule_produit_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="textAutoComplete"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,24 +51,7 @@
                 android:id="@+id/code_barre_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:hint="@string/hint_jours_conservation"
-            app:boxStrokeColor="@color/colorButton"
-            app:hintTextColor="@color/colorButton">
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/jours_conservation_text_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
+                android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +70,57 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"/>
         </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <Spinner
+                android:id="@+id/choix_unite_quantite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <Spinner
+                android:id="@+id/choix_categorie_produit"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <Spinner
+                android:id="@+id/choix_emplacement"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buton_vue_ajouter_produit_action_scanner"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/colorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scanner Code Barre"/>
+            <CheckBox
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkbox_ajouter_liste_course_vue_ajouter_produit"
+                android:text="Ajouter à la liste de course"/>
+        </LinearLayout>
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -114,21 +148,6 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_column="0"
-        android:layout_row="1">
-        <ImageView
-            android:id="@+id/view_add_product_img"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="15dp"
-            android:src="@mipmap/ic_launcher"
-            android:contentDescription="Image" />
-    </LinearLayout>
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

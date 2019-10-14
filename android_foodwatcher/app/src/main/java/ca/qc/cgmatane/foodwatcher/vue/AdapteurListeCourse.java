@@ -65,7 +65,7 @@ public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCours
         TextView nom = viewHolder.nameTextView;
         TextView quantite = viewHolder.quantiteTextView;
         nom.setText(listeProds.get(position).getEtiquette());
-        quantite.setText(Integer.toString(listeProds.get(position).getId_unite_quantite()));
+        quantite.setText(Double.toString(listeProds.get(position).getQuantite()));
         viewHolder.bind(listeProds.get(position));
     }
 
