@@ -40,7 +40,7 @@ public interface BaseDeDonneesSQL {
             "        ON DELETE CASCADE\n" +
             "        ON UPDATE CASCADE\n" +
             ")";
-    String SQL_DETRUIRE_TABLE_MAISON_COMPOSE_UTILISATEUR = "DROP TABLE IF EXISTS stock_compose_utilisateur";
+    String SQL_DETRUIRE_TABLE_STOCK_COMPOSE_UTILISATEUR = "DROP TABLE IF EXISTS stock_compose_utilisateur";
 
     // emplacement
     String SQL_CREER_TABLE_EMPLACEMENT = "CREATE TABLE emplacement(\n" +

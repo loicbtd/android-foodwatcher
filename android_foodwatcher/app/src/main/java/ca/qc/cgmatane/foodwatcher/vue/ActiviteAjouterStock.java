@@ -44,7 +44,7 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
     }
 
     public void enregistrerStock(){
-        Stock stock = new Stock(0,textFieldEtiquetteStock.getText().toString() );
+        Stock stock = new Stock(0,textFieldEtiquetteStock.getText().toString());
         controleur.actionEnregistrerStock(stock);
     }
 
