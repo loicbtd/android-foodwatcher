@@ -10,47 +10,38 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 
 public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewHolder>{
-    List<String> listeProds;
+    List<Produit> listeProds;
     private int positionSelectionnee = 0;
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView nameTextView;
+        public TextView quantiteTextView;
         public CardView elementListe;
         public ViewHolder(View itemView) {
             super(itemView);
             elementListe = itemView.findViewById(R.id.element_liste_vue_liste_course);
             nameTextView = (TextView) itemView.findViewById(R.id.nom_produit_liste_course);
+            quantiteTextView = itemView.findViewById(R.id.quantite_liste_course);
         }
-        public void bind(String produit) {
-            if (positionSelectionnee == -1) {
-                nameTextView.setText("non selectionné");
-                elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
-            } else {
-                if (positionSelectionnee == getAdapterPosition()) {
-                    nameTextView.setText("selectionné");
-                } else {
-                    nameTextView.setText("non selectionné");
-                    elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
-                }
-            }
-
+        public void bind(final Produit produit) {
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
-
 
                 @Override
                 public boolean onLongClick(View view) {
-                    nameTextView.setText("selectionné");
-                    elementListe.setCardBackgroundColor(Color.argb(255,150,150,150));
-                    if (positionSelectionnee != getAdapterPosition()) {
-                        notifyItemChanged(positionSelectionnee);
-                        positionSelectionnee = getAdapterPosition();
+                    produit.setSelectionne(!produit.estSelectionne());
+                    if (produit.estSelectionne()){
+                        elementListe.setCardBackgroundColor(Color.argb(255,150,150,150));
+                    }else{
+                        elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
                     }
                     return false;
                 }
@@ -72,16 +63,10 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
     // Involves populating data into the item through holder
     @Override
     public void onBindViewHolder(ListeCourseAdapteur.ViewHolder viewHolder, int position) {
-        // Get the data model based on position
-        // Set item views based on your views and data model
-//        TextView textView = viewHolder.nameTextView;
-//        TextView textViewNbRestants = viewHolder.nbRestants;
-//        textView.setText(listeProds.get(position));
-//        textViewNbRestants.setText("3");
-//        Button button = viewHolder.messageButton;
-//        Button bouton2 = viewHolder.boutonPlus;
-//        button.setText("-");
-//        bouton2.setText("+");
+        TextView nom = viewHolder.nameTextView;
+        TextView quantite = viewHolder.quantiteTextView;
+        nom.setText(listeProds.get(position).getEtiquette());
+        quantite.setText(Integer.toString(listeProds.get(position).getId_unite_quantite()));
         viewHolder.bind(listeProds.get(position));
     }
 
@@ -92,15 +77,19 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
     public int getItemCount() {
         return listeProds.size();
     }
-    public ListeCourseAdapteur(List<String> produits) {
+    public ListeCourseAdapteur(List<Produit> produits) {
         listeProds = produits;
     }
     public void supprSelectionne(){
-        if (positionSelectionnee != -1) {
-            //ToDo: appeler le DAO;
-             listeProds.remove(positionSelectionnee);
-             notifyItemRemoved(positionSelectionnee);
-             positionSelectionnee =-1;
+        if (listeProds.size()>0){
+        for (int i = 0; i <listeProds.size() ; i++) {
+            System.out.println(listeProds.get(i).getEtiquette() + listeProds.get(i).estSelectionne());
+            if (listeProds.get(i).estSelectionne()) {
+                listeProds.remove(i);
+            }
         }
+
+        }
+
     }
 }
