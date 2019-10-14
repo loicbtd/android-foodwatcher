@@ -1,6 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-import android.icu.lang.UCharacter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,7 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.modele.ListeCourseAdapteur;
 
-public class ListeDeCourse extends ActiviteMaitresse implements ListeDeCourseVue {
+public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteListeCourseVue {
     private RecyclerView recyclerView;
     private ListeCourseAdapteur adapteur;
     private List<String> listeProduits;
@@ -23,7 +22,7 @@ public class ListeDeCourse extends ActiviteMaitresse implements ListeDeCourseVue
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.vue_liste_de_course);
+        super.configureActivityContent(R.layout.activite_liste_course);
         recyclerView = findViewById(R.id.recycler_view_liste_de_courses);
         listeProduits = new ArrayList<>();
         for (int i = 0; i < 20; i++) {

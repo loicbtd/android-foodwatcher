@@ -11,8 +11,9 @@
 
     <string name="bouton_annuler">annuler</string>
     <string name="bouton_ajouter">Ajouter</string>
+    <string name="hint_jours_conservation">Jours de conservation</string>
     <string name="hint_code_barre">Code barre</string>
-    <string name="hint_intitule_maison">Intitulé de la maison</string>
+    <string name="hint_intitule_maison">Intitulé de la stock</string>
     <string name="hint_quantite">Quantité</string>
     <string name="hint_intitule_produit">Intitulé du produit</string>
     <string name="bouton_ajouter_maison">Ajouter</string>

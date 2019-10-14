@@ -19,15 +19,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
-public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitVue {
+public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
+    TextInputEditText textInputJoursConservation;
     MaterialButton boutonAjouterProduit;
     MaterialButton boutonRetour;
-    ControleurAjouterProduit controleur;
+    ControleurActiviteAjouterProduit controleur;
 
     private ImageView imageViewProduct;
 
@@ -37,20 +39,21 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.vue_ajouter_produit);
-        controleur = new ControleurAjouterProduit(this);
+        super.configureActivityContent(R.layout.activite_ajouter_produit);
+        controleur = new ControleurActiviteAjouterProduit(this);
         boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
         boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
         textFieldIntitule = findViewById(R.id.intitule_produit_edit_text);
         textFieldQuantite = findViewById(R.id.edit_text_quantite);
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
+        textInputJoursConservation = findViewById(R.id.jours_conservation_text_input);
         imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
 
         controleur.onCreate(getApplicationContext());
         imageViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentNavCameraCapture = new Intent(getApplicationContext(), PrisePhoto.class);
+                Intent intentNavCameraCapture = new Intent(getApplicationContext(), ActivitePrisePhoto.class);
                 startActivity(intentNavCameraCapture);
             }
         });
@@ -62,12 +65,12 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
                 System.out.println(textFieldQuantite.getText());
                 System.out.println(textFieldCodeBarre.getText());
 
-                bitmap = PrisePhoto.bitmap;
+                bitmap = ActivitePrisePhoto.bitmap;
 
                 saveImage(bitmap); //Sauvegarde l'image
-                PrisePhoto.bitmap = null;
+                ActivitePrisePhoto.bitmap = null;
 
-                controleur.naviguerVersStockAjouter();
+                enregistrerProduit();
             }
         });
         boutonRetour.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +83,7 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
 
     @Override
     public void naviguerVersStockAnnuler(){
-        Intent intent = new Intent(getApplicationContext(), Stock.class);
+        Intent intent = new Intent(getApplicationContext(), ActiviteStock.class);
         startActivity(intent);
     }
 
@@ -89,11 +92,16 @@ public class AjouterProduit extends ActiviteMaitresse implements AjouterProduitV
 
         super.onResume();
 
-        if (PrisePhoto.bitmap != null){
-            bitmap = PrisePhoto.bitmap;
+        if (ActivitePrisePhoto.bitmap != null){
+            bitmap = ActivitePrisePhoto.bitmap;
             imageViewProduct.setImageBitmap(bitmap);
         }
 
+    }
+
+    private void enregistrerProduit(){
+        Produit produit = new Produit(0, textFieldCodeBarre.getText().toString(),textFieldIntitule.getText().toString(), Integer.parseInt(textInputJoursConservation.getText().toString()), "image", Integer.parseInt(textFieldQuantite.getText().toString()), 1 );
+        controleur.actionEnregistrerProduit(produit);
     }
 
     public void naviguerRetourMaison(){

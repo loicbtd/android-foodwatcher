@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".vue.ListeDeCourse">
+    tools:context=".vue.ActiviteListeCourse">
         <Button
             android:id="@+id/btn_vue_liste_course_action_supprimer"
             android:layout_width="match_parent"

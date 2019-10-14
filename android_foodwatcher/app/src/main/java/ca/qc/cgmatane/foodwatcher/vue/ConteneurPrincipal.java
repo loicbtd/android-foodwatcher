@@ -18,12 +18,12 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteMaitresse;
-import ca.qc.cgmatane.foodwatcher.modele.Maison;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
+import ca.qc.cgmatane.foodwatcher.modele.Stock;
 
-public class ActiviteMaitresse extends AppCompatActivity {
+public class ConteneurPrincipal extends AppCompatActivity {
 
-    protected ControleurActiviteMaitresse controleurActiviteMaitresse = new ControleurActiviteMaitresse(this);
+    protected ControleurConteneurPrincipal controleurConteneurPrincipal = new ControleurConteneurPrincipal(this);
 
     protected Toolbar toolbar;
     protected int menuToolbarResource;
@@ -31,7 +31,7 @@ public class ActiviteMaitresse extends AppCompatActivity {
     protected NavigationView navigationView;
     protected ConstraintLayout constraintLayout;
 
-    protected List<Maison> listMaison;
+    protected List<Stock> listStock;
 
     public DrawerLayout getDrawerLayout() {
         return drawerLayout;
@@ -42,17 +42,17 @@ public class ActiviteMaitresse extends AppCompatActivity {
     public ConstraintLayout getConstraintLayout() {
         return constraintLayout;
     }
-    public List<Maison> getListMaison() {
-        return listMaison;
+    public List<Stock> getListStock() {
+        return listStock;
     }
-    public void setListMaison(List<Maison> listMaison) {
-        this.listMaison = listMaison;
+    public void setListStock(List<Stock> listStock) {
+        this.listStock = listStock;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activite_maitresse_drawer_layout);
+        setContentView(R.layout.conteneur_principal);
 
         toolbar = (Toolbar) findViewById(R.id.activity_master_toolbar);
         setSupportActionBar(toolbar);
@@ -65,14 +65,14 @@ public class ActiviteMaitresse extends AppCompatActivity {
 
         // Configure NavigationView
         navigationView = (NavigationView) findViewById(R.id.activity_master_nav_view);
-        navigationView.setNavigationItemSelectedListener(controleurActiviteMaitresse);
+        navigationView.setNavigationItemSelectedListener(controleurConteneurPrincipal);
 
-        controleurActiviteMaitresse.onCreate(getApplicationContext());
+        controleurConteneurPrincipal.onCreate(getApplicationContext());
     }
 
     @Override
     public void onBackPressed() {
-        controleurActiviteMaitresse.onBackPressed();
+        controleurConteneurPrincipal.onBackPressed();
     }
 
     @Override
@@ -104,8 +104,8 @@ public class ActiviteMaitresse extends AppCompatActivity {
         Menu menu = navigationView.getMenu();
         MenuItem menuItem = menu.findItem(R.id.activity_master_drawer_section_home);
         SubMenu subMenuHome = menuItem.getSubMenu();
-        for (int i = 0; i < listMaison.size(); i++) {
-            subMenuHome.add(0, i, i, listMaison.get(i).getEtiquette());
+        for (int i = 0; i < listStock.size(); i++) {
+            subMenuHome.add(0, i, i, listStock.get(i).getEtiquette());
             subMenuHome.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
         }
     }

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".vue.ActiviteMaitresse">
+    tools:context=".vue.ConteneurPrincipal">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/activite_maitresse_drawer_layout_entete"
+        app:headerLayout="@layout/conteneur_principal_entete_drawer_layout"
         app:menu="@menu/activite_maitresse_drawer"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

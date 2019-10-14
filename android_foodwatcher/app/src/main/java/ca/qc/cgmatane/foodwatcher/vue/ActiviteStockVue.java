@@ -1,6 +1,5 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
-public interface StockVue {
+public interface ActiviteStockVue {
     void naviguerVueAjouterProduit();
-    void ajouterProduitListe();
 }
