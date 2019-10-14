@@ -22,7 +22,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
         // for an        // Your holder should contain a member variabley view that will be set as you render a row
         public TextView nameTextView;
         public TextView nbRestants;
-        public Button messageButton;
+        public Button boutonMoins;
         public Button boutonPlus;
 
         // We also create a constructor that accepts the entire item row
@@ -32,10 +32,10 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            nameTextView = (TextView) itemView.findViewById(R.id.nom_produit);
+            nameTextView = itemView.findViewById(R.id.nom_produit);
             nbRestants = itemView.findViewById(R.id.nbrestants);
-            messageButton = (Button) itemView.findViewById(R.id.bouton_test);
-            boutonPlus = itemView.findViewById(R.id.bouton_test2);
+            boutonMoins = itemView.findViewById(R.id.bouton_moins);
+            boutonPlus = itemView.findViewById(R.id.bouton_plus);
         }
     }
     @Override
@@ -53,17 +53,31 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(AdapteurListeProduit.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(AdapteurListeProduit.ViewHolder viewHolder, final int position) {
         // Get the data model based on position
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
         TextView textViewNbRestants = viewHolder.nbRestants;
         textView.setText(listeProds.get(position).getEtiquette());
         textViewNbRestants.setText(Double.toString(listeProds.get(position).getQuantite()));
-        Button button = viewHolder.messageButton;
-        Button bouton2 = viewHolder.boutonPlus;
-        button.setText("-");
-        bouton2.setText("+");
+        Button boutonMoins = viewHolder.boutonMoins;
+        Button boutonPlus = viewHolder.boutonPlus;
+        boutonMoins.setText("-");
+        boutonMoins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Produit produit = listeProds.get(position);
+                produit.setQuantite(produit.getQuantite()-1);
+            }
+        });
+        boutonPlus.setText("+");
+        boutonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Produit produit = listeProds.get(position);
+                produit.setQuantite(produit.getQuantite()+1);
+            }
+        });
     }
 
     // Returns the total count of items in the list

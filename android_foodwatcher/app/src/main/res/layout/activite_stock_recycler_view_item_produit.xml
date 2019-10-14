@@ -52,7 +52,7 @@
         android:layout_column="1"
         android:layout_gravity="right|center">
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bouton_test"
+            android:id="@+id/bouton_moins"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_width="48dp"
@@ -62,7 +62,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bouton_test2"
+            android:id="@+id/bouton_plus"
             app:backgroundTint="@color/colorButton"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"

@@ -133,8 +133,8 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         //recuperer la valeur d'un spinner:
 //        String uniteQuantite;
 //        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
-        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
-        controleur.actionEnregistrerProduit(produit);
+//        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
+//        controleur.actionEnregistrerProduit(produit);
     }
 
     public void naviguerRetourMaison(){
@@ -148,8 +148,6 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScan.class);
 
         startActivityForResult(intent, RESULTAT_ACTIVITE_SCAN);
-
-        System.out.println("####################################################### Scan");
     }
 
 }
