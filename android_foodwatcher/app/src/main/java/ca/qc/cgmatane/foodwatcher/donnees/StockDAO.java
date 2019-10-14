@@ -28,45 +28,45 @@ public class StockDAO implements StockSQL {
         listeStock = new ArrayList<>();
 
         // mock
-        ajouterListeMaisonMock();
+        ajouterListeStockMock();
     }
 
     public List<Stock> recupererListeMaison() {
         Cursor curseur = baseDeDonnees.getReadableDatabase()
-                .rawQuery(SQL_LISTER_MAISON, null);
+                .rawQuery(SQL_LISTER_STOCK, null);
         this.listeStock.clear();
 
         Stock stock;
-        int indexId_maison = curseur.getColumnIndex(Stock.CLE_ID_MAISON);
+        int indexId_stock = curseur.getColumnIndex(Stock.CLE_ID_STOCK);
         int indexEtiquette = curseur.getColumnIndex(Stock.CLE_ETIQUETTE);
 
         for (curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
-            int id_maison = curseur.getInt(indexId_maison);
+            int id_stock = curseur.getInt(indexId_stock);
             String etiquette = curseur.getString(indexEtiquette);
-            stock = new Stock(id_maison, etiquette);
+            stock = new Stock(id_stock, etiquette);
             this.listeStock.add(stock);
         }
         return listeStock;
     }
 
-    public void ajouterMaison(Stock stock) {
+    public void ajouterStock(Stock stock) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_MAISON);
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_STOCK);
         sqLiteStatement.bindString(1, stock.getEtiquette());
         sqLiteStatement.execute();
     }
 
-    public void modifierMaison(Stock stock) {
+    public void modifierStock(Stock stock) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODFIFIER_MAISON);
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODFIFIER_STOCK);
         sqLiteStatement.bindString(1, stock.getEtiquette());
-        sqLiteStatement.bindString(2, ""+ stock.getId_maison());
+        sqLiteStatement.bindString(2, ""+ stock.getId_stock());
         sqLiteStatement.execute();
     }
 
-    public void ajouterListeMaisonMock() {
-        ajouterMaison(new Stock(0, "Domicile"));
-        ajouterMaison(new Stock(1, "ActiviteStock vacances"));
-        ajouterMaison(new Stock(2, "Mon restaurant"));
+    public void ajouterListeStockMock() {
+        ajouterStock(new Stock(0, "Domicile"));
+        ajouterStock(new Stock(1, "Maison vacances"));
+        ajouterStock(new Stock(2, "Mon restaurant"));
     }
 }

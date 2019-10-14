@@ -38,8 +38,8 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_stock);
 //        Bundle parametres = this.getIntent().getExtras();
-//        id_maison = (int) parametres.get("id_maison");
-//        Toast.makeText(this, "id maison "+id_maison, Toast.LENGTH_SHORT).show();
+//        id_stock = (int) parametres.get("id_stock");
+//        Toast.makeText(this, "id maison "+id_stock, Toast.LENGTH_SHORT).show();
 
 
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);

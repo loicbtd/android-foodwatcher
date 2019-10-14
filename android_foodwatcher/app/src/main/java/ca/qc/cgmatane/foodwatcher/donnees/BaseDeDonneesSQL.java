@@ -5,85 +5,103 @@ public interface BaseDeDonneesSQL {
     String SQL_NOM_BASE_DE_DONNEES = "foodwatcher_defaut";
 
     // utilisateur
-    String SQL_CREER_TABLE_UTILISATEUR = "CREATE TABLE utilisateur(" +
-            "id_utilisateur integer PRIMARY KEY, " +
-            "email text, " +
-            "mot_de_passe text, " +
-            "nom text," +
-            "prenom text," +
-            "telephone text," +
-            "date_naissance date" +
+    String SQL_CREER_TABLE_UTILISATEUR = "CREATE TABLE utilisateur(\n" +
+            "id_utilisateur integer PRIMARY KEY,\n" +
+            "email text,\n" +
+            "mot_de_passe text,\n" +
+            "nom text,\n" +
+            "prenom text,\n" +
+            "telephone text,\n" +
+            "date_naissance date\n" +
             ")";
     String SQL_DETRUIRE_TABLE_UTILISATEUR = "DROP TABLE IF EXISTS utilisateur";
 
-    // maison
-    String SQL_CREER_TABLE_MAISON = "CREATE TABLE maison(" +
-            "id_maison integer PRIMARY KEY, " +
-            "etiquette text" +
+    // stock
+    String SQL_CREER_TABLE_STOCK = "CREATE TABLE stock(\n" +
+            "id_stock integer PRIMARY KEY,\n" +
+            "etiquette text\n" +
             ")";
-    String SQL_DETRUIRE_TABLE_MAISON = "DROP TABLE IF EXISTS maison";
+    String SQL_DETRUIRE_TABLE_STOCK = "DROP TABLE IF EXISTS stock";
 
-    // maison_compose_utilisateur
-    String SQL_CREER_TABLE_MAISON_COMPOSE_UTILISATEUR = "CREATE TABLE maison_compose_utilisateur(" +
-            "id_maison integer, " +
-            "id_utilisateur integer," +
-            "PRIMARY KEY(id_maison, id_utilisateur)" +
-            "FOREIGN KEY(id_maison) REFERENCES maison(id_maison)" +
-            "FOREIGN KEY(id_utilisateur) REFERENCES utilisateur(id_utilisateur)" +
+    
+    // stock_compose_utilisateur
+    String SQL_CREER_TABLE_STOCK_COMPOSE_UTILISATEUR = "CREATE TABLE stock_compose_utilisateur(\n" +
+            "id_stock integer,\n" +
+            "id_utilisateur integer,\n" +
+            "PRIMARY KEY(id_stock, id_utilisateur),\n" +
+            "CONSTRAINT stock_stock_compose_utilisateur_fk\n" +
+            "   FOREIGN KEY(id_stock)\n" +
+            "   REFERENCES stock(id_stock)\n" +
+            "   ON DELETE CASCADE\n" +
+            "   ON UPDATE CASCADE,\n" +
+            "CONSTRAINT utilisateur_stock_compose_utilisateur_fk\n" +
+            "   FOREIGN KEY(id_utilisateur)\n" +
+            "   REFERENCES utilisateur(id_utilisateur)\n" +
+            "   ON DELETE CASCADE\n" +
+            "   ON UPDATE CASCADE,\n" +
             ")";
-    String SQL_DETRUIRE_TABLE_MAISON_COMPOSE_UTILISATEUR = "DROP TABLE IF EXISTS maison_compose_utilisateur";
+    String SQL_DETRUIRE_TABLE_MAISON_COMPOSE_UTILISATEUR = "DROP TABLE IF EXISTS stock_compose_utilisateur";
 
     // emplacement
-    String SQL_CREER_TABLE_EMPLACEMENT = "CREATE TABLE emplacement(" +
-            "id_emplacement integer PRIMARY KEY, " +
-            "etiquette text" +
+    String SQL_CREER_TABLE_EMPLACEMENT = "CREATE TABLE emplacement(\n" +
+            "id_emplacement integer PRIMARY KEY,\n" +
+            "etiquette text\n" +
             ")";
     String SQL_DETRUIRE_TABLE_EMPLACEMENT = "DROP TABLE IF EXISTS emplacement";
 
     // categorie_produit
-    String SQL_CREER_TABLE_CATEGORIE_PRODUIT = "CREATE TABLE categorie_produit(" +
-            "id_categorie_produit integer PRIMARY KEY, " +
-            "etiquette text" +
+    String SQL_CREER_TABLE_CATEGORIE_PRODUIT = "CREATE TABLE categorie_produit(\n" +
+            "id_categorie_produit integer PRIMARY KEY,\n" +
+            "etiquette text\n" +
             ")";
     String SQL_DETRUIRE_TABLE_CATEGORIE_PRODUIT = "DROP TABLE IF EXISTS categorie_produit";
 
     // categorie_produit
-    String SQL_CREER_TABLE_UNITE_QUANTITE = "CREATE TABLE unite_quantite(" +
-            "id_unite_quantite integer PRIMARY KEY, " +
-            "etiquette text" +
+    String SQL_CREER_TABLE_UNITE_QUANTITE = "CREATE TABLE unite_quantite(\n" +
+            "id_unite_quantite integer PRIMARY KEY,\n" +
+            "etiquette text\n" +
             ")";
     String SQL_DETRUIRE_TABLE_UNITE_QUANTITE = "DROP TABLE IF EXISTS unite_quantite";
 
     // produit
-    String SQL_CREER_TABLE_PRODUIT = "CREATE TABLE produit(" +
-            "id_produit integer PRIMARY KEY, " +
-            "gencode text" +
-            "etiquette text" +
-            "nombre_jour_conservation integer" +
-            "chemin_image text" +
-            "id_unite_quantite integer" +
-            "id_categorie_produit integer" +
+    String SQL_CREER_TABLE_PRODUIT = "CREATE TABLE produit(\n" +
+            "id_produit integer PRIMARY KEY,\n" +
+            "gencode text,\n" +
+            "etiquette text,\n" +
+            "nombre_jour_conservation integer,\n" +
+            "chemin_image text,\n" +
+            "id_unite_quantite integer,\n" +
+            "id_categorie_produit integer,\n" +
+            "CONSTRAINT unite_quantite_produit_fk\n" +
+            "   FOREIGN KEY(id_unite_quantite" +
+
+
+
+            "FOREIGN KEY(id_unite_quantite) REFERENCES unite_quantite(id_unite_quantite), " +
+            "FOREIGN KEY(id_categorie_produit) REFERENCES categorie_produit(id_categorie_produit)" +
             ")";
     String SQL_DETRUIRE_TABLE_PRODUIT = "DROP TABLE IF EXISTS produit";
 
-    // maison_compose_produit
-    String SQL_CREER_TABLE_MAISON_COMPOSE_PRODUIT = "CREATE TABLE maison_compose_produit(" +
+    // stock_compose_produit
+    String SQL_CREER_TABLE_STOCK_COMPOSE_PRODUIT = "CREATE TABLE stock_compose_produit(" +
             "id_produit integer, " +
-            "id_maison integer, " +
+            "id_stock integer, " +
             "id_emplacement integer, " +
             "present_liste_course integer, " +
-            "PRIMARY KEY(id_produit, id_maison)" +
+            "PRIMARY KEY(id_produit, id_stock), " +
+            "FOREIGN KEY(id_produit) REFERENCES produit(id_produit), " +
+            "FOREIGN KEY(id_stock) REFERENCES stock(id_stock), " +
             ")";
-    String SQL_DETRUIRE_TABLE_MAISON_COMPOSE_PRODUIT = "DROP TABLE IF EXISTS maison_compose_produit";
+    String SQL_DETRUIRE_TABLE_STOCK_COMPOSE_PRODUIT = "DROP TABLE IF EXISTS stock_compose_produit";
 
-    // historique_maison
-    String SQL_CREER_TABLE_HISTORIQUE_MAISON = "CREATE TABLE historique_maison(" +
-            "id_historique_maison integer PRIMARY KEY, " +
-            "quantite real" +
-            "date_saisie date" +
-            "id_produit integer" +
-            "id_maison integer" +
-//            "FOREIGN KEY(id_produit, id_maison) REFERENCES produit(id_produit, id_maison)" +
+    // historique_stock
+    String SQL_CREER_TABLE_HISTORIQUE_STOCK = "CREATE TABLE historique_stock(" +
+            "id_historique_stock integer PRIMARY KEY, " +
+            "quantite real, " +
+            "date_saisie date, " +
+            "id_produit integer, " +
+            "id_stock integer" +
+//            "FOREIGN KEY(id_produit, id_stock) REFERENCES produit(id_produit, id_stock)" +
             ")";
-    String SQL_DETRUIRE_TABLE_HISTORIQUE_MAISON = "DROP TABLE IF EXISTS historique_maison";
+    String SQL_DETRUIRE_TABLE_HISTORIQUE_STOCK = "DROP TABLE IF EXISTS historique_stock";
 }

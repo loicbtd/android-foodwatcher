@@ -92,8 +92,8 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
                 int id = itemId;
                 itemId = currentHome;
                 intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getId_maison());
-                intent.putExtra("id_maison", view.getListStock().get(id).getId_maison());
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getId_stock());
+                intent.putExtra("id_stock", view.getListStock().get(id).getId_stock());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity
