@@ -20,6 +20,7 @@ import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
 
+    public static final int RESULTAT_ACTIVITE_SCAN = 1;
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
@@ -45,7 +46,8 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
         boutonScanner = findViewById(R.id.buton_vue_ajouter_produit_action_scanner);
         checkBoxAjouterListeCourse = findViewById(R.id.checkbox_ajouter_liste_course_vue_ajouter_produit);
-//        imageViewProduct = (ImageView) findViewById(R.id.view_add_product_img);
+        boutonScanner = findViewById(R.id.buton_vue_ajouter_produit_action_scanner);
+
 
         choixUniteQuantite = findViewById(R.id.choix_unite_quantite);
         String[] unites={"Kg","G", "L", "Oz", "unité"};
@@ -101,7 +103,10 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
 
                 String barcode = null;
                 if (data != null) {
+                    //TODO Récupérer les autres données
                     barcode = data.getStringExtra("code");
+
+                    //TODO tester si elles sont nulles : si oui alors ecrire le gencode seulement et sinon tous les champs
                 }
 
                 Toast.makeText(getApplicationContext(),barcode,Toast.LENGTH_LONG).show();
@@ -128,7 +133,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         //recuperer la valeur d'un spinner:
 //        String uniteQuantite;
 //        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
-        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1,1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected()  );
+        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
         controleur.actionEnregistrerProduit(produit);
     }
 
@@ -139,6 +144,12 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     @Override
     public void scanner() {
         //TODO : definire l'action a realiser lors de l'appui du bouton;
+
+        Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScanVue.class);
+
+        startActivityForResult(intent, RESULTAT_ACTIVITE_SCAN);
+
         System.out.println("####################################################### Scan");
     }
+
 }
