@@ -34,7 +34,7 @@
         <activity android:name=".vue.ActiviteAjouterStock" />
         <activity android:name=".vue.ActiviteAjouterProduit" />
         <activity android:name=".vue.ActiviteTrouverMagasin" />
-        <activity android:name=".vue.ActiviteScanVue"
+        <activity android:name=".vue.ActiviteScan"
             android:theme="@style/ScanTheme"
             android:screenOrientation="portrait"/>
     </application>

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -146,7 +145,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     public void scanner() {
         //TODO : definire l'action a realiser lors de l'appui du bouton;
 
-        Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScanVue.class);
+        Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScan.class);
 
         startActivityForResult(intent, RESULTAT_ACTIVITE_SCAN);
 
