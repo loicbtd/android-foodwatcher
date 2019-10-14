@@ -1,10 +1,14 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -77,6 +81,25 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
                 controleur.retourVerStockAnnuler();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+
+                String barcode = null;
+                if (data != null) {
+                    barcode = data.getStringExtra("code");
+                }
+
+                Toast.makeText(getApplicationContext(),barcode,Toast.LENGTH_LONG).show();
+
+            }
+
+        }
     }
 
     @Override
