@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.qc.cgmatane.foodwatcher.modele.Stock;
 import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
 
 public class UniteQuantiteDAO implements UniteQuantiteSQL{
@@ -29,45 +28,60 @@ public class UniteQuantiteDAO implements UniteQuantiteSQL{
         listeUniteQuantite = new ArrayList<>();
 
         // mock
-        ajouterListeStockMock();
+        ajouterListeUniteQuantiteMock();
     }
 
-    public List<Stock> recupererListeMaison() {
+    public List<UniteQuantite> recupererListeUniteQuantite() {
         Cursor curseur = baseDeDonnees.getReadableDatabase()
-                .rawQuery(SQL_LISTER_STOCK, null);
-        this.listeStock.clear();
+                .rawQuery(SQL_LISTER_UNITE_QUANTITE, null);
+        this.listeUniteQuantite.clear();
 
-        Stock stock;
-        int indexId_stock = curseur.getColumnIndex(Stock.CLE_ID_STOCK);
-        int indexEtiquette = curseur.getColumnIndex(Stock.CLE_ETIQUETTE);
+        UniteQuantite uniteQuantite;
+        int indexIdUniteQuantite = curseur.getColumnIndex(UniteQuantite.CLE_ID_UNITE_QUANTITE);
+        int indexEtiquette = curseur.getColumnIndex(UniteQuantite.CLE_ETIQUETTE);
 
         for (curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
-            int id_stock = curseur.getInt(indexId_stock);
+            int idUniteQuantite = curseur.getInt(indexIdUniteQuantite);
             String etiquette = curseur.getString(indexEtiquette);
-            stock = new Stock(id_stock, etiquette);
-            this.listeStock.add(stock);
+            uniteQuantite = new UniteQuantite(idUniteQuantite, etiquette);
+            this.listeUniteQuantite.add(uniteQuantite);
         }
-        return listeStock;
+        return listeUniteQuantite;
     }
 
-    public void ajouterStock(Stock stock) {
+    public UniteQuantite trouverUniteQuantiteParId(int id) { //TODO: améliorer en utilisant une requête préparée ou une meilleure recherche
+        recupererListeUniteQuantite();
+        for (UniteQuantite uniteQuantite : listeUniteQuantite) {
+            if (uniteQuantite.getIdUniteQuantite() == id) return uniteQuantite;
+        }
+        return null;
+    }
+
+    public void ajouterUniteQuantite(UniteQuantite uniteQuantite) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_STOCK);
-        sqLiteStatement.bindString(1, stock.getEtiquette());
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_CREER_UNITE_QUANTITE);
+        sqLiteStatement.bindString(1, uniteQuantite.getEtiquette());
         sqLiteStatement.execute();
     }
 
-    public void modifierStock(Stock stock) {
+    public void modifierUniteQuantite(UniteQuantite uniteQuantite) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODFIFIER_STOCK);
-        sqLiteStatement.bindString(1, stock.getEtiquette());
-        sqLiteStatement.bindString(2, ""+ stock.getId_stock());
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODIFIER_UNITE_QUANTITE);
+        sqLiteStatement.bindString(1, uniteQuantite.getEtiquette());
+        sqLiteStatement.bindString(2, ""+ uniteQuantite.getIdUniteQuantite());
         sqLiteStatement.execute();
     }
 
-    public void ajouterListeStockMock() {
-        ajouterStock(new Stock(0, "Domicile"));
-        ajouterStock(new Stock(1, "Maison vacances"));
-        ajouterStock(new Stock(2, "Mon restaurant"));
+    public void supprimerUniteQuantite(UniteQuantite uniteQuantite) {
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_SUPPRIMER_UNITE_QUANTITE);
+        sqLiteStatement.bindString(1, ""+ uniteQuantite.getIdUniteQuantite());
+        sqLiteStatement.execute();
+    }
+
+    private void ajouterListeUniteQuantiteMock() {
+        ajouterUniteQuantite(new UniteQuantite(0, "unité(s)"));
+        ajouterUniteQuantite(new UniteQuantite(1, "kg"));
+        ajouterUniteQuantite(new UniteQuantite(2, "g"));
     }
 }

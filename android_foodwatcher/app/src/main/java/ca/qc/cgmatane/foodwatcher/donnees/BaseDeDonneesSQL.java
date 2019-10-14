@@ -6,7 +6,7 @@ public interface BaseDeDonneesSQL {
 
     // stock
     String SQL_CREER_TABLE_STOCK = "CREATE TABLE stock(\n" +
-            "    id_stock integer PRIMARY KEY,\n" +
+            "    idStock integer PRIMARY KEY,\n" +
             "    etiquette text\n" +
             ")";
     String SQL_DETRUIRE_TABLE_STOCK = "DROP TABLE IF EXISTS stock";
@@ -55,19 +55,19 @@ public interface BaseDeDonneesSQL {
     // stock_compose_produit
     String SQL_CREER_TABLE_STOCK_COMPOSE_PRODUIT = "CREATE TABLE stock_compose_produit(\n" +
             "    id_produit integer,\n" +
-            "    id_stock integer,\n" +
+            "    idStock integer,\n" +
             "    quantite real,\n" +
             "    id_emplacement integer,\n" +
             "    present_liste_course integer,\n" +
-            "    PRIMARY KEY(id_produit,id_stock),\n" +
+            "    PRIMARY KEY(id_produit,idStock),\n" +
             "    CONSTRAINT produit_stock_compose_produit_fk\n" +
             "        FOREIGN KEY (id_produit)\n" +
             "        REFERENCES produit(id_produit)\n" +
             "        ON DELETE CASCADE\n" +
             "        ON UPDATE CASCADE,\n" +
             "    CONSTRAINT stock_stock_compose_produit_fk\n" +
-            "        FOREIGN KEY (id_stock)\n" +
-            "        REFERENCES stock(id_stock)\n" +
+            "        FOREIGN KEY (idStock)\n" +
+            "        REFERENCES stock(idStock)\n" +
             "        ON DELETE CASCADE\n" +
             "        ON UPDATE CASCADE,\n" +
             "    CONSTRAINT emplacement_stock_compose_produit_fk\n" +

@@ -7,6 +7,10 @@ public class Produit {
     public static final String CLE_ETIQUETTE = "etiquette";
     public static final String CLE_QUANTITE = "quantite";
     public static final String CLE_PRESENT_LISTE_COURSE = "present_liste_course";
+    public static final String CLE_ID_UNITE_QUANTITE = "id_unite_quantite";
+    public static final String CLE_ID_CATEGORIE_PRODUIT = "id_categorie_produit";
+    public static final String CLE_ID_STOCK = "idStock";
+    public static final String CLE_ID_EMPLACEMENT = "id_emplacement";
 
     protected int idProduit;
     protected String gencode;

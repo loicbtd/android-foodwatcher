@@ -42,7 +42,7 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
         stockDAO = StockDAO.getInstance();
-        view.setListStock(stockDAO.recupererListeMaison());
+        view.setListStock(stockDAO.recupererListeStock());
         view.populateHomeInMenuDrawer();
     }
 
@@ -92,8 +92,8 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
                 int id = itemId;
                 itemId = currentHome;
                 intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getId_stock());
-                intent.putExtra("id_stock", view.getListStock().get(id).getId_stock());
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getIdStock());
+                intent.putExtra("idStock", view.getListStock().get(id).getIdStock());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity
