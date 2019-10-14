@@ -51,14 +51,14 @@ public class StockDAO implements StockSQL {
 
     public void ajouterStock(Stock stock) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_INSERER_STOCK);
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_CREER_STOCK);
         sqLiteStatement.bindString(1, stock.getEtiquette());
         sqLiteStatement.execute();
     }
 
     public void modifierStock(Stock stock) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
-        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODFIFIER_STOCK);
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODIFIER_STOCK);
         sqLiteStatement.bindString(1, stock.getEtiquette());
         sqLiteStatement.bindString(2, ""+ stock.getId_stock());
         sqLiteStatement.execute();

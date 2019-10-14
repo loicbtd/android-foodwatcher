@@ -81,17 +81,17 @@ INSERT INTO produit(gencode,etiquette,id_unite_quantite,id_categorie_produit) VA
 INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (1,1,1.5,1,0);
 
 -- lire
--- SELECT id_stock, etiquette FROM stock;
+SELECT id_stock, etiquette FROM stock;
 
--- SELECT id_emplacement, etiquette FROM emplacement;
+SELECT id_emplacement, etiquette FROM emplacement;
 
--- SELECT id_categorie_produit, etiquette FROM categorie_produit;
+SELECT id_categorie_produit, etiquette FROM categorie_produit;
 
--- SELECT id_unite_quantite, etiquette FROM unite_quantite;
+SELECT id_unite_quantite, etiquette FROM unite_quantite;
 
--- SELECT id_produit, gencode, etiquette, id_unite_quantite, id_categorie_produit FROM produit;
+SELECT id_produit, gencode, etiquette, id_unite_quantite, id_categorie_produit FROM produit;
 
--- SELECT id_produit, id_stock, quantite, id_emplacement, present_liste_course FROM stock_compose_produit;
+SELECT id_produit, id_stock, quantite, id_emplacement, present_liste_course FROM stock_compose_produit;
 
 -- lire (requêtes avec jointures)
 -- trouver liste produit par id_stock

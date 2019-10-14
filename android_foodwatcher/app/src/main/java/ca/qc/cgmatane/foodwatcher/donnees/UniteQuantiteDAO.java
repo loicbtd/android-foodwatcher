@@ -34,8 +34,8 @@ public class UniteQuantiteDAO implements UniteQuantiteSQL{
 
     public List<Stock> recupererListeMaison() {
         Cursor curseur = baseDeDonnees.getReadableDatabase()
-                .rawQuery(SQL_LISTER_STOCK, null);
-        this.listeStock.clear();
+                .rawQuery(SQL_LISTER_UNITE_QUANTITE, null);
+        this.listeUniteQuantite.clear();
 
         Stock stock;
         int indexId_stock = curseur.getColumnIndex(Stock.CLE_ID_STOCK);
