@@ -21,13 +21,14 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
     private RecyclerView recyclerView;
     private AdapteurListeProduit adapter;
     private Bitmap icon;
     private Button btn_view_stock_add_product;
-    protected List<Produit> listeProduits;
+    protected List<ProduitStocke> listeProduits;
     protected int id_maison;
     private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
     //TODO: create and add controller as attribute
@@ -59,23 +60,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     }
 
 
-/*    public void mockListProduit() {
-        Produit produit;
-        for (int i = 0; i < 10
-                ; i++) {
-            int id_produit = i;
-            String etiquette = "Produit " + i;
-            String gencode = "genCode"+i;
-            int nbJoursConservation = i;
-            String cheminImage = "image"+i;
-            int uniteQuantite = i;
-            int id_categorie = 1;
-            produit = new Produit(id_produit,gencode, etiquette, nbJoursConservation, cheminImage, uniteQuantite, id_categorie );
-            listeProduits.add(produit);
-        }
-    }*/
-
-    public void setListeProduits(List<Produit> listeProduit){
+    public void setListeProduits(List<ProduitStocke> listeProduit){
         this.listeProduits = listeProduit;
     }
 

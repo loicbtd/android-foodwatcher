@@ -13,11 +13,12 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteListeDeCourse;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteListeCourseVue {
     private RecyclerView recyclerView;
     private AdapteurListeCourse adapteur;
-    private List<Produit> listeProduits;
+    private List<ProduitStocke> listeProduits;
     private Button boutonListeCourseActionSupprimer;
     private ControleurActiviteListeDeCourse controleur;
     @Override
@@ -42,7 +43,7 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
             }
         });
     }
-    public void setListeProduits(List<Produit> listeProduits){
+    public void setListeProduits(List<ProduitStocke> listeProduits){
         this.listeProduits = listeProduits;
     }
 }

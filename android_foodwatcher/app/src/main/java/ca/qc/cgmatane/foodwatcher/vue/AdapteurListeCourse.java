@@ -14,9 +14,10 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCourse.ViewHolder>{
-    List<Produit> listeProds;
+    List<ProduitStocke> listeProds;
     private int positionSelectionnee = 0;
 
 
@@ -31,7 +32,7 @@ public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCours
             nameTextView = (TextView) itemView.findViewById(R.id.nom_produit_liste_course);
             quantiteTextView = itemView.findViewById(R.id.quantite_liste_course);
         }
-        public void bind(final Produit produit) {
+        public void bind(final ProduitStocke produit) {
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
 
                 @Override
@@ -76,7 +77,7 @@ public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCours
     public int getItemCount() {
         return listeProds.size();
     }
-    public AdapteurListeCourse(List<Produit> produits) {
+    public AdapteurListeCourse(List<ProduitStocke> produits) {
         listeProds = produits;
     }
     public void supprSelectionne(){

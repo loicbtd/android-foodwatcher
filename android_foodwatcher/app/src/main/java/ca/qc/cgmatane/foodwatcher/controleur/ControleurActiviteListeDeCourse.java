@@ -4,11 +4,12 @@ import android.content.Context;
 
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeCourse;
 
 public class ControleurActiviteListeDeCourse implements Controleur {
     protected ActiviteListeCourse vue;
-    protected ProduitDAO accesseurProduit;
+    protected ProduitStockeDAO accesseurProduit;
     public ControleurActiviteListeDeCourse(ActiviteListeCourse vue){
         this.vue = vue;
     }
@@ -16,8 +17,9 @@ public class ControleurActiviteListeDeCourse implements Controleur {
     @Override
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
-        accesseurProduit = ProduitDAO.getInstance();
-        vue.setListeProduits(accesseurProduit.recupererListeProduit());
+        accesseurProduit = ProduitStockeDAO.getInstance();
+        //TODO: trouver un moyen de recuperer id du stock (avec extra dans intent)
+        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(1));
     }
 
     @Override

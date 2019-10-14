@@ -13,9 +13,10 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProduit.ViewHolder> {
-        List<Produit> listeProds;
+        List<ProduitStocke> listeProds;
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -66,7 +67,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
         boutonMoins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Produit produit = listeProds.get(position);
+                ProduitStocke produit = listeProds.get(position);
                 produit.setQuantite(produit.getQuantite()-1);
             }
         });
@@ -74,7 +75,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
         boutonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Produit produit = listeProds.get(position);
+                ProduitStocke produit = listeProds.get(position);
                 produit.setQuantite(produit.getQuantite()+1);
             }
         });
@@ -85,7 +86,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
     public int getItemCount() {
         return listeProds.size();
     }
-    public AdapteurListeProduit(List<Produit> produits) {
+    public AdapteurListeProduit(List<ProduitStocke> produits) {
         listeProds = produits;
     }
 }
