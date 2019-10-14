@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS historique_maison;
-DROP TABLE IF EXISTS maison_compose_produit;
+DROP TABLE IF EXISTS historique_stock;
+DROP TABLE IF EXISTS stock_compose_produit;
 DROP TABLE IF EXISTS produit;
 DROP TABLE IF EXISTS unite_quantite;
 DROP TABLE IF EXISTS categorie_produit;
 DROP TABLE IF EXISTS emplacement;
-DROP TABLE IF EXISTS maison_compose_utilisateur;
-DROP TABLE IF EXISTS maison;
+DROP TABLE IF EXISTS stock_compose_utilisateur;
+DROP TABLE IF EXISTS stock;
 DROP TABLE IF EXISTS utilisateur;
 
 
@@ -19,22 +19,22 @@ CREATE TABLE utilisateur(
     date_naissance date
 );
 
-CREATE TABLE maison(
-    id_maison serial PRIMARY KEY,
+CREATE TABLE stock(
+    id_stock serial PRIMARY KEY,
     etiquette text
 );
 
-CREATE TABLE maison_compose_utilisateur(
-    id_maison integer NOT NULL,
+CREATE TABLE stock_compose_utilisateur(
+    id_stock integer NOT NULL,
     id_utilisateur integer NOT NULL,
-    CONSTRAINT maison_utilisateur_pfk 
-        PRIMARY KEY(id_maison,id_utilisateur),
-    CONSTRAINT maison_maison_compose_utilisateur_fk
-        FOREIGN KEY (id_maison)
-        REFERENCES maison(id_maison)
+    CONSTRAINT stock_utilisateur_pfk
+        PRIMARY KEY(id_stock,id_utilisateur),
+    CONSTRAINT stock_stock_compose_utilisateur_fk
+        FOREIGN KEY (id_stock)
+        REFERENCES stock(id_stock)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT utilisateur_maison_compose_utilisateur_fk
+    CONSTRAINT utilisateur_stock_compose_utilisateur_fk
         FOREIGN KEY (id_utilisateur)
         REFERENCES utilisateur(id_utilisateur)
         ON DELETE CASCADE
@@ -76,39 +76,39 @@ CREATE TABLE produit(
         ON UPDATE CASCADE
 );
 
-CREATE TABLE maison_compose_produit(
+CREATE TABLE stock_compose_produit(
     id_produit integer NOT NULL,
-    id_maison integer NOT NULL,
+    id_stock integer NOT NULL,
     id_emplacement integer,
     present_liste_course boolean NOT NULL,
-    CONSTRAINT maison_produit_pfk
-        PRIMARY KEY(id_produit,id_maison),
-    CONSTRAINT produit_maison_compose_produit_fk
+    CONSTRAINT stock_produit_pfk
+        PRIMARY KEY(id_produit,id_stock),
+    CONSTRAINT produit_stock_compose_produit_fk
         FOREIGN KEY (id_produit)
         REFERENCES produit(id_produit)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT maison_maison_compose_produit_fk
-        FOREIGN KEY (id_maison)
-        REFERENCES maison(id_maison)
+    CONSTRAINT stock_stock_compose_produit_fk
+        FOREIGN KEY (id_stock)
+        REFERENCES stock(id_stock)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT emplacement_maison_compose_produit_fk
+    CONSTRAINT emplacement_stock_compose_produit_fk
         FOREIGN KEY (id_emplacement)
         REFERENCES emplacement(id_emplacement)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE historique_maison(
-    id_historique_maison serial PRIMARY KEY,
+CREATE TABLE historique_stock(
+    id_historique_stock serial PRIMARY KEY,
     quantite float NOT NULL,
     date_saisie date NOT NULL,
     id_produit integer NOT NULL,
-    id_maison integer NOT NULL,
-    CONSTRAINT maison_compose_produit_historique_maison_fk
-        FOREIGN KEY (id_produit,id_maison)
-        REFERENCES maison_compose_produit(id_produit,id_maison)
+    id_stock integer NOT NULL,
+    CONSTRAINT stock_compose_produit_historique_stock_fk
+        FOREIGN KEY (id_produit,id_stock)
+        REFERENCES stock_compose_produit(id_produit,id_stock)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );

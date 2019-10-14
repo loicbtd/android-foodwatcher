@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+    <list default="true" id="913d4a94-30c8-4e6f-8795-770f72cff637" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/donnees/init_foodwatcher.sql" beforeDir="false" afterPath="$PROJECT_DIR$/donnees/init_foodwatcher.sql" afterDir="false" />
+    </list>
     <list default="true" id="913d4a94-30c8-4e6f-8795-770f72cff637" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectId" id="1SAkd8uG6GWo0jjA9nsBAE9qXF6" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="715" />
     <option name="y" value="40" />
@@ -88,7 +93,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/android_foodwatcher" />
   </component>
   <component name="RunDashboard">
@@ -113,9 +120,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1569788661161</updated>
+      <workItem from="1571013891011" duration="14000" />
+      <workItem from="1571013952049" duration="788000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
@@ -140,6 +151,18 @@
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
     </layout>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/view/AddHomeActivity.java" />
     <entry file="file://$PROJECT_DIR$/android_foodwatcher/app/src/main/java/ca/qc/cgmatane/foodwatcher/view/FindStoreActivity.java" />
