@@ -39,28 +39,34 @@ public class ProduitDAO {
                 0,
                 "9897789765567",
                 "avocat",
-                7,
-                "avocat_vrac.png",
-                1,
-                1
+                0,
+                0,
+                0,
+                2.0,
+                0,
+                false
         ));
         listeProduit.add(new Produit(
                 1,
                 "1234567891234",
-                "salade verte en sachet",
-                3,
-                "salade_verte_sachet.png",
+                "salade verte",
                 0,
-                0
+                0,
+                0,
+                3.0,
+                0,
+                true
         ));
         listeProduit.add(new Produit(
                 2,
                 "9876543219876",
                 "oeuf à l'unité",
-                60,
-                "oeuf_unite.png",
                 0,
-                0
+                0,
+                0,
+                1.0,
+                0,
+                true
         ));
     }
 }

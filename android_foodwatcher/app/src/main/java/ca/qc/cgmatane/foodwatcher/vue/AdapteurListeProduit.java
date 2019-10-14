@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.modele;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
-public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHolder> {
+public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProduit.ViewHolder> {
         List<Produit> listeProds;
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
@@ -38,7 +39,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         }
     }
     @Override
-    public ProduitAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapteurListeProduit.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -52,7 +53,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(ProduitAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(AdapteurListeProduit.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
@@ -70,7 +71,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
     public int getItemCount() {
         return listeProds.size();
     }
-    public ProduitAdapter(List<Produit> produits) {
+    public AdapteurListeProduit(List<Produit> produits) {
         listeProds = produits;
     }
 }

@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.foodwatcher.modele;
+package ca.qc.cgmatane.foodwatcher.vue;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,13 +10,12 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
-public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteur.ViewHolder>{
+public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCourse.ViewHolder>{
     List<Produit> listeProds;
     private int positionSelectionnee = 0;
 
@@ -37,8 +36,8 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
 
                 @Override
                 public boolean onLongClick(View view) {
-                    produit.setSelectionne(!produit.estSelectionne());
-                    if (produit.estSelectionne()){
+                    produit.setSelectionne(!produit.isSelectionne());
+                    if (produit.isSelectionne()){
                         elementListe.setCardBackgroundColor(Color.argb(255,150,150,150));
                     }else{
                         elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
@@ -49,20 +48,20 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
         }
     }
     @Override
-    public ListeCourseAdapteur.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapteurListeCourse.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
         View contactView = inflater.inflate(R.layout.activite_liste_course_recycler_view_item_produit, parent, false);
         // Return a new holder instance
-        ListeCourseAdapteur.ViewHolder viewHolder = new ListeCourseAdapteur.ViewHolder(contactView);
+        AdapteurListeCourse.ViewHolder viewHolder = new AdapteurListeCourse.ViewHolder(contactView);
         return viewHolder;
     }
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(ListeCourseAdapteur.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(AdapteurListeCourse.ViewHolder viewHolder, int position) {
         TextView nom = viewHolder.nameTextView;
         TextView quantite = viewHolder.quantiteTextView;
         nom.setText(listeProds.get(position).getEtiquette());
@@ -77,14 +76,14 @@ public class ListeCourseAdapteur extends RecyclerView.Adapter<ListeCourseAdapteu
     public int getItemCount() {
         return listeProds.size();
     }
-    public ListeCourseAdapteur(List<Produit> produits) {
+    public AdapteurListeCourse(List<Produit> produits) {
         listeProds = produits;
     }
     public void supprSelectionne(){
         if (listeProds.size()>0){
         for (int i = 0; i <listeProds.size() ; i++) {
-            System.out.println(listeProds.get(i).getEtiquette() + listeProds.get(i).estSelectionne());
-            if (listeProds.get(i).estSelectionne()) {
+            System.out.println(listeProds.get(i).getEtiquette() + listeProds.get(i).isSelectionne());
+            if (listeProds.get(i).isSelectionne()) {
                 listeProds.remove(i);
             }
         }

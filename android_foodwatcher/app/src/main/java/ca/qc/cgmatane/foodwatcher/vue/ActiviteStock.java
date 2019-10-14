@@ -21,11 +21,10 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
-import ca.qc.cgmatane.foodwatcher.modele.ProduitAdapter;
 
 public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
     private RecyclerView recyclerView;
-    private ProduitAdapter adapter;
+    private AdapteurListeProduit adapter;
     private Bitmap icon;
     private Button btn_view_stock_add_product;
     protected List<Produit> listeProduits;
@@ -51,7 +50,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         });
         recyclerView = findViewById(R.id.my_recycler_view);
         stockController.onCreate(getApplicationContext());
-        adapter = new ProduitAdapter(listeProduits);
+        adapter = new AdapteurListeProduit(listeProduits);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);

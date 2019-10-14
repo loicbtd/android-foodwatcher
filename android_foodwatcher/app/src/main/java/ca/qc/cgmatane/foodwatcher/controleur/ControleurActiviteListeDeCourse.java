@@ -4,7 +4,6 @@ import android.content.Context;
 
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
-import ca.qc.cgmatane.foodwatcher.modele.ListeCourseAdapteur;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeCourse;
 
 public class ControleurActiviteListeDeCourse implements Controleur {

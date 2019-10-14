@@ -5,36 +5,43 @@ public class Produit {
     public static final String CLE_ID_PRODUIT = "id_produit";
     public static final String CLE_GENCODE = "gencode";
     public static final String CLE_ETIQUETTE = "etiquette";
-    public static final String CLE_NOMBRE_JOUR_CONSERVATION = "nombre_jour_conservation";
-    public static final String CLE_CHEMIN_IMAGE = "chemin_image";
     public static final String CLE_ID_UNITE_QUANTITE = "id_unite_quantite";
     public static final String CLE_ID_CATEGORIE_PRODUIT = "id_categorie_produit";
+    public static final String CLE_ID_STOCK = "id_stock";
+    public static final String CLE_QUANTITE = "quantite";
+    public static final String CLE_ID_EMPLACEMENT = "id_emplacement";
+    public static final String CLE_PRESENT_LISTE_COURSE = "present_liste_course";
 
-    protected int id_produit;
+    protected int idProduit;
     protected String gencode;
     protected String etiquette;
-    protected int nombre_jour_conservation;
-    protected String chemin_image;
-    protected int id_unite_quantite;
-    protected int id_categorie_produit;
+    protected int idUniteQuantite;
+    protected int idCategorieProduit;
+    protected int idStock;
+    protected double quantite;
+    protected int idEmplacement;
+    protected boolean presentListeCourse;
+
     protected boolean selectionne;
 
-    public Produit(int id_produit, String gencode, String etiquette, int nombre_jour_conservation, String chemin_image, int id_unite_quantite, int id_categorie_produit) {
-        this.id_produit = id_produit;
+    public Produit(int idProduit, String gencode, String etiquette, int idUniteQuantite, int idCategorieProduit, int idStock, double quantite, int idEmplacement, boolean presentListeCourse) {
+        this.idProduit = idProduit;
         this.gencode = gencode;
         this.etiquette = etiquette;
-        this.nombre_jour_conservation = nombre_jour_conservation;
-        this.chemin_image = chemin_image;
-        this.id_unite_quantite = id_unite_quantite;
-        this.id_categorie_produit = id_categorie_produit;
+        this.idUniteQuantite = idUniteQuantite;
+        this.idCategorieProduit = idCategorieProduit;
+        this.idStock = idStock;
+        this.quantite = quantite;
+        this.idEmplacement = idEmplacement;
+        this.presentListeCourse = presentListeCourse;
         this.selectionne = false;
     }
 
-    public int getId_produit() {
-        return id_produit;
+    public int getIdProduit() {
+        return idProduit;
     }
-    public void setId_produit(int id_produit) {
-        this.id_produit = id_produit;
+    public void setIdProduit(int idProduit) {
+        this.idProduit = idProduit;
     }
     public String getGencode() {
         return gencode;
@@ -48,34 +55,45 @@ public class Produit {
     public void setEtiquette(String etiquette) {
         this.etiquette = etiquette;
     }
-    public int getNombre_jour_conservation() {
-        return nombre_jour_conservation;
+    public int getIdUniteQuantite() {
+        return idUniteQuantite;
     }
-    public void setNombre_jour_conservation(int nombre_jour_conservation) {
-        this.nombre_jour_conservation = nombre_jour_conservation;
+    public void setIdUniteQuantite(int idUniteQuantite) {
+        this.idUniteQuantite = idUniteQuantite;
     }
-    public String getChemin_image() {
-        return chemin_image;
+    public int getIdCategorieProduit() {
+        return idCategorieProduit;
     }
-    public void setChemin_image(String chemin_image) {
-        this.chemin_image = chemin_image;
+    public void setIdCategorieProduit(int idCategorieProduit) {
+        this.idCategorieProduit = idCategorieProduit;
     }
-    public int getId_unite_quantite() {
-        return id_unite_quantite;
+    public int getIdStock() {
+        return idStock;
     }
-    public void setId_unite_quantite(int id_unite_quantite) {
-        this.id_unite_quantite = id_unite_quantite;
+    public void setIdStock(int idStock) {
+        this.idStock = idStock;
     }
-    public int getId_categorie_produit() {
-        return id_categorie_produit;
+    public double getQuantite() {
+        return quantite;
     }
-    public void setId_categorie_produit(int id_categorie_produit) {
-        this.id_categorie_produit = id_categorie_produit;
+    public void setQuantite(double quantite) {
+        this.quantite = quantite;
     }
-    public boolean estSelectionne(){
+    public int getIdEmplacement() {
+        return idEmplacement;
+    }
+    public void setIdEmplacement(int idEmplacement) {
+        this.idEmplacement = idEmplacement;
+    }
+    public boolean isPresentListeCourse() {
+        return presentListeCourse;
+    }
+    public void setPresentListeCourse(boolean presentListeCourse) {
+        this.presentListeCourse = presentListeCourse;
+    }
+    public boolean isSelectionne(){
         return selectionne;
     }
-
     public void setSelectionne(boolean estSelectionne){
         this.selectionne = estSelectionne;
     }

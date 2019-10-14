@@ -8,17 +8,15 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteListeDeCourse;
-import ca.qc.cgmatane.foodwatcher.modele.ListeCourseAdapteur;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
 public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteListeCourseVue {
     private RecyclerView recyclerView;
-    private ListeCourseAdapteur adapteur;
+    private AdapteurListeCourse adapteur;
     private List<Produit> listeProduits;
     private Button boutonListeCourseActionSupprimer;
     private ControleurActiviteListeDeCourse controleur;
@@ -29,7 +27,7 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
         controleur = new ControleurActiviteListeDeCourse(this);
         recyclerView = findViewById(R.id.recycler_view_liste_de_courses);
         controleur.onCreate(getApplicationContext());
-        adapteur = new ListeCourseAdapteur(listeProduits);
+        adapteur = new AdapteurListeCourse(listeProduits);
         recyclerView.setAdapter(adapteur);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
