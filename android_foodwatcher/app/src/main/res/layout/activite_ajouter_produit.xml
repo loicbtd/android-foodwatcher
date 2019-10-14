@@ -34,7 +34,7 @@
                 android:id="@+id/intitule_produit_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="textAutoComplete"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,24 +51,7 @@
                 android:id="@+id/code_barre_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:hint="@string/hint_jours_conservation"
-            app:boxStrokeColor="@color/colorButton"
-            app:hintTextColor="@color/colorButton">
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/jours_conservation_text_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
+                android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,6 +100,26 @@
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buton_vue_ajouter_produit_action_scanner"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/colorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scanner Code Barre"/>
+            <CheckBox
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkbox_ajouter_liste_course_vue_ajouter_produit"
+                android:text="Ajouter à la liste de course"/>
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
