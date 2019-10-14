@@ -89,7 +89,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:text="Unite de quantite:"/>
             <Spinner
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:id="@+id/choix_unite_quantite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,6 +107,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:text="Categorie du produit:"/>
             <Spinner
+                android:textAlignment="textEnd"
                 android:id="@+id/choix_categorie_produit"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
@@ -124,6 +125,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:text="Emplacement:"/>
             <Spinner
+                android:textAlignment="textEnd"
                 android:id="@+id/choix_emplacement"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
