@@ -69,11 +69,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buton_vue_ajouter_produit_action_scanner"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/colorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scanner Code Barre"/>
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Unite de quantite:"/>
             <Spinner
+                android:textAlignment="center"
                 android:id="@+id/choix_unite_quantite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,6 +99,13 @@
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Categorie du produit:"/>
             <Spinner
                 android:id="@+id/choix_categorie_produit"
                 android:layout_margin="10dp"
@@ -93,6 +116,13 @@
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Emplacement:"/>
             <Spinner
                 android:id="@+id/choix_emplacement"
                 android:layout_margin="10dp"
@@ -105,14 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buton_vue_ajouter_produit_action_scanner"
-                android:layout_gravity="center"
-                app:backgroundTint="@color/colorButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scanner Code Barre"/>
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
