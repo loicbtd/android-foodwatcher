@@ -34,7 +34,6 @@
         <activity android:name=".vue.ActiviteAjouterStock" />
         <activity android:name=".vue.ActiviteAjouterProduit" />
         <activity android:name=".vue.ActiviteTrouverMagasin" />
-        <activity android:name=".vue.ActivitePrisePhoto" />
     </application>
 
 </manifest>
