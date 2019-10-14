@@ -31,22 +31,30 @@ public class StockDAO implements StockSQL {
         ajouterListeStockMock();
     }
 
-    public List<Stock> recupererListeMaison() {
+    public List<Stock> recupererListeStock() {
         Cursor curseur = baseDeDonnees.getReadableDatabase()
                 .rawQuery(SQL_LISTER_STOCK, null);
         this.listeStock.clear();
 
         Stock stock;
-        int indexId_stock = curseur.getColumnIndex(Stock.CLE_ID_STOCK);
+        int indexIdStock = curseur.getColumnIndex(Stock.CLE_ID_STOCK);
         int indexEtiquette = curseur.getColumnIndex(Stock.CLE_ETIQUETTE);
 
         for (curseur.moveToFirst(); !curseur.isAfterLast(); curseur.moveToNext()) {
-            int id_stock = curseur.getInt(indexId_stock);
+            int idStock = curseur.getInt(indexIdStock);
             String etiquette = curseur.getString(indexEtiquette);
-            stock = new Stock(id_stock, etiquette);
+            stock = new Stock(idStock, etiquette);
             this.listeStock.add(stock);
         }
         return listeStock;
+    }
+
+    public Stock trouverStockParId(int id) { //TODO: améliorer en utilisant une requête préparée ou une meilleure recherche
+        recupererListeStock();
+        for (Stock stock : listeStock) {
+            if (stock.getIdStock() == id) return stock;
+        }
+        return null;
     }
 
     public void ajouterStock(Stock stock) {
@@ -60,11 +68,18 @@ public class StockDAO implements StockSQL {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_MODIFIER_STOCK);
         sqLiteStatement.bindString(1, stock.getEtiquette());
-        sqLiteStatement.bindString(2, ""+ stock.getId_stock());
+        sqLiteStatement.bindString(2, ""+ stock.getIdStock());
         sqLiteStatement.execute();
     }
 
-    public void ajouterListeStockMock() {
+    public void supprimerStock(Stock stock) {
+        SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
+        SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_SUPPRIMER_STOCK);
+        sqLiteStatement.bindString(1, ""+ stock.getIdStock());
+        sqLiteStatement.execute();
+    }
+
+    private void ajouterListeStockMock() {
         ajouterStock(new Stock(0, "Domicile"));
         ajouterStock(new Stock(1, "Maison vacances"));
         ajouterStock(new Stock(2, "Mon restaurant"));

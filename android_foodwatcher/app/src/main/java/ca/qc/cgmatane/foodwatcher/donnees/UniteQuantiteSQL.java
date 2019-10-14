@@ -5,4 +5,6 @@ public interface UniteQuantiteSQL {
     String SQL_LISTER_UNITE_QUANTITE = "SELECT id_unite_quantite, etiquette FROM unite_quantite";
     String SQL_MODIFIER_UNITE_QUANTITE = "UPDATE unite_quantite SET etiquette=? WHERE id_unite_quantite=?";
     String SQL_SUPPRIMER_UNITE_QUANTITE = "DELETE FROM unite_quantite WHERE id_unite_quantite=?";
+
+    String SQL_TROUVER_UNITE_QUANITE_PAR_ID = "SELECT id_unite_quantite, etiquette FROM unite_quantite WHERE id_unite_quantite=?";
 }
