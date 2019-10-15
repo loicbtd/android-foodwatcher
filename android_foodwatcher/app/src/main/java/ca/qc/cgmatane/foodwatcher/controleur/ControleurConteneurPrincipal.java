@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
+import android.widget.Toast;
 
 import androidx.core.view.GravityCompat;
 
@@ -14,7 +14,6 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
-import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Stock;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
@@ -52,11 +51,6 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         if (stockCourant == null) stockCourant = listeStock.get(0);
         vue.setListeStock(listeStock);
         vue.peuplerListeStockDansMenuDrawer();
-
-        Menu menu = vue.getNavigationView().getMenu();
-        MenuItem itemMenu = menu.findItem(R.id.conteneur_principal_drawer_rubrique_stock);
-        SubMenu sousMenuStock = itemMenu.getSubMenu();
-        sousMenuStock.findItem(stockCourant.getIdStock()).setChecked(true);
     }
 
     @Override
@@ -94,6 +88,11 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 
         // récupération de l'id de l'item sélectionné
         itemId = item.getItemId();
+        Toast.makeText(vue.getApplicationContext(),
+                "itemId = "+itemId + "\n" +
+                        "stockCourant.getIdStock()"+stockCourant.getIdStock(),
+                Toast.LENGTH_SHORT).show();
+
 
         // fermeture du drawer
         vue.getDrawerLayout().closeDrawer(GravityCompat.START);
