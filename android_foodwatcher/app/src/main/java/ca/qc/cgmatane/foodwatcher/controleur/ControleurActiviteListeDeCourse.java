@@ -45,4 +45,8 @@ public class ControleurActiviteListeDeCourse implements Controleur {
     public void onBackPressed() {
 
     }
+
+    public void actionSupprimerSelection() {
+        vue.supprimerSelection();
+    }
 }

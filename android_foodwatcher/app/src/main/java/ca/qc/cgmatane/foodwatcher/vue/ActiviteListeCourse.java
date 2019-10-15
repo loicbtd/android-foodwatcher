@@ -38,10 +38,22 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
         boutonListeCourseActionSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adapteur.supprSelectionne();
-                adapteur.notifyDataSetChanged();
+                controleur.actionSupprimerSelection();
             }
         });
+    }
+    @Override
+    public void supprimerSelection(){
+        if (listeProduits.size()>0){
+            for (int i = 0; i <listeProduits.size() ; i++) {
+                System.out.println(listeProduits.get(i).getEtiquette() + listeProduits.get(i).isSelectionne());
+                if (listeProduits.get(i).isSelectionne()) {
+                    listeProduits.remove(i);
+                }
+            }
+
+        }
+        adapteur.notifyDataSetChanged();
     }
     public void setListeProduits(List<ProduitStocke> listeProduits){
         this.listeProduits = listeProduits;
