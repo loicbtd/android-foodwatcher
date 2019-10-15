@@ -90,7 +90,6 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 
             if(listeProduits.size() < 4){
-                //TODO Ajouter une notification ici qui envoie vers la liste de course
                 declencherNotification();
             }
 

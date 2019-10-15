@@ -12,6 +12,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Stock;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
@@ -101,8 +102,8 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
                     intent = new Intent(view.getApplicationContext(), ActiviteExemple.class);
                     view.startActivityForResult(intent, ACTIVITY_SAMPLE);
                     //TODO décommenter pour tester l'export du xml
-//                    ProduitStockeDAO produitStockeDAO = ProduitStockeDAO.getInstance();
-//                    produitStockeDAO.exporterProduitsStockeEnXML();
+                    ProduitStockeDAO produitStockeDAO = ProduitStockeDAO.getInstance();
+                    produitStockeDAO.exporterProduitsStockeEnXML();
                     break;
                     // start ActiviteAjouterStock
                 case R.id.conteneur_principal_drawer_action_naviguer_ajouter_maison:
