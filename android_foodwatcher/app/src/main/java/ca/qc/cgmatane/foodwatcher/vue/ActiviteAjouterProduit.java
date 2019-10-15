@@ -14,10 +14,19 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.donnees.CategorieProduitDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.EmplacementDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.UniteQuantiteDAO;
+import ca.qc.cgmatane.foodwatcher.modele.CategorieProduit;
+import ca.qc.cgmatane.foodwatcher.modele.Emplacement;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
 
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
 
@@ -51,20 +60,33 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
 
 
         choixUniteQuantite = findViewById(R.id.choix_unite_quantite);
-        String[] unites={"Kg","G", "L", "Oz", "unité"};
+        List<String> unites = new ArrayList<>();
+        List<UniteQuantite> listeUniteQuantite = UniteQuantiteDAO.getInstance().recupererListeUniteQuantite();
+        for (UniteQuantite uniteQuantite : listeUniteQuantite) {
+            unites.add(uniteQuantite.getEtiquette());
+        }
         ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,unites);
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixUniteQuantite.setAdapter(dataAdapterR);
 
+
         choixCategorieProduit = findViewById(R.id.choix_categorie_produit);
-        String[] categories={"liquide","Viande", "Légume", "Fruit", "Féculent"};
+        List<String> categories = new ArrayList<>();
+        List<CategorieProduit> listeCategorie = CategorieProduitDAO.getInstance().recupererListeCategorieProduit();
+        for (CategorieProduit categorieProduit : listeCategorie) {
+            categories.add(categorieProduit.getEtiquette());
+        }
         ArrayAdapter<String> adapterCategories = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,categories);
         adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixCategorieProduit.setAdapter(adapterCategories);
 
         choixEmplacement = findViewById(R.id.choix_emplacement);
-        String[] emplacaments={"Cuisine","Cave", "Frigo"};
-        ArrayAdapter<String> adapteurEmplacement = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,emplacaments);
+        List<String> emplacements = new ArrayList<>();
+        List<Emplacement> listeEmplacements = EmplacementDAO.getInstance().recupererListeEmplacement();
+        for (Emplacement emplacement : listeEmplacements) {
+            emplacements.add(emplacement.getEtiquette());
+        }
+        ArrayAdapter<String> adapteurEmplacement = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,emplacements);
         adapteurEmplacement.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixEmplacement.setAdapter(adapteurEmplacement);
 
@@ -135,7 +157,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
 //        String uniteQuantite;
 //        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
 //        ProduitStocke produit = new ProduitStocke(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
-//        controleur.actionEnregistrerProduit(produit);
+//        Produit produit = new ProduitStocke(1, textFieldIntitule.getText().toString(),);
     }
 
     public void naviguerRetourMaison(){
