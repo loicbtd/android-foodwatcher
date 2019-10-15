@@ -43,8 +43,8 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
         stockDAO = StockDAO.getInstance();
-        view.setListStock(stockDAO.recupererListeStock());
-        view.populateHomeInMenuDrawer();
+        view.setListeStock(stockDAO.recupererListeStock());
+        view.peuplerListeStockDansMenuDrawer();
     }
 
     @Override
@@ -87,7 +87,7 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         view.getDrawerLayout().closeDrawer(GravityCompat.START);
 
         // if itemId corresponds to a stock
-        if (0 <= itemId && itemId < view.getListStock().size()) {
+        if (0 <= itemId && itemId < view.getListeStock().size()) {
             if (itemId != stockCourant.getIdStock()) {
                 itemId = stockCourant.getIdStock();
                 intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
@@ -98,21 +98,21 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         else {
             switch (itemId) {
                     // start ActiviteExemple
-                case R.id.activity_master_drawer_action_display_sample:
+                case R.id.conteneur_principal_drawer_action_naviguer_exemple:
                     intent = new Intent(view.getApplicationContext(), ActiviteExemple.class);
                     view.startActivityForResult(intent, ACTIVITY_SAMPLE);
                     break;
                     // start ActiviteAjouterStock
-                case R.id.activity_master_drawer_action_add_home:
+                case R.id.conteneur_principal_drawer_action_naviguer_ajouter_maison:
                     intent = new Intent(view.getApplicationContext(), ActiviteAjouterStock.class);
                     view.startActivityForResult(intent, ACTIVITY_ADD_HOME);
                     break;
                     // start ActiviteTrouverMagasin
-                case R.id.activity_master_drawer_action_find_store:
+                case R.id.conteneur_principal_drawer_action_naviguer_carte_magasin:
                     intent = new Intent(view.getApplicationContext(), ActiviteTrouverMagasin.class);
                     view.startActivityForResult(intent, ACTIVITY_FIND_STORE);
                     break;
-                case R.id.activity_master_drawer_action_display_shopping_list:
+                case R.id.conteneur_principal_drawer_action_naviguer_liste_course:
                     intent = new Intent(view.getApplicationContext(), ActiviteListeCourse.class);
                     view.startActivity(intent);
                     // return false if item id does not correspond to any activity

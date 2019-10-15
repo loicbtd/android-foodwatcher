@@ -83,5 +83,7 @@ public class UniteQuantiteDAO implements UniteQuantiteSQL{
         ajouterUniteQuantite(new UniteQuantite(0, "unité(s)"));
         ajouterUniteQuantite(new UniteQuantite(1, "kg"));
         ajouterUniteQuantite(new UniteQuantite(2, "g"));
+        ajouterUniteQuantite(new UniteQuantite(3, "L"));
+        ajouterUniteQuantite(new UniteQuantite(4, "mL"));
     }
 }
