@@ -23,6 +23,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
         public TextView nbRestants;
+        public TextView uniteQuantiteTextView;
         public Button boutonMoins;
         public Button boutonPlus;
 
@@ -34,6 +35,7 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
             nbRestants = itemView.findViewById(R.id.nbrestants);
             boutonMoins = itemView.findViewById(R.id.bouton_moins);
             boutonPlus = itemView.findViewById(R.id.bouton_plus);
+            uniteQuantiteTextView = itemView.findViewById(R.id.textView_unite_quantite_vue_stock);
 
         }
     }
@@ -55,8 +57,10 @@ public class AdapteurListeProduit extends RecyclerView.Adapter<AdapteurListeProd
 
         TextView textView = viewHolder.nameTextView;
         TextView textViewNbRestants = viewHolder.nbRestants;
+        TextView uniteQuantite = viewHolder.uniteQuantiteTextView;
         textView.setText(listeProds.get(position).getEtiquette());
         textViewNbRestants.setText(Double.toString(listeProds.get(position).getQuantite()));
+        uniteQuantite.setText(listeProds.get(position).getUniteQuantite().getEtiquette());
         Button boutonMoins = viewHolder.boutonMoins;
         Button boutonPlus = viewHolder.boutonPlus;
         boutonMoins.setText("-");

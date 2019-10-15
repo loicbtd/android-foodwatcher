@@ -32,7 +32,8 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp" />
-
+<LinearLayout
+    android:orientation="horizontal">
         <TextView
             android:id="@+id/nbrestants"
             android:layout_width="wrap_content"
@@ -42,6 +43,17 @@
             android:text="TextView"
             android:textColor="@color/colorButton"
             android:textSize="18sp" />
+    <TextView
+        android:id="@+id/textView_unite_quantite_vue_stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        android:textColor="@color/colorButton"
+        android:textSize="18sp" />
+</LinearLayout>
+
 
     </GridLayout>
 
