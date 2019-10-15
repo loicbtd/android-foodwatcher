@@ -20,7 +20,7 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.configureActivityContent(R.layout.activite_ajouter_maison);
+        super.configureActivityContent(R.layout.activite_ajouter_stock);
 //        super.configureToolbarMenu(R.menu.vue_exemple_toolbar);
 //        toolbar.setOnMenuItemClickListener();
         controleur = new ControleurActiviteAjouterStock(this);

@@ -80,16 +80,5 @@ public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCours
     public AdapteurListeCourse(List<ProduitStocke> produits) {
         listeProds = produits;
     }
-    public void supprSelectionne(){
-        if (listeProds.size()>0){
-        for (int i = 0; i <listeProds.size() ; i++) {
-            System.out.println(listeProds.get(i).getEtiquette() + listeProds.get(i).isSelectionne());
-            if (listeProds.get(i).isSelectionne()) {
-                listeProds.remove(i);
-            }
-        }
 
-        }
-
-    }
 }

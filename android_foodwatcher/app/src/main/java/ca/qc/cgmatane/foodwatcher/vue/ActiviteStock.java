@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
@@ -29,7 +31,8 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     private Bitmap icon;
     private Button btn_view_stock_add_product;
     protected List<ProduitStocke> listeProduits;
-    protected int id_maison;
+    protected int idStock;
+    protected ProduitStockeDAO accesseurProduitStocke;
     private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
     //TODO: create and add controller as attribute
 
@@ -37,11 +40,11 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_stock);
-//        Bundle parametres = this.getIntent().getExtras();
+        Bundle parametres = this.getIntent().getExtras();
 //        idStock = (int) parametres.get("idStock");
 //        Toast.makeText(this, "id maison "+idStock, Toast.LENGTH_SHORT).show();
 
-
+        accesseurProduitStocke = ProduitStockeDAO.getInstance();
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +75,9 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            accesseurProduitStocke.supprimerProduitDuStock(listeProduits.get(viewHolder.getAdapterPosition()));
             listeProduits.remove(viewHolder.getAdapterPosition());
+
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 
             //TODO Faire un test du nombre d'élément dans la liste de produit
