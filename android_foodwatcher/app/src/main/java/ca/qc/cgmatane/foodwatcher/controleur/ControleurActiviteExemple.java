@@ -49,7 +49,7 @@ public class ControleurActiviteExemple implements Controleur, Toolbar.OnMenuItem
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.activite_exemple_barre_outil_action_ecrire_hello:
+            case R.id.activite_stock_barre_outil_action_exporter_stock:
                 vue.getTextView().setText("Hello");
                 vue.exporterProduitsStockeEnXML();
                 break;

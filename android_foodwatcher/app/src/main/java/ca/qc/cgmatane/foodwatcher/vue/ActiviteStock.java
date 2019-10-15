@@ -11,11 +11,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -29,7 +31,7 @@ import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
-public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
+public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue, Toolbar.OnMenuItemClickListener {
 
     private static final String CHANNEL_ID = "myChannel";
 
@@ -43,23 +45,23 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     protected List<ProduitStocke> listeProduits;
     protected int idStock;
     protected ProduitStockeDAO produitStockeDAO;
-    private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
+    private ControleurActiviteStock controleurActiviteStock = new ControleurActiviteStock(this);
     //TODO: create and add controller as attribute
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_stock);
-        Bundle parametres = this.getIntent().getExtras();
-//        idStock = (int) parametres.get("idStock");
-//        Toast.makeText(this, "id maison "+idStock, Toast.LENGTH_SHORT).show();
+        super.configureToolbarMenu(R.menu.activite_stock_barre_outil);
+
+        barreOutil.setOnMenuItemClickListener(this);
 
         produitStockeDAO = ProduitStockeDAO.getInstance();
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stockController.actionNaviguerVueAjouterProduit();
+                controleurActiviteStock.actionNaviguerVueAjouterProduit();
             }
         });
         afficherProduits();
@@ -70,7 +72,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
     public void afficherProduits(){
         recyclerView = findViewById(R.id.my_recycler_view);
-        stockController.onCreate(getApplicationContext());
+        controleurActiviteStock.onCreate(getApplicationContext());
         adapter = new AdapteurListeProduit(listeProduits);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -147,7 +149,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        stockController.onActivityResult(requestCode);
+        controleurActiviteStock.onActivityResult(requestCode);
     }
 
     public void declencherNotification(){
@@ -190,4 +192,15 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         }
     }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.activite_stock_barre_outil_action_exporter_stock:
+                controleurActiviteStock.exporterProduitsStockeEnXML();
+                break;
+            default:
+                return false;
+        }
+        return true;
+    }
 }
