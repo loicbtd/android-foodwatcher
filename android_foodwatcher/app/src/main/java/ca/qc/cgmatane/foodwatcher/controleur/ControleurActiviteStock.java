@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,18 +13,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import java.util.List;
-
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
 
 public class ControleurActiviteStock implements Controleur {
     public static final String NOM_DOSSIER = "Foodwatcher";
+    public static final int ACTIVITE_AJOUTER_PRODUIT = 1;
     private ActiviteStock vue;
-    public static final int ADD_PRODUCT_ACTIVITY = 1;
-    protected ProduitStockeDAO accesseurProduit;
+    protected ProduitStockeDAO produitStockeDAO;
 
     public ControleurActiviteStock(ActiviteStock vue){
         this.vue = vue;
@@ -39,10 +37,9 @@ public class ControleurActiviteStock implements Controleur {
 
     @Override
     public void onCreate(Context applicationContext) {
-        accesseurProduit = ProduitStockeDAO.getInstance();
-        List<ProduitStocke> liste;
-        liste  = accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock());
-        vue.setListeProduits(liste);
+        BaseDeDonnees.getInstance(applicationContext);
+        produitStockeDAO = ProduitStockeDAO.getInstance();
+        vue.setListeProduits(produitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
     }
 
     @Override
@@ -64,17 +61,17 @@ public class ControleurActiviteStock implements Controleur {
     public void onActivityResult(int activite) {
         System.out.println("ON ACTIVITY RESULT");
         switch (activite){
-            case ADD_PRODUCT_ACTIVITY:
-                vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+            case ACTIVITE_AJOUTER_PRODUIT:
+                vue.setListeProduits(produitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
                 vue.afficherProduits();
                 break;
         }
     }
 
     public void actionSupprimer(int position){
-        accesseurProduit = ProduitStockeDAO.getInstance();
+        produitStockeDAO = ProduitStockeDAO.getInstance();
         vue.supprimer(position);
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        vue.setListeProduits(produitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
         vue.afficherProduits();
     }
 
@@ -86,6 +83,12 @@ public class ControleurActiviteStock implements Controleur {
         Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_STARTED);
         intent.setData(Uri.fromFile(file));
         vue.sendBroadcast(intent);
+    }
+
+    public void supprimerStockCourant() {
+        StockDAO.getInstance().supprimerStock(ControleurConteneurPrincipal.stockCourant);
+        vue.peuplerListeStockDansMenuDrawer();
+        vue.naviguerVueActiviteStock();
     }
 
     public void exporterProduitsStockeEnXML(){

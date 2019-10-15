@@ -69,8 +69,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         controleurActiviteStock.onCreate(getApplicationContext());
         afficherProduits();
 
-//        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
-        // TODO: call the controller onCreate method
+        controleurActiviteStock.onCreate(getApplicationContext());
     }
 
     public void supprimer(int position){
@@ -173,7 +172,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
     public void naviguerVueAjouterProduit(){
         Intent intent = new Intent(this, ActiviteAjouterProduit.class);
-        startActivityForResult(intent, ControleurActiviteStock.ADD_PRODUCT_ACTIVITY);
+        startActivityForResult(intent, ControleurActiviteStock.ACTIVITE_AJOUTER_PRODUIT);
     }
 
     @Override
@@ -228,9 +227,19 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
             case R.id.activite_stock_barre_outil_action_exporter_stock:
                 controleurActiviteStock.exporterProduitsStockeEnXML();
                 break;
+
+            case R.id.activite_stock_barre_outil_action_supprimer_stock:
+                controleurActiviteStock.supprimerStockCourant();
+                break;
             default:
                 return false;
         }
         return true;
+    }
+
+    public void naviguerVueActiviteStock() {
+        Intent intent = new Intent(this, ActiviteStock.class);
+        startActivity(intent);
+
     }
 }

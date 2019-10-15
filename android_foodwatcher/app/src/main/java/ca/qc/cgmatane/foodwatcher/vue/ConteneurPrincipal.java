@@ -21,6 +21,7 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Stock;
 
 public class ConteneurPrincipal extends AppCompatActivity {
@@ -109,6 +110,7 @@ public class ConteneurPrincipal extends AppCompatActivity {
      * peupler la liste des stocks dans le menu du drawer
      */
     public void peuplerListeStockDansMenuDrawer() {
+        listeStock = StockDAO.getInstance().recupererListeStock();
         Menu menu = navigationView.getMenu();
         MenuItem itemMenu = menu.findItem(R.id.conteneur_principal_drawer_rubrique_stock);
         SubMenu sousMenuStock = itemMenu.getSubMenu();
