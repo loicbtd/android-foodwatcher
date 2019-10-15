@@ -76,7 +76,7 @@ public class ProduitDAO implements ProduitSQL {
         return null;
     }
 
-    public void ajouterProduit(Produit produit){
+    public void ajouterProduit(Produit produit) {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_CREER_PRODUIT);
         sqLiteStatement.bindString(1, produit.getGencode());

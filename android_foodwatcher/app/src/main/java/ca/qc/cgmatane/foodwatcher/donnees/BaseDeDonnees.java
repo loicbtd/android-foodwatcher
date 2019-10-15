@@ -18,8 +18,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
     }
 
     public BaseDeDonnees(Context contexte) {
-        super(contexte, SQL_NOM_BASE_DE_DONNEES, null, 4);
-        contexte.deleteDatabase(SQL_NOM_BASE_DE_DONNEES);
+        super(contexte, SQL_NOM_BASE_DE_DONNEES, null, 1);
     }
 
     @Override
@@ -29,7 +28,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        genererBaseDeDonneesVierge(db);
+       genererBaseDeDonneesVierge(db);
     }
 
     private void genererBaseDeDonneesVierge(SQLiteDatabase db) {
