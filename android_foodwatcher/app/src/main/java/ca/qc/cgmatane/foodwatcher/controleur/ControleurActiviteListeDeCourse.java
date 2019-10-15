@@ -25,6 +25,7 @@ public class ControleurActiviteListeDeCourse implements Controleur {
         List<ProduitStocke> listeProduitsAffiches = new ArrayList<>();
         List<ProduitStocke> listeProduits = accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock());
         for (int i = 0; i < listeProduits.size() ; i++) {
+            System.out.println(listeProduits.get(i).getEtiquette()+"////////////////////////////////////////////////////"+listeProduits.get(i).isPresentListeCourse());
             if (listeProduits.get(i).isPresentListeCourse()){
                 listeProduitsAffiches.add(listeProduits.get(i));
             }
