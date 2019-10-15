@@ -21,9 +21,8 @@ public class ControleurActiviteAjouterProduit implements Controleur {
         accesseurProduit = ProduitDAO.getInstance();
     }
 
-    public void actionEnregistrerProduit(Produit produit){
-        accesseurProduit = ProduitDAO.getInstance();
-        accesseurProduit.ajouterProduit(produit);
+    public void actionEnregistrerProduit(){
+        vue.enregistrerProduit();
         vue.naviguerRetourMaison();
     }
 

@@ -48,7 +48,7 @@ public class ControleurActiviteStock implements Controleur {
         System.out.println("ON ACTIVITY RESULT");
         switch (activite){
             case ADD_PRODUCT_ACTIVITY:
-                vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+                vue.afficherProduits();
                 break;
         }
     }

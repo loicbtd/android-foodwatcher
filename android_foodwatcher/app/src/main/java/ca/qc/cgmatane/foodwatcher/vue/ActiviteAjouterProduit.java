@@ -105,7 +105,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
                 System.out.println(textFieldCodeBarre.getText());
 
 
-                enregistrerProduit();
+                controleur.actionEnregistrerProduit();
             }
         });
         boutonRetour.setOnClickListener(new View.OnClickListener() {
@@ -161,7 +161,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
 
     }
 
-    private void enregistrerProduit(){
+    public void enregistrerProduit(){
         UniteQuantite unite = new UniteQuantite(1,"test");
         CategorieProduit categorie = new CategorieProduit(1, "test");
         Emplacement emplacement = new Emplacement(1, "test");
