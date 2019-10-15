@@ -51,7 +51,6 @@ public class ControleurActiviteExemple implements Controleur, Toolbar.OnMenuItem
         switch (item.getItemId()) {
             case R.id.activite_stock_barre_outil_action_exporter_stock:
                 vue.getTextView().setText("Hello");
-                vue.exporterProduitsStockeEnXML();
                 break;
             case R.id.activite_exemple_barre_outil_action_ecrire_world:
                 vue.getTextView().setText("world !");

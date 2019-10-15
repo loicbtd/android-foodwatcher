@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.controleur.Controleur;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.CategorieProduitDAO;
