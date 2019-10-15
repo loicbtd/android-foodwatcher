@@ -35,6 +35,7 @@
         <activity android:name=".vue.ActiviteAjouterProduit" />
         <activity android:name=".vue.ActiviteTrouverMagasin" />
         <activity android:name=".vue.ActiviteScan"
+            android:theme="@style/ScanTheme"
             android:screenOrientation="portrait"/>
     </application>
 
