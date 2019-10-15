@@ -50,7 +50,8 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
             for (int i = listeProduits.size()-1; i >=0 ; i--) {
                 System.out.println(listeProduits.get(i).getEtiquette() + listeProduits.get(i).isSelectionne());
                 if (listeProduits.get(i).isSelectionne()) {
-                    ProduitStockeDAO.getInstance().supprimerProduitDuStock(listeProduits.get(i));
+                    listeProduits.get(i).setPresentListeCourse(false);
+                    ProduitStockeDAO.getInstance().modifierProduitStocke(listeProduits.get(i));
                     listeProduits.remove(i);
                     adapteur.notifyDataSetChanged();
                 }

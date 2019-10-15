@@ -2,8 +2,12 @@ package ca.qc.cgmatane.foodwatcher.controleur;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeCourse;
 
 public class ControleurActiviteListeDeCourse implements Controleur {
@@ -18,7 +22,14 @@ public class ControleurActiviteListeDeCourse implements Controleur {
         BaseDeDonnees.getInstance(applicationContext);
         accesseurProduit = ProduitStockeDAO.getInstance();
         //TODO: trouver un moyen de recuperer id du stock (avec extra dans intent)
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        List<ProduitStocke> listeProduitsAffiches = new ArrayList<>();
+        List<ProduitStocke> listeProduits = accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock());
+        for (int i = 0; i < listeProduits.size() ; i++) {
+            if (listeProduits.get(i).isPresentListeCourse()){
+                listeProduitsAffiches.add(listeProduits.get(i));
+            }
+        }
+        vue.setListeProduits(listeProduitsAffiches);
     }
 
     @Override
