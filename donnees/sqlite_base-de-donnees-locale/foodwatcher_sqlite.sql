@@ -68,17 +68,24 @@ CREATE TABLE stock_compose_produit(
 );
 
 -- créer
-INSERT INTO stock(etiquette) VALUES ('Domicile');
-
-INSERT INTO emplacement(etiquette) VALUES ('Réserve');
-
-INSERT INTO categorie_produit(etiquette) VALUES ('Fruits & Légumes');
-
-INSERT INTO unite_quantite(etiquette) VALUES ('kg');
-
-INSERT INTO produit(gencode,etiquette,id_unite_quantite,id_categorie_produit) VALUES ('234567898762','salade',1,1);
-
-INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (1,1,1.5,1,0);
+INSERT INTO stock(etiquette) VALUES ('Domicile')
+INSERT INTO stock(etiquette) VALUES ('Mon restaurant')
+INSERT INTO stock(etiquette) VALUES ('Maison vacances')
+INSERT INTO emplacement(etiquette) VALUES ('Réfrigérateur')
+INSERT INTO emplacement(etiquette) VALUES ('Réserve')
+INSERT INTO emplacement(etiquette) VALUES ('Cave')
+INSERT INTO categorie_produit(etiquette) VALUES ('Épicerie sucrée')
+INSERT INTO categorie_produit(etiquette) VALUES ('Épicerie salée')
+INSERT INTO categorie_produit(etiquette) VALUES ('Fruits & Légumes')
+INSERT INTO unite_quantite(etiquette) VALUES ('g')
+INSERT INTO unite_quantite(etiquette) VALUES ('mL')
+INSERT INTO unite_quantite(etiquette) VALUES ('unité(s)')
+INSERT INTO produit(gencode,etiquette,id_unite_quantite,id_categorie_produit) VALUES ('234567898762','Chocolat',1,1)
+INSERT INTO produit(gencode,etiquette,id_unite_quantite,id_categorie_produit) VALUES ('444567898762','Sel',2,2)
+INSERT INTO produit(gencode,etiquette,id_unite_quantite,id_categorie_produit) VALUES ('554567898762','Poire',3,3)
+INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (1,1,100.0,1,0)
+INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (2,1,200.0,2,1)
+INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (3,2,100.0,3,0)
 
 -- lire
 -- SELECT id_stock, etiquette FROM stock;

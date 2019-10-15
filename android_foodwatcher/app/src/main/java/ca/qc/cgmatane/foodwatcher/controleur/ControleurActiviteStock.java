@@ -5,12 +5,15 @@ import android.widget.Toast;
 
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
 
 public class ControleurActiviteStock implements Controleur {
+
+    public static final int ACTIVITE_AJOUTER_PRODUIT = 1;
+
     private ActiviteStock vue;
-    public static final int ADD_PRODUCT_ACTIVITY = 1;
-    protected ProduitStockeDAO accesseurProduit;
+    protected ProduitStockeDAO produitStockeDAO;
 
     public ControleurActiviteStock(ActiviteStock vue){
         this.vue = vue;
@@ -25,8 +28,8 @@ public class ControleurActiviteStock implements Controleur {
     @Override
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
-        accesseurProduit = ProduitStockeDAO.getInstance();
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        produitStockeDAO = ProduitStockeDAO.getInstance();
+        vue.setListeProduits(produitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
     }
 
     @Override
@@ -48,8 +51,8 @@ public class ControleurActiviteStock implements Controleur {
     public void onActivityResult(int activite) {
         System.out.println("ON ACTIVITY RESULT");
         switch (activite){
-            case ADD_PRODUCT_ACTIVITY:
-                vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+            case ACTIVITE_AJOUTER_PRODUIT:
+                vue.setListeProduits(produitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
                 vue.afficherProduits();
                 break;
         }
@@ -61,5 +64,11 @@ public class ControleurActiviteStock implements Controleur {
 
     public void exporterProduitsStockeEnXML() {
         Toast.makeText(vue, "Exportation du Stock", Toast.LENGTH_SHORT).show();
+    }
+
+    public void supprimerStockCourant() {
+        StockDAO.getInstance().supprimerStock(ControleurConteneurPrincipal.stockCourant);
+        vue.peuplerListeStockDansMenuDrawer();
+        vue.naviguerVueActiviteStock();
     }
 }
