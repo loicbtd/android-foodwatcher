@@ -66,7 +66,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
                 controleurActiviteStock.actionNaviguerVueAjouterProduit();
             }
         });
-        stockController.onCreate(getApplicationContext());
+        controleurActiviteStock.onCreate(getApplicationContext());
         afficherProduits();
 
 //        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system

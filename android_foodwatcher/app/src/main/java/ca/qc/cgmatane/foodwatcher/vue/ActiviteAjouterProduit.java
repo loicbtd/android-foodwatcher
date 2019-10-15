@@ -195,8 +195,6 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         ProduitStocke produitStocke = new ProduitStocke(produit, ControleurConteneurPrincipal.stockCourant, emplacement,Double.parseDouble(textFieldQuantite.getText().toString()), checkBoxAjouterListeCourse.isChecked());
         accesseurProduitStockeDAO = ProduitStockeDAO.getInstance();
         accesseurProduitStockeDAO.ajouterProduitAuStock(produitStocke);
-        accesseurProduitStockeDAO.supprimerProduitDuStock(accesseurProduitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()).get(0));
-        System.out.println("/////////////////////////////////////////////////3"+accesseurProduitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()).get(0).getEtiquette());
     }
 
     public void naviguerRetourMaison(){
