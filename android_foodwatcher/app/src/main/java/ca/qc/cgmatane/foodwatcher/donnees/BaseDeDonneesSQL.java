@@ -111,8 +111,8 @@ public interface BaseDeDonneesSQL {
             "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (6,1,100.0,3,0)",
             "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (7,1,100.0,3,0)",
             "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (8,1,100.0,3,0)",
-            "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (9,1,100.0,3,0)",
-            "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (10,1,100.0,3,0)",
-            "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (11,1,100.0,3,0)"
+            "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (9,2,100.0,3,0)",
+            "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (10,2,100.0,3,0)",
+            "INSERT INTO stock_compose_produit(id_produit,id_stock,quantite,id_emplacement,present_liste_course) VALUES (11,2,100.0,3,0)"
     };
 }
