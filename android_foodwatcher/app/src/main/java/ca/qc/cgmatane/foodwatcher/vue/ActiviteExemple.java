@@ -22,7 +22,7 @@ import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExempleVue {
 
-    ControleurActiviteExemple sampleActivityController = new ControleurActiviteExemple(this);
+    ControleurActiviteExemple ControleurActiviteExemple = new ControleurActiviteExemple(this);
 
     private TextView textView;
 
@@ -38,10 +38,10 @@ public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExemp
 
         textView = (TextView) findViewById(R.id.view_sample_textview);
 
-        barreOutil.setOnMenuItemClickListener(sampleActivityController);
+        barreOutil.setOnMenuItemClickListener(ControleurActiviteExemple);
 
         navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_exemple).setChecked(true); //TODO: improve check verification system
-        sampleActivityController.onCreate(getApplicationContext());
+        ControleurActiviteExemple.onCreate(getApplicationContext());
     }
 
     private void refreshGallery(File file) {

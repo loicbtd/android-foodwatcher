@@ -1,6 +1,7 @@
 package ca.qc.cgmatane.foodwatcher.controleur;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
@@ -56,5 +57,9 @@ public class ControleurActiviteStock implements Controleur {
 
     @Override
     public void onBackPressed() {
+    }
+
+    public void exporterProduitsStockeEnXML() {
+        Toast.makeText(vue, "Exportation du Stock", Toast.LENGTH_SHORT).show();
     }
 }

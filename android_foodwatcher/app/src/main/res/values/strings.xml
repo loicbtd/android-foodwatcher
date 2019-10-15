@@ -24,5 +24,6 @@
     <string name="drawer_menu_titre_rubrique_stock">Mes Stocks</string>
     <string name="channel_name">channel_name</string>
     <string name="channel_description">channel_description</string>
+    <string name="exporter_le_stock">Exporter le stock</string>
 
 </resources>
