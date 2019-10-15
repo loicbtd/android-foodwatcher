@@ -16,7 +16,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
-import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
 
@@ -144,6 +143,8 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     @Override
     public void scanner() {
         //TODO : definire l'action a realiser lors de l'appui du bouton;
+
+        Toast.makeText(getApplicationContext(),"HERE",Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScan.class);
 

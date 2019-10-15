@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".vue.ActiviteListeCourse"></activity>
+        <activity android:name=".vue.ActiviteListeCourse" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -35,7 +35,6 @@
         <activity android:name=".vue.ActiviteAjouterProduit" />
         <activity android:name=".vue.ActiviteTrouverMagasin" />
         <activity android:name=".vue.ActiviteScan"
-            android:theme="@style/ScanTheme"
             android:screenOrientation="portrait"/>
     </application>
 
