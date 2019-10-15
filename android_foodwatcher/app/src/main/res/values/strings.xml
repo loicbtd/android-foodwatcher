@@ -19,4 +19,9 @@
     <string name="bouton_ajouter_maison">Ajouter</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_btn_picture">Prendre une photo</string>
+    <string name="drawer_menu_item_carte_magasin">Où faire mes courses ?</string>
+    <string name="drawer_menu_item_liste_course">Ma liste de courses</string>
+    <string name="drawer_menu_parametre">Paramètres</string>
+    <string name="drawer_menu_item_ajouter_stock">Ajouter un stock</string>
+    <string name="drawer_menu_titre_rubrique_stock">Mes Stocks</string>
 </resources>

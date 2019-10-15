@@ -3,7 +3,6 @@ package ca.qc.cgmatane.foodwatcher.controleur;
 import android.content.Context;
 
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
-import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
 
@@ -56,6 +55,5 @@ public class ControleurActiviteStock implements Controleur {
 
     @Override
     public void onBackPressed() {
-
     }
 }

@@ -71,7 +71,6 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         if (view.getDrawerLayout().isDrawerOpen(GravityCompat.START)) {
             view.getDrawerLayout().closeDrawer(GravityCompat.START);
         }
-        // TODO: gérer la touche retour pour naviguer à l'écran précédent quant le drawerlayout est fermé
     }
 
     @Override
