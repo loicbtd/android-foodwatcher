@@ -19,6 +19,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
 
     public BaseDeDonnees(Context contexte) {
         super(contexte, SQL_NOM_BASE_DE_DONNEES, null, 1);
+//        contexte.deleteDatabase(SQL_NOM_BASE_DE_DONNEES);
     }
 
     @Override
@@ -45,5 +46,9 @@ public class BaseDeDonnees extends SQLiteOpenHelper implements BaseDeDonneesSQL 
         db.execSQL(SQL_CREER_TABLE_UNITE_QUANTITE);
         db.execSQL(SQL_CREER_TABLE_PRODUIT);
         db.execSQL(SQL_CREER_TABLE_STOCK_COMPOSE_PRODUIT);
+
+        for (String requete : SQL_INSERER_DONNEES_MOCK) {
+            db.execSQL(requete);
+        }
     }
 }

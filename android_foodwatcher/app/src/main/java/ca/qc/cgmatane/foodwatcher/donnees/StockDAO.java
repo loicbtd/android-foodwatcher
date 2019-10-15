@@ -26,9 +26,6 @@ public class StockDAO implements StockSQL {
     public StockDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeStock = new ArrayList<>();
-
-        // mock
-        ajouterListeStockMock();
     }
 
     public List<Stock> recupererListeStock() {

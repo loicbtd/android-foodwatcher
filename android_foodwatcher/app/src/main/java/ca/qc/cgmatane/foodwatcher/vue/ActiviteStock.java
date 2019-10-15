@@ -96,8 +96,6 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
             if(listeProduits.size() < 4){
                 declencherNotification();
             }
-
-
         }
 
         @Override

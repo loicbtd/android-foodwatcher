@@ -37,9 +37,6 @@ public class ProduitStockeDAO implements ProduitStockeSQL {
     public ProduitStockeDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeProduitStocke = new ArrayList<>();
-
-        // mock
-//        ajouterProduitAuStockMock();
     }
 
     public List<ProduitStocke> recupererListeProduitStockeParIdStock(int idStockRecherche) {

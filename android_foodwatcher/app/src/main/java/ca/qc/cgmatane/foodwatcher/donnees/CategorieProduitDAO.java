@@ -26,9 +26,6 @@ public class CategorieProduitDAO implements CategorieProduitSQL {
     public CategorieProduitDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeCategorieProduit = new ArrayList<>();
-
-        // mock
-        ajouterListeCategorieProduitMock();
     }
 
     public List<CategorieProduit> recupererListeCategorieProduit() {

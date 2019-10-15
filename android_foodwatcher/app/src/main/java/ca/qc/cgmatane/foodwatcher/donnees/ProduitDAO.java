@@ -28,9 +28,6 @@ public class ProduitDAO implements ProduitSQL {
     public ProduitDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeProduit = new ArrayList<>();
-
-        // mock
-        ajouterListeProduitMock();
     }
 
     public List<Produit> recupererListeProduit() {

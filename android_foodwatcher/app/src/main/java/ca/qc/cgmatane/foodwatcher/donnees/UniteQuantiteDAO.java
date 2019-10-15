@@ -26,9 +26,6 @@ public class UniteQuantiteDAO implements UniteQuantiteSQL{
     public UniteQuantiteDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeUniteQuantite = new ArrayList<>();
-
-        // mock
-        ajouterListeUniteQuantiteMock();
     }
 
     public List<UniteQuantite> recupererListeUniteQuantite() {

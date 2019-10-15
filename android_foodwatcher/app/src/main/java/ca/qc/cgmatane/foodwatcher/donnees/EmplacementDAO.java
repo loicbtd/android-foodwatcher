@@ -26,9 +26,6 @@ public class EmplacementDAO implements EmplacementSQL {
     public EmplacementDAO() {
         this.baseDeDonnees = BaseDeDonnees.getInstance();
         listeEmplacement = new ArrayList<>();
-
-        // mock
-        ajouterListeEmplacementMock();
     }
 
     public List<Emplacement> recupererListeEmplacement() {
