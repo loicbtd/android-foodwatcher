@@ -14,12 +14,24 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.donnees.CategorieProduitDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.EmplacementDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.UniteQuantiteDAO;
+import ca.qc.cgmatane.foodwatcher.modele.CategorieProduit;
+import ca.qc.cgmatane.foodwatcher.modele.Emplacement;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
 
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
 
     public static final int RESULTAT_ACTIVITE_SCAN = 1;
+
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
@@ -45,24 +57,36 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
         boutonScanner = findViewById(R.id.buton_vue_ajouter_produit_action_scanner);
         checkBoxAjouterListeCourse = findViewById(R.id.checkbox_ajouter_liste_course_vue_ajouter_produit);
-        boutonScanner = findViewById(R.id.buton_vue_ajouter_produit_action_scanner);
 
 
         choixUniteQuantite = findViewById(R.id.choix_unite_quantite);
-        String[] unites={"Kg","G", "L", "Oz", "unité"};
+        List<String> unites = new ArrayList<>();
+        List<UniteQuantite> listeUniteQuantite = UniteQuantiteDAO.getInstance().recupererListeUniteQuantite();
+        for (UniteQuantite uniteQuantite : listeUniteQuantite) {
+            unites.add(uniteQuantite.getEtiquette());
+        }
         ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,unites);
         dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixUniteQuantite.setAdapter(dataAdapterR);
 
+
         choixCategorieProduit = findViewById(R.id.choix_categorie_produit);
-        String[] categories={"liquide","Viande", "Légume", "Fruit", "Féculent"};
+        List<String> categories = new ArrayList<>();
+        List<CategorieProduit> listeCategorie = CategorieProduitDAO.getInstance().recupererListeCategorieProduit();
+        for (CategorieProduit categorieProduit : listeCategorie) {
+            categories.add(categorieProduit.getEtiquette());
+        }
         ArrayAdapter<String> adapterCategories = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,categories);
         adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixCategorieProduit.setAdapter(adapterCategories);
 
         choixEmplacement = findViewById(R.id.choix_emplacement);
-        String[] emplacaments={"Cuisine","Cave", "Frigo"};
-        ArrayAdapter<String> adapteurEmplacement = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,emplacaments);
+        List<String> emplacements = new ArrayList<>();
+        List<Emplacement> listeEmplacements = EmplacementDAO.getInstance().recupererListeEmplacement();
+        for (Emplacement emplacement : listeEmplacements) {
+            emplacements.add(emplacement.getEtiquette());
+        }
+        ArrayAdapter<String> adapteurEmplacement = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,emplacements);
         adapteurEmplacement.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         choixEmplacement.setAdapter(adapteurEmplacement);
 
@@ -100,15 +124,21 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
 
-                String barcode = null;
+                String gencode = null;
+                String nomProduit = null;
+
                 if (data != null) {
                     //TODO Récupérer les autres données
-                    barcode = data.getStringExtra("code");
+                    gencode = data.getStringExtra("code");
+                    nomProduit = data.getStringExtra("etiquette");
 
+
+                    textFieldCodeBarre.setText(gencode);
+                    textFieldIntitule.setText(nomProduit);
                     //TODO tester si elles sont nulles : si oui alors ecrire le gencode seulement et sinon tous les champs
                 }
 
-                Toast.makeText(getApplicationContext(),barcode,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),nomProduit,Toast.LENGTH_LONG).show();
 
             }
 
@@ -132,8 +162,8 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         //recuperer la valeur d'un spinner:
 //        String uniteQuantite;
 //        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
-//        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
-//        controleur.actionEnregistrerProduit(produit);
+//        ProduitStocke produit = new ProduitStocke(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
+//        Produit produit = new ProduitStocke(1, textFieldIntitule.getText().toString(),);
     }
 
     public void naviguerRetourMaison(){
@@ -142,12 +172,9 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
 
     @Override
     public void scanner() {
-        //TODO : definire l'action a realiser lors de l'appui du bouton;
-
-        Toast.makeText(getApplicationContext(),"HERE",Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),"HERE",Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScan.class);
-
         startActivityForResult(intent, RESULTAT_ACTIVITE_SCAN);
     }
 
