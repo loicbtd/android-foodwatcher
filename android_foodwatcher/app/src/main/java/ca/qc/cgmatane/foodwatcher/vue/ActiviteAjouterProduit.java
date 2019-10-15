@@ -133,14 +133,12 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
                 String nomProduit = null;
 
                 if (data != null) {
-                    //TODO Récupérer les autres données
                     gencode = data.getStringExtra("code");
                     nomProduit = data.getStringExtra("etiquette");
 
 
                     textFieldCodeBarre.setText(gencode);
                     textFieldIntitule.setText(nomProduit);
-                    //TODO tester si elles sont nulles : si oui alors ecrire le gencode seulement et sinon tous les champs
                 }
 
                 Toast.makeText(getApplicationContext(),nomProduit,Toast.LENGTH_LONG).show();

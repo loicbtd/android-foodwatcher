@@ -3,10 +3,16 @@ package ca.qc.cgmatane.foodwatcher.donnees;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.os.Environment;
+import android.text.format.DateFormat;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.modele.CategorieProduit;
 import ca.qc.cgmatane.foodwatcher.modele.Emplacement;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
@@ -141,4 +147,91 @@ public class ProduitStockeDAO implements ProduitStockeSQL {
             }
         }
     }
+
+    public void exporterProduitsStockeEnXML(){
+
+        List<ProduitStocke> listeProduitsStocke =
+                recupererListeProduitStockeParIdStock(
+                        ControleurConteneurPrincipal.stockCourant.getIdStock());
+
+        String baliseStockOuvrante = "<stocke>";
+        String baliseStockFermante = "</stocke>";
+
+        String baliseProduitOuvrante = "<produit-stocke>";
+        String baliseProduitFermante = "</produit-stocke>";
+
+        String baliseIdProduitOuvrante = "<id-produit>";
+        String baliseIdProduitFermante = "</id-produit>";
+
+        String baliseGencodeOuvrante = "<gencode>";
+        String baliseGencodeFermante = "</gencode>";
+
+        String baliseEtiquetteOuvrante = "<etiquette>";
+        String baliseEtiquetteFermante = "</etiquette>";
+
+        String baliseIdUniteQuantiteOuvrante = "<id-unite-quantite>";
+        String baliseIdUniteQuantiteFermante = "</id-unite-quantite>";
+
+        String baliseIdCategorieProduitOuvrante = "<id-categorie-produit>";
+        String baliseIdCategorieProduitFermante = "</id-categorie-produit>";
+
+        String baliseIdStockOuvrante = "<id-stock>";
+        String baliseIdStockFermante = "</id-stock>";
+
+        String baliseQuantiteOuvrante = "<quantite>";
+        String baliseQuantiteFermante = "</quantite>";
+
+        String baliseIdEmplacementOuvrante = "<id-emplacement>";
+        String baliseIdEmplacementFermante = "</id-emplacement>";
+
+        String balisePresentListeCoursesOuvrante = "<present-liste-courses>";
+        String balisePresentListeCoursesFermante = "</present-liste-courses>";
+
+
+        String contenuXML = baliseStockOuvrante;
+
+        for (ProduitStocke produitStocke : listeProduitsStocke) {
+
+            contenuXML += baliseProduitOuvrante +
+                    baliseIdProduitOuvrante + produitStocke.getIdProduit() + baliseIdProduitFermante +
+                    baliseGencodeOuvrante + produitStocke.getGencode() + baliseGencodeFermante +
+                    baliseEtiquetteOuvrante + produitStocke.getEtiquette() + baliseEtiquetteFermante +
+                    baliseIdUniteQuantiteOuvrante + produitStocke.getUniteQuantite().getIdUniteQuantite() + baliseIdUniteQuantiteFermante +
+                    baliseIdCategorieProduitOuvrante + produitStocke.getCategorieProduit().getIdCategorieProduit() + baliseIdCategorieProduitFermante +
+                    baliseIdStockOuvrante + produitStocke.getStock().getIdStock() + baliseIdStockFermante +
+                    baliseQuantiteOuvrante + produitStocke.getQuantite() + baliseQuantiteFermante +
+                    baliseIdEmplacementOuvrante + produitStocke.getEmplacement().getIdEmplacement() + baliseIdEmplacementFermante +
+                    balisePresentListeCoursesOuvrante + produitStocke.isPresentListeCourse() + balisePresentListeCoursesFermante +
+                    baliseProduitFermante;
+
+        }
+
+        contenuXML += baliseStockFermante;
+
+        try {
+            String h = DateFormat.format("MM-dd-yyyyy-h-mmssaa", System.currentTimeMillis()).toString();
+            // this will create a new name everytime and unique
+//            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
+            // if external memory exists and folder with name Notes
+            File root = new File(Environment.DIRECTORY_DOWNLOADS);
+            if (!root.exists()) {
+                root.mkdirs(); // this will create folder.
+            }
+            File filepath = new File(root, h + ".xml");  // file path to save
+            FileWriter writer = new FileWriter(filepath);
+            writer.append(contenuXML);
+            writer.flush();
+            writer.close();
+            String m = "File generated with name " + h + ".xml";
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + m);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
+
+
+    }
+
 }
