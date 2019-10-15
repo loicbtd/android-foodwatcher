@@ -23,6 +23,15 @@ public class ProduitStocke extends Produit {
         this.selectionne = false;
     }
 
+    public ProduitStocke(Produit produit, Stock stock, Emplacement emplacement, double quantite, boolean presentListeCourse, boolean selectionne) {
+        super(produit.getIdProduit(), produit.getGencode(), produit.getEtiquette(), produit.getUniteQuantite(), produit.getCategorieProduit());
+        this.stock = stock;
+        this.emplacement = emplacement;
+        this.quantite = quantite;
+        this.presentListeCourse = presentListeCourse;
+        this.selectionne = selectionne;
+    }
+
     public Stock getStock() {
         return stock;
     }
