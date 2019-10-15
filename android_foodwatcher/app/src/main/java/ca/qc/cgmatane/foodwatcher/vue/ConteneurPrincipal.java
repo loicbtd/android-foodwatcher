@@ -116,6 +116,9 @@ public class ConteneurPrincipal extends AppCompatActivity {
         for (int i = 0; i < listeStock.size(); i++) {
             sousMenuStock.add(0, listeStock.get(i).getIdStock(), i, listeStock.get(i).getEtiquette());
             sousMenuStock.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
+            if (listeStock.get(i).getIdStock() == ControleurConteneurPrincipal.stockCourant.getIdStock()) {
+                sousMenuStock.getItem(i).setChecked(true);
+            }
         }
     }
 }

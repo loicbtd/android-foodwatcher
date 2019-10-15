@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.core.view.GravityCompat;
 
@@ -88,10 +87,10 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 
         // récupération de l'id de l'item sélectionné
         itemId = item.getItemId();
-        Toast.makeText(vue.getApplicationContext(),
-                "itemId = "+itemId + "\n" +
-                        "stockCourant.getIdStock()"+stockCourant.getIdStock(),
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(vue.getApplicationContext(),
+//                "itemId = "+itemId + "\n" +
+//                        "stockCourant.getIdStock()"+stockCourant.getIdStock(),
+//                Toast.LENGTH_SHORT).show();
 
 
         // fermeture du drawer
