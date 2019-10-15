@@ -108,9 +108,6 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
                 case R.id.conteneur_principal_drawer_action_naviguer_exemple:
                     intent = new Intent(vue.getApplicationContext(), ActiviteExemple.class);
                     vue.startActivityForResult(intent, ACTIVITE_EXEMPLE);
-                    /*//TODO décommenter pour tester l'export du xml
-                    ProduitStockeDAO produitStockeDAO = ProduitStockeDAO.getInstance();
-                    produitStockeDAO.exporterProduitsStockeEnXML();*/
                     break;
                     // lancer ActiviteAjouterStock
                 case R.id.conteneur_principal_drawer_action_naviguer_ajouter_stock:
