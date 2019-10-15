@@ -89,11 +89,9 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         // if itemId corresponds to a stock
         if (0 <= itemId && itemId < view.getListStock().size()) {
             if (itemId != stockCourant.getIdStock()) {
-                int id = itemId;
                 itemId = stockCourant.getIdStock();
                 intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
                 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getIdStock());
-                intent.putExtra("idStock", view.getListStock().get(id).getIdStock());
                 view.startActivityForResult(intent, ACTIVITY_STOCK);
             }
         } // else if it corresponds to another activity
