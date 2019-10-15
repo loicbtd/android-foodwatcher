@@ -13,36 +13,36 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/activity_master_drawer_action_add_home"
+            android:id="@+id/conteneur_principal_drawer_action_naviguer_ajouter_maison"
             android:icon="@drawable/ic_add"
             android:title="@string/drawer_menu_item_ajouter_stock"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/activity_master_drawer_action_display_shopping_list"
+            android:id="@+id/conteneur_principal_drawer_action_naviguer_liste_course"
             android:icon="@drawable/ic_caddie"
             android:title="@string/drawer_menu_item_liste_course"/>
         <item
-            android:id="@+id/activity_master_drawer_action_find_store"
+            android:id="@+id/conteneur_principal_drawer_action_naviguer_carte_magasin"
             android:icon="@drawable/ic_store"
             android:title="@string/drawer_menu_item_carte_magasin"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/activity_master_drawer_action_display_settings"
+            android:id="@+id/conteneur_principal_drawer_action_naviguer_parametre"
             android:icon="@drawable/ic_settings"
             android:title="@string/drawer_menu_parametre"/>
         <item
-            android:id="@+id/activity_master_drawer_action_display_help"
+            android:id="@+id/conteneur_principal_drawer_action_naviguer_aide"
             android:icon="@drawable/ic_help"
             android:title="Aide"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/activity_master_drawer_action_display_sample"
+            android:id="@+id/conteneur_principal_drawer_action_naviguer_exemple"
             android:icon="@drawable/ic_android"
             android:title="Sample"/>
     </group>

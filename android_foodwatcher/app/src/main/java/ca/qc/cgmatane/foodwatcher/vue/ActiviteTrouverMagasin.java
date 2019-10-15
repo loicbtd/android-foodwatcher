@@ -34,7 +34,7 @@ public class ActiviteTrouverMagasin extends ConteneurPrincipal implements OnMapR
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_carte_magasin);
 
-        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_find_store).setChecked(true);
+        navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_carte_magasin).setChecked(true);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLocation();

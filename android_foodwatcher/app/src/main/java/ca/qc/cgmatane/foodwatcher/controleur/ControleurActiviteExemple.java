@@ -49,10 +49,10 @@ public class ControleurActiviteExemple implements Controleur, Toolbar.OnMenuItem
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.view_sample_toolbar_action_write_hello:
+            case R.id.activite_exemple_barre_outil_action_ecrire_hello:
                 view.getTextView().setText("Hello");
                 break;
-            case R.id.view_sample_toolbar_action_write_world:
+            case R.id.activite_exemple_barre_outil_action_ecrire_world:
                 view.getTextView().setText("world !");
                 break;
             default:

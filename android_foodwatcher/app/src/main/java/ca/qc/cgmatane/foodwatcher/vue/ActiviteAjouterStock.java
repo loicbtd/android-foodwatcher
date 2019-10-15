@@ -21,8 +21,8 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_ajouter_stock);
-//        super.configureToolbarMenu(R.menu.vue_exemple_toolbar);
-//        toolbar.setOnMenuItemClickListener();
+//        super.configureToolbarMenu(R.menu.activite_exemple_barre_outil);
+//        barreOutil.setOnMenuItemClickListener();
         controleur = new ControleurActiviteAjouterStock(this);
         boutonAjouterMaison = findViewById(R.id.bouton_ajouter_maison);
         textFieldEtiquetteStock = findViewById(R.id.intitule_maison_edit_text);
@@ -39,7 +39,7 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
                 controleur.actionRetourActiviteMaitresse();
             }
         });
-        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
+        navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_ajouter_maison).setChecked(true); //TODO: improve check verification system
         // TODO: call the controller onCreate method
     }
 

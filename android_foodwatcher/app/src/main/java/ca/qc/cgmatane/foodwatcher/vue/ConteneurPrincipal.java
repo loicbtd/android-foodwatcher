@@ -25,13 +25,13 @@ public class ConteneurPrincipal extends AppCompatActivity {
 
     protected ControleurConteneurPrincipal controleurConteneurPrincipal = new ControleurConteneurPrincipal(this);
 
-    protected Toolbar toolbar;
-    protected int menuToolbarResource;
+    protected Toolbar barreOutil;
+    protected int ressourceMenuBarreOutil;
     protected DrawerLayout drawerLayout;
     protected NavigationView navigationView;
     protected ConstraintLayout constraintLayout;
 
-    protected List<Stock> listStock;
+    protected List<Stock> listeStock;
 
     public DrawerLayout getDrawerLayout() {
         return drawerLayout;
@@ -42,11 +42,11 @@ public class ConteneurPrincipal extends AppCompatActivity {
     public ConstraintLayout getConstraintLayout() {
         return constraintLayout;
     }
-    public List<Stock> getListStock() {
-        return listStock;
+    public List<Stock> getListeStock() {
+        return listeStock;
     }
-    public void setListStock(List<Stock> listStock) {
-        this.listStock = listStock;
+    public void setListeStock(List<Stock> listeStock) {
+        this.listeStock = listeStock;
     }
 
     @Override
@@ -54,16 +54,16 @@ public class ConteneurPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.conteneur_principal);
 
-        toolbar = (Toolbar) findViewById(R.id.activity_master_toolbar);
-        setSupportActionBar(toolbar);
+        barreOutil = (Toolbar) findViewById(R.id.activity_master_toolbar);
+        setSupportActionBar(barreOutil);
 
-        // Configure Drawer Layout
+        // Configuration Drawer Layout
         drawerLayout = (DrawerLayout) findViewById(R.id.activity_master_drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, barreOutil, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        // Configure NavigationView
+        // Configuration NavigationView
         navigationView = (NavigationView) findViewById(R.id.activity_master_nav_view);
         navigationView.setNavigationItemSelectedListener(controleurConteneurPrincipal);
 
@@ -77,36 +77,36 @@ public class ConteneurPrincipal extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(menuToolbarResource != 0) {
-            getMenuInflater().inflate(menuToolbarResource, menu);
+        if(ressourceMenuBarreOutil != 0) {
+            getMenuInflater().inflate(ressourceMenuBarreOutil, menu);
             return super.onCreateOptionsMenu(menu);
         }
         return false;
     }
 
-    public void configureToolbarMenu(int menuToolbarResource) {
-        this.menuToolbarResource = menuToolbarResource;
+    public void configureToolbarMenu(int ressourceMenuBarreOutil) {
+        this.ressourceMenuBarreOutil = ressourceMenuBarreOutil;
     }
 
     /**
-     * load constraint layout into the master activity
-     * @param resource constraint layout id
+     * chargement du constraint layout dans le conteneur principal
+     * @param ressource id du constraint layout
      */
-    public void configureActivityContent(int resource) {
+    public void configureActivityContent(int ressource) {
         constraintLayout = findViewById(R.id.activity_master_constraint_layout);
-        constraintLayout.addView(LayoutInflater.from(this).inflate(resource, null));
+        constraintLayout.addView(LayoutInflater.from(this).inflate(ressource, null));
     }
 
     /**
      * populate home section in menu drawer
      */
-    public void populateHomeInMenuDrawer() {
+    public void peuplerListeStockDansMenuDrawer() {
         Menu menu = navigationView.getMenu();
-        MenuItem menuItem = menu.findItem(R.id.activity_master_drawer_section_home);
-        SubMenu subMenuHome = menuItem.getSubMenu();
-        for (int i = 0; i < listStock.size(); i++) {
-            subMenuHome.add(0, i, i, listStock.get(i).getEtiquette());
-            subMenuHome.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
+        MenuItem itemMenu = menu.findItem(R.id.activity_master_drawer_section_home);
+        SubMenu sousMenuMaison = itemMenu.getSubMenu();
+        for (int i = 0; i < listeStock.size(); i++) {
+            sousMenuMaison.add(0, i, i, listeStock.get(i).getEtiquette());
+            sousMenuMaison.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
         }
     }
 }
