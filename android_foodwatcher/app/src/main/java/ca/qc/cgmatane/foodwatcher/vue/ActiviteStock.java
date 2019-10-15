@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,9 +20,7 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
-import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
@@ -33,7 +30,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     private Button btn_view_stock_add_product;
     protected List<ProduitStocke> listeProduits;
     protected int idStock;
-    protected ProduitStockeDAO accesseurProduitStocke;
+    protected ProduitStockeDAO produitStockeDAO;
     private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
     //TODO: create and add controller as attribute
 
@@ -45,7 +42,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 //        idStock = (int) parametres.get("idStock");
 //        Toast.makeText(this, "id maison "+idStock, Toast.LENGTH_SHORT).show();
 
-        accesseurProduitStocke = ProduitStockeDAO.getInstance();
+        produitStockeDAO = ProduitStockeDAO.getInstance();
         btn_view_stock_add_product = findViewById(R.id.btn_view_stock_add_product);
         btn_view_stock_add_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +73,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            accesseurProduitStocke.supprimerProduitDuStock(listeProduits.get(viewHolder.getAdapterPosition()));
+            produitStockeDAO.supprimerProduitDuStock(listeProduits.get(viewHolder.getAdapterPosition()));
             listeProduits.remove(viewHolder.getAdapterPosition());
 
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
