@@ -9,15 +9,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="bouton_annuler">annuler</string>
+    <string name="bouton_annuler">Annuler</string>
     <string name="bouton_ajouter">Ajouter</string>
-    <string name="hint_jours_conservation">Jours de conservation</string>
-    <string name="hint_code_barre">Code barre</string>
-    <string name="hint_intitule_maison">Intitulé de la stock</string>
+    <string name="hint_code_barre">Code-barres</string>
+    <string name="hint_intitule_maison">Intitulé du stock</string>
     <string name="hint_quantite">Quantité</string>
     <string name="hint_intitule_produit">Intitulé du produit</string>
     <string name="bouton_ajouter_maison">Ajouter</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_btn_picture">Prendre une photo</string>
     <string name="drawer_menu_item_carte_magasin">Où faire mes courses ?</string>
     <string name="drawer_menu_item_liste_course">Ma liste de courses</string>
