@@ -10,6 +10,8 @@ import androidx.core.view.GravityCompat;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
@@ -24,10 +26,10 @@ import ca.qc.cgmatane.foodwatcher.vue.ConteneurPrincipal;
 
 public class ControleurConteneurPrincipal implements Controleur, NavigationView.OnNavigationItemSelectedListener {
 
-    static final public int ACTIVITY_SAMPLE = -1;
-    static final public int ACTIVITY_STOCK = 1;
-    static final public int ACTIVITY_ADD_HOME = 2;
-    static final public int ACTIVITY_FIND_STORE = 3;
+    static final public int ACTIVITE_EXEMPLE = -1;
+    static final public int ACTIVITE_STOCK = 1;
+    static final public int ACTIVITE_AJOUTER_STOCK = 2;
+    static final public int ACTIVITY_CARTE_MAGASIN = 3;
 
     public static Stock stockCourant;
 
@@ -44,28 +46,29 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
         stockDAO = StockDAO.getInstance();
-        view.setListeStock(stockDAO.recupererListeStock());
+
+        List<Stock> listeStock = stockDAO.recupererListeStock();
+        if (listeStock.size() == 0) return;
+        if (stockCourant == null) stockCourant = listeStock.get(0);
+        view.setListeStock(listeStock);
         view.peuplerListeStockDansMenuDrawer();
+        Toast.makeText(view, "item "+stockCourant.getIdStock(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onPause() {
-
     }
 
     @Override
     public void onResume() {
-
     }
 
     @Override
     public void onDestroy() {
-
     }
 
     @Override
     public void onActivityResult(int activite) {
-
     }
 
     @Override
@@ -80,51 +83,48 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         Intent intent;
         int itemId;
 
-        // get item id
+        // récupération de l'id de l'item sélectionné
         itemId = item.getItemId();
-        Toast.makeText(view, "item "+itemId, Toast.LENGTH_SHORT).show();
 
-        // close the drawer
+        // fermeture du drawer
         view.getDrawerLayout().closeDrawer(GravityCompat.START);
 
-        // if itemId corresponds to a stock
-        if (0 <= itemId && itemId < view.getListeStock().size()) {
-            if (itemId != stockCourant.getIdStock()) {
-                itemId = stockCourant.getIdStock();
-                intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
-                view.startActivityForResult(intent, ACTIVITY_STOCK);
-            }
-        } // else if it corresponds to another activity
+        // si l'id de l'item sélectionné correspond à un l'id d'un stock
+        if (itemId >= 1 && itemId <= view.getListeStock().size()) {
+            stockCourant.setIdStock(itemId);
+            intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
+            view.startActivityForResult(intent, ACTIVITE_STOCK);
+        } // sinon, s'il correspond à l'id d'une autre activite
         else {
             switch (itemId) {
-                    // start ActiviteExemple
+                    // lancer ActiviteExemple
                 case R.id.conteneur_principal_drawer_action_naviguer_exemple:
                     intent = new Intent(view.getApplicationContext(), ActiviteExemple.class);
-                    view.startActivityForResult(intent, ACTIVITY_SAMPLE);
+                    view.startActivityForResult(intent, ACTIVITE_EXEMPLE);
                     //TODO décommenter pour tester l'export du xml
                     ProduitStockeDAO produitStockeDAO = ProduitStockeDAO.getInstance();
                     produitStockeDAO.exporterProduitsStockeEnXML();
                     break;
-                    // start ActiviteAjouterStock
+                    // lancer ActiviteAjouterStock
                 case R.id.conteneur_principal_drawer_action_naviguer_ajouter_maison:
                     intent = new Intent(view.getApplicationContext(), ActiviteAjouterStock.class);
-                    view.startActivityForResult(intent, ACTIVITY_ADD_HOME);
+                    view.startActivityForResult(intent, ACTIVITE_AJOUTER_STOCK);
                     break;
-                    // start ActiviteTrouverMagasin
+                    // lancer ActiviteTrouverMagasin
                 case R.id.conteneur_principal_drawer_action_naviguer_carte_magasin:
                     intent = new Intent(view.getApplicationContext(), ActiviteTrouverMagasin.class);
-                    view.startActivityForResult(intent, ACTIVITY_FIND_STORE);
+                    view.startActivityForResult(intent, ACTIVITY_CARTE_MAGASIN);
                     break;
                 case R.id.conteneur_principal_drawer_action_naviguer_liste_course:
                     intent = new Intent(view.getApplicationContext(), ActiviteListeCourse.class);
                     view.startActivity(intent);
-                    // return false if item id does not correspond to any activity
+                    // retourne false si l'item reçu ne correspond à aucune activité
                 default:
                     return false;
             }
         }
 
-        // close navigation drawer and unselect items
+        // ferme le drawer et déselectionne tous les items
         Menu menu = view.getNavigationView().getMenu();
         for (int i = 0; i < menu.size(); i++) {
             menu.getItem(i).setChecked(false);

@@ -25,7 +25,7 @@ public class ControleurActiviteStock implements Controleur {
     public void onCreate(Context applicationContext) {
         BaseDeDonnees.getInstance(applicationContext);
         accesseurProduit = ProduitStockeDAO.getInstance();
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(1));
+        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
     }
 
     @Override

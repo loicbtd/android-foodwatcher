@@ -98,14 +98,14 @@ public class ConteneurPrincipal extends AppCompatActivity {
     }
 
     /**
-     * populate home section in menu drawer
+     * peupler la liste des stocks dans le menu du drawer
      */
     public void peuplerListeStockDansMenuDrawer() {
         Menu menu = navigationView.getMenu();
         MenuItem itemMenu = menu.findItem(R.id.activity_master_drawer_section_home);
         SubMenu sousMenuMaison = itemMenu.getSubMenu();
         for (int i = 0; i < listeStock.size(); i++) {
-            sousMenuMaison.add(0, i, i, listeStock.get(i).getEtiquette());
+            sousMenuMaison.add(0, i+1, i+1, listeStock.get(i).getEtiquette());
             sousMenuMaison.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
         }
     }
