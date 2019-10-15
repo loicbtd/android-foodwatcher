@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,12 +13,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import java.util.List;
-
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
-import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
 
 public class ControleurActiviteStock implements Controleur {
@@ -72,9 +69,9 @@ public class ControleurActiviteStock implements Controleur {
     }
 
     public void actionSupprimer(int position){
-        accesseurProduit = ProduitStockeDAO.getInstance();
+        produitStockeDAO = ProduitStockeDAO.getInstance();
         vue.supprimer(position);
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        vue.setListeProduits(produitStockeDAO.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
         vue.afficherProduits();
     }
 
