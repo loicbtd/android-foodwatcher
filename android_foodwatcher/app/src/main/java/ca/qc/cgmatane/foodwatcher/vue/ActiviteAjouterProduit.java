@@ -19,8 +19,11 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.CategorieProduitDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.EmplacementDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.UniteQuantiteDAO;
 import ca.qc.cgmatane.foodwatcher.modele.CategorieProduit;
 import ca.qc.cgmatane.foodwatcher.modele.Emplacement;
@@ -43,12 +46,14 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     MaterialButton boutonRetour;
     MaterialButton boutonScanner;
     ControleurActiviteAjouterProduit controleur;
+    ProduitStockeDAO accesseurProduitStockeDAO;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_ajouter_produit);
+        accesseurProduitStockeDAO = ProduitStockeDAO.getInstance();
         controleur = new ControleurActiviteAjouterProduit(this);
         boutonAjouterProduit = findViewById(R.id.btn_view_add_product_action_add);
         boutonRetour = findViewById(R.id.btn_view_add_product_action_cancel);
@@ -159,11 +164,35 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
     }
 
     private void enregistrerProduit(){
-        //recuperer la valeur d'un spinner:
-//        String uniteQuantite;
-//        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
-//        ProduitStocke produit = new ProduitStocke(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
-//        Produit produit = new ProduitStocke(1, textFieldIntitule.getText().toString(),);
+        UniteQuantite unite = new UniteQuantite(1,"test");
+        CategorieProduit categorie = new CategorieProduit(1, "test");
+        Emplacement emplacement = new Emplacement(1, "test");
+        List<UniteQuantite> listeUniteQuantite = UniteQuantiteDAO.getInstance().recupererListeUniteQuantite();
+        for (int i = 0; i < listeUniteQuantite.size(); i++) {
+            if (choixUniteQuantite.getSelectedItem().toString().equals((String) listeUniteQuantite.get(i).getEtiquette())){
+                unite = listeUniteQuantite.get(i);
+                System.out.println(unite.getEtiquette());
+            }
+        }
+        List<CategorieProduit> listeCategories = CategorieProduitDAO.getInstance().recupererListeCategorieProduit();
+        for (int i = 0; i < listeCategories.size(); i++) {
+            if (choixCategorieProduit.getSelectedItem().toString().equals((String) listeCategories.get(i).getEtiquette())){
+                categorie = listeCategories.get(i);
+                System.out.println(categorie.getEtiquette());
+            }
+        }
+        List<Emplacement> listeEmplacements = EmplacementDAO.getInstance().recupererListeEmplacement();
+        for (int i = 0; i < listeEmplacements.size(); i++) {
+            if (choixEmplacement.getSelectedItem().toString().equals((String) listeEmplacements.get(i).getEtiquette())){
+                emplacement = listeEmplacements.get(i);
+                System.out.println(emplacement.getEtiquette());
+            }
+        }
+
+        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), unite, categorie);
+        ProduitStocke produitStocke = new ProduitStocke(produit, StockDAO.getInstance().trouverStockParId(ControleurConteneurPrincipal.stockCourant.getIdStock()), emplacement,Double.parseDouble(textFieldQuantite.getText().toString()), checkBoxAjouterListeCourse.isSelected());
+        accesseurProduitStockeDAO = ProduitStockeDAO.getInstance();
+        accesseurProduitStockeDAO.ajouterProduitAuStock(produitStocke);
     }
 
     public void naviguerRetourMaison(){

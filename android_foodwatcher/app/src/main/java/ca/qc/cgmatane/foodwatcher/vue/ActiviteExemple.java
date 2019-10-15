@@ -20,13 +20,13 @@ public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExemp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.configureActivityContent(R.layout.activite_exemple);
-        super.configureToolbarMenu(R.menu.vue_exemple_toolbar);
+        super.configureToolbarMenu(R.menu.activite_exemple_barre_outil);
 
         textView = (TextView) findViewById(R.id.view_sample_textview);
 
-        toolbar.setOnMenuItemClickListener(sampleActivityController);
+        barreOutil.setOnMenuItemClickListener(sampleActivityController);
 
-        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_display_sample).setChecked(true); //TODO: improve check verification system
+        navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_exemple).setChecked(true); //TODO: improve check verification system
         sampleActivityController.onCreate(getApplicationContext());
     }
 }

@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/view_sample_toolbar_action_write_hello"
+        android:id="@+id/activite_exemple_barre_outil_action_ecrire_hello"
         android:orderInCategory="100"
         android:title="Write 'Hello'"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/view_sample_toolbar_action_write_world"
+        android:id="@+id/activite_exemple_barre_outil_action_ecrire_world"
         android:orderInCategory="100"
         android:title="Write 'world !'"
         app:showAsAction="never" />
