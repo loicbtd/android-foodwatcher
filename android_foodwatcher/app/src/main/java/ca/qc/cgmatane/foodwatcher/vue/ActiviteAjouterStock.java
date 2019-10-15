@@ -39,7 +39,7 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
                 controleur.actionRetourActiviteMaitresse();
             }
         });
-        navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_ajouter_maison).setChecked(true); //TODO: improve check verification system
+        navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_ajouter_stock).setChecked(true); //TODO: improve check verification system
         // TODO: call the controller onCreate method
     }
 

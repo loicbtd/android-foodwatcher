@@ -12,9 +12,7 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteListeDeCourse;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
-import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteListeCourseVue {
@@ -43,6 +41,8 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
                 controleur.actionSupprimerSelection();
             }
         });
+
+        navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_liste_course).setChecked(true); //TODO: improve check verification system
     }
     @Override
     public void supprimerSelection(){

@@ -114,7 +114,7 @@ public class ConteneurPrincipal extends AppCompatActivity {
         SubMenu sousMenuStock = itemMenu.getSubMenu();
         sousMenuStock.clear();
         for (int i = 0; i < listeStock.size(); i++) {
-            sousMenuStock.add(0, i+1, i+1, listeStock.get(i).getEtiquette());
+            sousMenuStock.add(0, listeStock.get(0).getIdStock(), i, listeStock.get(i).getEtiquette());
             sousMenuStock.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
         }
     }

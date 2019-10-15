@@ -193,7 +193,6 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         produit.setIdProduit(id);
         ProduitStocke produitStocke = new ProduitStocke(produit, ControleurConteneurPrincipal.stockCourant, emplacement,Double.parseDouble(textFieldQuantite.getText().toString()), checkBoxAjouterListeCourse.isChecked());
         accesseurProduitStockeDAO = ProduitStockeDAO.getInstance();
-        System.out.println(produitStocke.getEtiquette()+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         accesseurProduitStockeDAO.ajouterProduitAuStock(produitStocke);
     }
 
