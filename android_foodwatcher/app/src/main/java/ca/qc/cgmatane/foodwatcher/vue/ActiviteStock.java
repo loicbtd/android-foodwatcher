@@ -32,7 +32,9 @@ import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
 
     private static final String CHANNEL_ID = "myChannel";
-    public static final String TITRE_NOTIFICATION = "TITRE";
+
+    public static final String TITRE_NOTIFICATION = "Il est temps de penser à faire vos courses !";
+    public static final String MESSAGE_NOTIFICATION = "Appuyez pour accéder à votre liste de courses";
 
     private RecyclerView recyclerView;
     private AdapteurListeProduit adapter;
@@ -42,7 +44,6 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     protected int idStock;
     protected ProduitStockeDAO produitStockeDAO;
     private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
-    public static final String MESSAGE_NOTIFICATION = "Appuyez pour accéder à votre liste de courses";
     //TODO: create and add controller as attribute
 
     @Override
