@@ -38,7 +38,6 @@ public class ActiviteScan extends AppCompatActivity implements BarcodeReader.Bar
 
         barcodeReader.playBeep();
 
-        //TODO faire la requete sql, si non présent juste remplir le champ gencode et sinon remplir tous les champs
         accesseurProduit = ProduitDAO.getInstance();
 
         Produit produit = accesseurProduit.recupererProduitParGencode(barcode.displayValue);
@@ -51,7 +50,6 @@ public class ActiviteScan extends AppCompatActivity implements BarcodeReader.Bar
         }else {
             intentionRetour.putExtra("etiquette", "");
         }
-        //TODO Ajouter en extra ce qui doit etre affiche
 
         setResult(Activity.RESULT_OK,intentionRetour);
 

@@ -1,18 +1,23 @@
 package ca.qc.cgmatane.foodwatcher.vue;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,12 +26,14 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
-import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
-import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue {
+
+    private static final String CHANNEL_ID = "myChannel";
+    public static final String TITRE_NOTIFICATION = "TITRE";
+
     private RecyclerView recyclerView;
     private AdapteurListeProduit adapter;
     private Bitmap icon;
@@ -35,6 +42,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     protected int idStock;
     protected ProduitStockeDAO accesseurProduitStocke;
     private ControleurActiviteStock stockController = new ControleurActiviteStock(this);
+    public static final String MESSAGE_NOTIFICATION = "Appuyez pour accéder à votre liste de courses";
     //TODO: create and add controller as attribute
 
     @Override
@@ -81,8 +89,11 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 
-            //TODO Faire un test du nombre d'élément dans la liste de produit
-            //TODO Ajouter une notification ici qui envoie vers la liste de course (selon le test)
+            if(listeProduits.size() < 4){
+                //TODO Ajouter une notification ici qui envoie vers la liste de course
+                declencherNotification();
+            }
+
 
         }
 
@@ -137,4 +148,45 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         super.onActivityResult(requestCode, resultCode, data);
         stockController.onActivityResult(requestCode);
     }
+
+    public void declencherNotification(){
+
+        createNotificationChannel();
+
+        Intent intent = new Intent(this, ActiviteListeCourse.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "myChannel")
+                .setSmallIcon(R.drawable.ic_caddie)
+                .setContentTitle(TITRE_NOTIFICATION)
+                .setContentText(MESSAGE_NOTIFICATION)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(15, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
 }
