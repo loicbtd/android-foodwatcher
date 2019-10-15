@@ -16,6 +16,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
 
@@ -132,7 +134,7 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         //recuperer la valeur d'un spinner:
 //        String uniteQuantite;
 //        uniteQuantite = String.valueOf(choixUniteQuantite.getSelectedItem());
-//        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
+//        ProduitStocke produit = new ProduitStocke(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), 1, 1, 1, Double.parseDouble(textFieldQuantite.getText().toString()),1,checkBoxAjouterListeCourse.isSelected());
 //        controleur.actionEnregistrerProduit(produit);
     }
 
