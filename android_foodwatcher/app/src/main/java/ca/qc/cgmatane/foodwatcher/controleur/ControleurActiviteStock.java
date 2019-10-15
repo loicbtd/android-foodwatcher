@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import java.util.List;
+
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
@@ -37,9 +39,10 @@ public class ControleurActiviteStock implements Controleur {
 
     @Override
     public void onCreate(Context applicationContext) {
-        BaseDeDonnees.getInstance(applicationContext);
         accesseurProduit = ProduitStockeDAO.getInstance();
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        List<ProduitStocke> liste;
+        liste  = accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock());
+        vue.setListeProduits(liste);
     }
 
     @Override
@@ -66,6 +69,13 @@ public class ControleurActiviteStock implements Controleur {
                 vue.afficherProduits();
                 break;
         }
+    }
+
+    public void actionSupprimer(int position){
+        accesseurProduit = ProduitStockeDAO.getInstance();
+        vue.supprimer(position);
+        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        vue.afficherProduits();
     }
 
     @Override

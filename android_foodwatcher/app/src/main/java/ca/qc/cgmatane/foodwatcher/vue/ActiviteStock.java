@@ -28,6 +28,8 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
+import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
@@ -64,10 +66,23 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
                 controleurActiviteStock.actionNaviguerVueAjouterProduit();
             }
         });
+        stockController.onCreate(getApplicationContext());
         afficherProduits();
 
 //        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
         // TODO: call the controller onCreate method
+    }
+
+    public void supprimer(int position){
+        produitStockeDAO = ProduitStockeDAO.getInstance();
+        produitStockeDAO.supprimerProduitDuStock(listeProduits.get(position));
+        listeProduits.remove(position);
+        adapter.notifyItemRemoved(position);
+        setListeProduits(ProduitStockeDAO.getInstance().recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+        afficherProduits();
+        if(listeProduits.size() < 4){
+            declencherNotification();
+        }
     }
 
     public void afficherProduits(){
@@ -92,13 +107,9 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            produitStockeDAO.supprimerProduitDuStock(listeProduits.get(viewHolder.getAdapterPosition()));
-            listeProduits.remove(viewHolder.getAdapterPosition());
-            adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-            if(listeProduits.size() < 4){
-                declencherNotification();
-            }
+            supprimer(viewHolder.getAdapterPosition());
         }
+
 
         @Override
         public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
