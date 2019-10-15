@@ -67,6 +67,8 @@ public class AdapteurListeCourse extends RecyclerView.Adapter<AdapteurListeCours
         TextView quantite = viewHolder.quantiteTextView;
         nom.setText(listeProds.get(position).getEtiquette());
         quantite.setText(Double.toString(listeProds.get(position).getQuantite()));
+        CardView elementListe = viewHolder.elementListe;
+        elementListe.setCardBackgroundColor(Color.argb(255,255,255,255));
         viewHolder.bind(listeProds.get(position));
     }
 

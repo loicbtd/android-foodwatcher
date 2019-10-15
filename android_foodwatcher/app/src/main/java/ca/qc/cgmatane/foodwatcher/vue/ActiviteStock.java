@@ -61,14 +61,19 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
                 stockController.actionNaviguerVueAjouterProduit();
             }
         });
+        afficherProduits();
+
+//        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
+        // TODO: call the controller onCreate method
+    }
+
+    public void afficherProduits(){
         recyclerView = findViewById(R.id.my_recycler_view);
         stockController.onCreate(getApplicationContext());
         adapter = new AdapteurListeProduit(listeProduits);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-//        navigationView.getMenu().findItem(R.id.activity_master_drawer_action_add_home).setChecked(true); //TODO: improve check verification system
-        // TODO: call the controller onCreate method
     }
 
 
@@ -86,9 +91,8 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             produitStockeDAO.supprimerProduitDuStock(listeProduits.get(viewHolder.getAdapterPosition()));
             listeProduits.remove(viewHolder.getAdapterPosition());
-
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-
+            afficherProduits();
             if(listeProduits.size() < 4){
                 declencherNotification();
             }
