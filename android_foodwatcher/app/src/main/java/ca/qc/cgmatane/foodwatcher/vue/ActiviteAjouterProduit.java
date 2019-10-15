@@ -22,6 +22,7 @@ import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterProduit;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.CategorieProduitDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.EmplacementDAO;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.UniteQuantiteDAO;
@@ -188,7 +189,8 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         }
 
         Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), unite, categorie);
-        ProduitStocke produitStocke = new ProduitStocke(produit, StockDAO.getInstance().trouverStockParId(ControleurConteneurPrincipal.stockCourant.getIdStock()), emplacement,Double.parseDouble(textFieldQuantite.getText().toString()), checkBoxAjouterListeCourse.isSelected());
+        ProduitDAO.getInstance().ajouterProduit(produit);
+        ProduitStocke produitStocke = new ProduitStocke(produit, ControleurConteneurPrincipal.stockCourant, emplacement,Double.parseDouble(textFieldQuantite.getText().toString()), checkBoxAjouterListeCourse.isSelected());
         accesseurProduitStockeDAO = ProduitStockeDAO.getInstance();
         accesseurProduitStockeDAO.ajouterProduitAuStock(produitStocke);
     }

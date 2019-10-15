@@ -18,7 +18,7 @@ public class ControleurActiviteListeDeCourse implements Controleur {
         BaseDeDonnees.getInstance(applicationContext);
         accesseurProduit = ProduitStockeDAO.getInstance();
         //TODO: trouver un moyen de recuperer id du stock (avec extra dans intent)
-        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(1));
+        vue.setListeProduits(accesseurProduit.recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
     }
 
     @Override

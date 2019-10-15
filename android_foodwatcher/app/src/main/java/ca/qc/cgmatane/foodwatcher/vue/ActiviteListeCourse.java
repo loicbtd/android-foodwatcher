@@ -12,6 +12,8 @@ import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteListeDeCourse;
+import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
@@ -45,15 +47,15 @@ public class ActiviteListeCourse extends ConteneurPrincipal implements ActiviteL
     @Override
     public void supprimerSelection(){
         if (listeProduits.size()>0){
-            for (int i = 0; i <listeProduits.size() ; i++) {
+            for (int i = listeProduits.size()-1; i >=0 ; i--) {
                 System.out.println(listeProduits.get(i).getEtiquette() + listeProduits.get(i).isSelectionne());
                 if (listeProduits.get(i).isSelectionne()) {
+                    ProduitStockeDAO.getInstance().supprimerProduitDuStock(listeProduits.get(i));
                     listeProduits.remove(i);
+                    adapteur.notifyDataSetChanged();
                 }
             }
-
         }
-        adapteur.notifyDataSetChanged();
     }
     public void setListeProduits(List<ProduitStocke> listeProduits){
         this.listeProduits = listeProduits;
