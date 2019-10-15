@@ -24,12 +24,11 @@ import ca.qc.cgmatane.foodwatcher.donnees.CategorieProduitDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.EmplacementDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
-import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.donnees.UniteQuantiteDAO;
 import ca.qc.cgmatane.foodwatcher.modele.CategorieProduit;
 import ca.qc.cgmatane.foodwatcher.modele.Emplacement;
-import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
+import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
 
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
@@ -188,8 +187,10 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
             }
         }
 
-        Produit produit = new Produit(1, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), unite, categorie);
+        Produit produit = new Produit(0, textFieldCodeBarre.getText().toString(), textFieldIntitule.getText().toString(), unite, categorie);
         ProduitDAO.getInstance().ajouterProduit(produit);
+        int id = ProduitDAO.getInstance().recupererListeProduit().size()-1;
+        produit.setIdProduit(id);
         ProduitStocke produitStocke = new ProduitStocke(produit, ControleurConteneurPrincipal.stockCourant, emplacement,Double.parseDouble(textFieldQuantite.getText().toString()), checkBoxAjouterListeCourse.isSelected());
         accesseurProduitStockeDAO = ProduitStockeDAO.getInstance();
         accesseurProduitStockeDAO.ajouterProduitAuStock(produitStocke);
