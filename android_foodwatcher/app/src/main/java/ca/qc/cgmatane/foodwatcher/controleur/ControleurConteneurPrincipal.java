@@ -72,7 +72,6 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         switch (activite) {
             case ACTIVITE_AJOUTER_STOCK:
                 view.setListeStock(stockDAO.recupererListeStock());
-                view.peuplerListeStockDansMenuDrawer();
         }
     }
 
