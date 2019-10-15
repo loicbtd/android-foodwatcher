@@ -69,6 +69,11 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 
     @Override
     public void onActivityResult(int activite) {
+        switch (activite) {
+            case ACTIVITE_AJOUTER_STOCK:
+                view.setListeStock(stockDAO.recupererListeStock());
+                view.peuplerListeStockDansMenuDrawer();
+        }
     }
 
     @Override

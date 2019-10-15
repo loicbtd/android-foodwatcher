@@ -8,6 +8,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteAjouterStock;
+import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
 import ca.qc.cgmatane.foodwatcher.modele.Stock;
 
 public class ActiviteAjouterStock extends ConteneurPrincipal implements ActiviteAjouterStockVue {
@@ -29,7 +30,7 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
         boutonAjouterMaison.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                enregistrerStock();
+                enregistrerStock();
             }
         });
         boutonAnnuler = findViewById(R.id.bouton_annuler_maison);
@@ -45,6 +46,7 @@ public class ActiviteAjouterStock extends ConteneurPrincipal implements Activite
 
     public void enregistrerStock(){
         Stock stock = new Stock(0,textFieldEtiquetteStock.getText().toString());
+        StockDAO.getInstance().ajouterStock(stock);
         controleur.actionEnregistrerStock(stock);
     }
 

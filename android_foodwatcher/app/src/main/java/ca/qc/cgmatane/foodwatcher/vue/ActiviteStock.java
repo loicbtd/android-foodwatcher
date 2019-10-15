@@ -92,7 +92,6 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
             produitStockeDAO.supprimerProduitDuStock(listeProduits.get(viewHolder.getAdapterPosition()));
             listeProduits.remove(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-            afficherProduits();
             if(listeProduits.size() < 4){
                 declencherNotification();
             }
