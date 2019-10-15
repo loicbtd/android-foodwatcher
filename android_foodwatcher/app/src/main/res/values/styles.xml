@@ -18,7 +18,7 @@
     </style>
 
     <!--  Scanner theme  -->
-    <style name="ScanTheme">
+    <style name="ScanTheme" parent="AppTheme">
         <item name="android:orientation">vertical</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

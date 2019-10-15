@@ -13,11 +13,12 @@ import com.google.android.material.navigation.NavigationView;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeCourse;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteExemple;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
-import ca.qc.cgmatane.foodwatcher.vue.ActiviteTrouverMagasin;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
 import ca.qc.cgmatane.foodwatcher.vue.ConteneurPrincipal;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteListeCourse;
+import ca.qc.cgmatane.foodwatcher.vue.ActiviteTrouverMagasin;
 
 public class ControleurConteneurPrincipal implements Controleur, NavigationView.OnNavigationItemSelectedListener {
 
@@ -97,6 +98,11 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
         } // else if it corresponds to another activity
         else {
             switch (itemId) {
+                    // start ActiviteExemple
+                case R.id.activity_master_drawer_action_display_sample:
+                    intent = new Intent(view.getApplicationContext(), ActiviteExemple.class);
+                    view.startActivityForResult(intent, ACTIVITY_SAMPLE);
+                    break;
                     // start ActiviteAjouterStock
                 case R.id.activity_master_drawer_action_add_home:
                     intent = new Intent(view.getApplicationContext(), ActiviteAjouterStock.class);
