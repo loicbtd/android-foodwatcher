@@ -13,11 +13,15 @@ import com.google.android.gms.vision.barcode.Barcode;
 import java.util.List;
 
 import ca.qc.cgmatane.foodwatcher.R;
+import ca.qc.cgmatane.foodwatcher.donnees.ProduitDAO;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import info.androidhive.barcode.BarcodeReader;
 
 public class ActiviteScan extends AppCompatActivity implements BarcodeReader.BarcodeReaderListener, ActiviteScanVue {
 
     public BarcodeReader barcodeReader;
+
+    protected ProduitDAO accesseurProduit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,10 +39,20 @@ public class ActiviteScan extends AppCompatActivity implements BarcodeReader.Bar
         barcodeReader.playBeep();
 
         //TODO faire la requete sql, si non présent juste remplir le champ gencode et sinon remplir tous les champs
+        accesseurProduit = ProduitDAO.getInstance();
 
-        //TODO Ajouter en extra ce qui doit etre affiche
+        Produit produit = accesseurProduit.recupererProduitParGencode(barcode.displayValue);
+
         Intent intentionRetour = new Intent();
         intentionRetour.putExtra("code", barcode.displayValue);
+
+        if (produit != null){
+            intentionRetour.putExtra("etiquette", produit.getEtiquette());
+        }else {
+            intentionRetour.putExtra("etiquette", "");
+        }
+        //TODO Ajouter en extra ce qui doit etre affiche
+
         setResult(Activity.RESULT_OK,intentionRetour);
 
         finish();

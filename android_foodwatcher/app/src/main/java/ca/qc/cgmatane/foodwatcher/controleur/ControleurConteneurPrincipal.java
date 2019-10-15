@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.StockDAO;
+import ca.qc.cgmatane.foodwatcher.modele.Stock;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteExemple;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteStock;
 import ca.qc.cgmatane.foodwatcher.vue.ActiviteAjouterStock;
@@ -27,7 +28,7 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
     static final public int ACTIVITY_ADD_HOME = 2;
     static final public int ACTIVITY_FIND_STORE = 3;
 
-    public static int stockCourant;
+    public static Stock stockCourant;
 
     protected ConteneurPrincipal view;
 
@@ -87,9 +88,9 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 
         // if itemId corresponds to a stock
         if (0 <= itemId && itemId < view.getListStock().size()) {
-            if (itemId != stockCourant) {
+            if (itemId != stockCourant.getIdStock()) {
                 int id = itemId;
-                itemId = stockCourant;
+                itemId = stockCourant.getIdStock();
                 intent = new Intent(view.getApplicationContext(), ActiviteStock.class);
                 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+view.getListStock().get(id).getIdStock());
                 intent.putExtra("idStock", view.getListStock().get(id).getIdStock());

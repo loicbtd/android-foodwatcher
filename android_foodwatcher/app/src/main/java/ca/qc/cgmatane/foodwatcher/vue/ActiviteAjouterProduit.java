@@ -31,6 +31,7 @@ import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
 public class ActiviteAjouterProduit extends ConteneurPrincipal implements ActiviteAjouterProduitVue {
 
     public static final int RESULTAT_ACTIVITE_SCAN = 1;
+
     TextInputEditText textFieldIntitule;
     TextInputEditText textFieldQuantite;
     TextInputEditText textFieldCodeBarre;
@@ -56,7 +57,6 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         textFieldCodeBarre = findViewById(R.id.code_barre_edit_text);
         boutonScanner = findViewById(R.id.buton_vue_ajouter_produit_action_scanner);
         checkBoxAjouterListeCourse = findViewById(R.id.checkbox_ajouter_liste_course_vue_ajouter_produit);
-        boutonScanner = findViewById(R.id.buton_vue_ajouter_produit_action_scanner);
 
 
         choixUniteQuantite = findViewById(R.id.choix_unite_quantite);
@@ -124,15 +124,21 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
 
-                String barcode = null;
+                String gencode = null;
+                String nomProduit = null;
+
                 if (data != null) {
                     //TODO Récupérer les autres données
-                    barcode = data.getStringExtra("code");
+                    gencode = data.getStringExtra("code");
+                    nomProduit = data.getStringExtra("etiquette");
 
+
+                    textFieldCodeBarre.setText(gencode);
+                    textFieldIntitule.setText(nomProduit);
                     //TODO tester si elles sont nulles : si oui alors ecrire le gencode seulement et sinon tous les champs
                 }
 
-                Toast.makeText(getApplicationContext(),barcode,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),nomProduit,Toast.LENGTH_LONG).show();
 
             }
 
@@ -166,12 +172,9 @@ public class ActiviteAjouterProduit extends ConteneurPrincipal implements Activi
 
     @Override
     public void scanner() {
-        //TODO : definire l'action a realiser lors de l'appui du bouton;
-
-        Toast.makeText(getApplicationContext(),"HERE",Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),"HERE",Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(ActiviteAjouterProduit.this, ActiviteScan.class);
-
         startActivityForResult(intent, RESULTAT_ACTIVITE_SCAN);
     }
 
