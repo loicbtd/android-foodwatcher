@@ -40,10 +40,10 @@
             android:title="Aide"/>
     </group>
 
-<!--    <group android:checkableBehavior="single">-->
-<!--        <item-->
-<!--            android:id="@+id/activity_master_drawer_action_display_sample"-->
-<!--            android:icon="@drawable/ic_android"-->
-<!--            android:title="Sample"/>-->
-<!--    </group>-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activity_master_drawer_action_display_sample"
+            android:icon="@drawable/ic_android"
+            android:title="Sample"/>
+    </group>
 </menu>
