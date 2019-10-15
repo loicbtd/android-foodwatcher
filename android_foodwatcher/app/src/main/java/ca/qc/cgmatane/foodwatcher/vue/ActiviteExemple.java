@@ -135,20 +135,20 @@ public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExemp
 
             boolean succesChemin=false;
             boolean succesFichier=false;
-//            System.out.println(">>>>>>>>>>>>>>>>>>>> t");
+            System.out.println(">>>>>>>>>>>>>>>>>>>> t");
 
-            if (chemin.exists()){
+            if (!chemin.exists()){
                 succesChemin = chemin.mkdirs();
-//                System.out.println(">>>>>>>>>>>>>>>>>>>> chemin");
+                System.out.println(">>>>>>>>>>>>>>>>>>>> chemin");
             }
 
-            if (fichier.exists()){
+            if (!fichier.exists()){
                 succesFichier = fichier.createNewFile();
-//                System.out.println(">>>>>>>>>>>>>>>>>>>> fichier");
+                System.out.println(">>>>>>>>>>>>>>>>>>>> fichier");
             }
 
             if (!(succesChemin || succesFichier)){
-//                System.out.println(">>>>>>>>>>>>>>>>>>>> both");
+                System.out.println(">>>>>>>>>>>>>>>>>>>> both");
                 FileWriter filewriter = new FileWriter(fichier,false);
                 filewriter.write(data);
                 filewriter.close();
