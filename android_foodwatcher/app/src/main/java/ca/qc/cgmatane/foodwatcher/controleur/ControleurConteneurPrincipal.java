@@ -99,10 +99,10 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
                     // lancer ActiviteExemple
                 case R.id.conteneur_principal_drawer_action_naviguer_exemple:
                     intent = new Intent(view.getApplicationContext(), ActiviteExemple.class);
+                    view.startActivityForResult(intent, ACTIVITE_EXEMPLE);
                     //TODO décommenter pour tester l'export du xml
 //                    ProduitStockeDAO produitStockeDAO = ProduitStockeDAO.getInstance();
 //                    produitStockeDAO.exporterProduitsStockeEnXML();
-                    view.startActivityForResult(intent, ACTIVITE_EXEMPLE);
                     break;
                     // lancer ActiviteAjouterStock
                 case R.id.conteneur_principal_drawer_action_naviguer_ajouter_maison:
