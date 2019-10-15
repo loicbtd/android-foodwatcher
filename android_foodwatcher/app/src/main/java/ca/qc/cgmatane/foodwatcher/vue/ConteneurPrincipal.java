@@ -110,11 +110,12 @@ public class ConteneurPrincipal extends AppCompatActivity {
      */
     public void peuplerListeStockDansMenuDrawer() {
         Menu menu = navigationView.getMenu();
-        MenuItem itemMenu = menu.findItem(R.id.activity_master_drawer_section_home);
-        SubMenu sousMenuMaison = itemMenu.getSubMenu();
+        MenuItem itemMenu = menu.findItem(R.id.conteneur_principal_drawer_rubrique_stock);
+        SubMenu sousMenuStock = itemMenu.getSubMenu();
+        sousMenuStock.clear();
         for (int i = 0; i < listeStock.size(); i++) {
-            sousMenuMaison.add(0, i+1, i+1, listeStock.get(i).getEtiquette());
-            sousMenuMaison.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
+            sousMenuStock.add(0, i+1, i+1, listeStock.get(i).getEtiquette());
+            sousMenuStock.getItem(i).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_home));
         }
     }
 }

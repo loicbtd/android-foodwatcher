@@ -4,7 +4,7 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/activity_master_drawer_section_home"
+            android:id="@+id/conteneur_principal_drawer_rubrique_stock"
             android:title="@string/drawer_menu_titre_rubrique_stock">
             <menu>
             </menu>
