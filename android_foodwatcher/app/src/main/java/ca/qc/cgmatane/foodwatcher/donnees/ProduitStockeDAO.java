@@ -116,7 +116,7 @@ public class ProduitStockeDAO implements ProduitStockeSQL {
         SQLiteDatabase sqLiteDatabase = baseDeDonnees.getWritableDatabase();
         SQLiteStatement sqLiteStatement = sqLiteDatabase.compileStatement(SQL_SUPPRIMER_STOCK_COMPOSE_PRODUIT);
         sqLiteStatement.bindString(1, ""+produitStocke.getIdProduit());
-        sqLiteStatement.bindString(1, ""+produitStocke.getStock().getIdStock());
+        sqLiteStatement.bindString(2, ""+produitStocke.getStock().getIdStock());
         sqLiteStatement.execute();
     }
 
