@@ -10,10 +10,10 @@ import ca.qc.cgmatane.foodwatcher.vue.ActiviteExemple;
 
 public class ControleurActiviteExemple implements Controleur, Toolbar.OnMenuItemClickListener {
 
-    protected ActiviteExemple view;
+    protected ActiviteExemple vue;
 
-    public ControleurActiviteExemple(ActiviteExemple view) {
-        this.view = view;
+    public ControleurActiviteExemple(ActiviteExemple vue) {
+        this.vue = vue;
     }
 
     @Override
@@ -50,10 +50,11 @@ public class ControleurActiviteExemple implements Controleur, Toolbar.OnMenuItem
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.activite_exemple_barre_outil_action_ecrire_hello:
-                view.getTextView().setText("Hello");
+                vue.getTextView().setText("Hello");
+                vue.exporterProduitsStockeEnXML();
                 break;
             case R.id.activite_exemple_barre_outil_action_ecrire_world:
-                view.getTextView().setText("world !");
+                vue.getTextView().setText("world !");
                 break;
             default:
                 return false;

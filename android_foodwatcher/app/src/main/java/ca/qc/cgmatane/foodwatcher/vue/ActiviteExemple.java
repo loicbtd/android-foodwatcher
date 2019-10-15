@@ -25,7 +25,6 @@ public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExemp
     ControleurActiviteExemple sampleActivityController = new ControleurActiviteExemple(this);
 
     private TextView textView;
-    private ProduitStockeDAO accesseurStock;
 
     public TextView getTextView() {
         return textView;
@@ -43,8 +42,6 @@ public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExemp
 
         navigationView.getMenu().findItem(R.id.conteneur_principal_drawer_action_naviguer_exemple).setChecked(true); //TODO: improve check verification system
         sampleActivityController.onCreate(getApplicationContext());
-
-        exporterProduitsStockeEnXML();
     }
 
     private void refreshGallery(File file) {
@@ -56,7 +53,7 @@ public class ActiviteExemple extends ConteneurPrincipal implements ActiviteExemp
     public void exporterProduitsStockeEnXML(){
 
         List<ProduitStocke> listeProduitsStocke =
-                accesseurStock.recupererListeProduitStockeParIdStock(
+                ProduitStockeDAO.getInstance().recupererListeProduitStockeParIdStock(
                         ControleurConteneurPrincipal.stockCourant.getIdStock());
 
         String baliseStockOuvrante = "<stock>";
