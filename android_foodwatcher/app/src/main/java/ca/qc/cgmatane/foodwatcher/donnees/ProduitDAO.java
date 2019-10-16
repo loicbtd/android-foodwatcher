@@ -68,7 +68,7 @@ public class ProduitDAO implements ProduitSQL {
     public Produit recupererProduitParGencode(String gencodeRecherche) {
         recupererListeProduit();
         for (Produit produit: listeProduit) {
-            if (gencodeRecherche.equals(produit.getGencode())) return produit;
+            if (produit.equals(gencodeRecherche)) return produit;
         }
         return null;
     }

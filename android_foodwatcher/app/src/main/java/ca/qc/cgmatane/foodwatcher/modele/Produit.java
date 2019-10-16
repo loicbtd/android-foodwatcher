@@ -52,4 +52,16 @@ public class Produit {
     public void setCategorieProduit(CategorieProduit categorieProduit) {
         this.categorieProduit = categorieProduit;
     }
+
+    public boolean equals(String gencodeACompare) {
+        int gencodeCourant;
+        int gencodeProduitACompare;
+//        try {
+            gencodeCourant = Integer.parseInt(getGencode());
+            gencodeProduitACompare = Integer.parseInt(gencodeACompare);
+        /*} catch (Exception e) {
+            return false;
+        }*/
+        return gencodeCourant == gencodeProduitACompare;
+    }
 }

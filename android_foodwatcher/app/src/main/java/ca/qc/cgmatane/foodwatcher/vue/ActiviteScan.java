@@ -21,8 +21,6 @@ public class ActiviteScan extends AppCompatActivity implements BarcodeReader.Bar
 
     public BarcodeReader barcodeReader;
 
-    protected ProduitDAO accesseurProduit;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -38,9 +36,7 @@ public class ActiviteScan extends AppCompatActivity implements BarcodeReader.Bar
 
         barcodeReader.playBeep();
 
-        accesseurProduit = ProduitDAO.getInstance();
-
-        Produit produit = accesseurProduit.recupererProduitParGencode(barcode.displayValue);
+        Produit produit = ProduitDAO.getInstance().recupererProduitParGencode(barcode.displayValue);
 
         Intent intentionRetour = new Intent();
         intentionRetour.putExtra("code", barcode.displayValue);
