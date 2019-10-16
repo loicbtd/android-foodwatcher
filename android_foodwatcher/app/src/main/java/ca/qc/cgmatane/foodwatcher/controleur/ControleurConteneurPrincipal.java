@@ -82,25 +82,27 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        stockDAO = StockDAO.getInstance();
+        vue.setListeStock(stockDAO.recupererListeStock());
         Intent intent;
         int itemId;
 
         // récupération de l'id de l'item sélectionné
         itemId = item.getItemId();
+
 //        Toast.makeText(vue.getApplicationContext(),
 //                "itemId = "+itemId + "\n" +
 //                        "stockCourant.getIdStock()"+stockCourant.getIdStock(),
 //                Toast.LENGTH_SHORT).show();
 
-
         // fermeture du drawer
         vue.getDrawerLayout().closeDrawer(GravityCompat.START);
 
         // si l'id de l'item sélectionné correspond à un l'id d'un stock
-        if (itemId >= 1 && itemId <= vue.getListeStock().size()) {
+        if (itemId > 0) {
             stockCourant.setIdStock(itemId);
             intent = new Intent(vue.getApplicationContext(), ActiviteStock.class);
-            vue.startActivityForResult(intent, ACTIVITE_STOCK);
+            vue.startActivity(intent);
         } // sinon, s'il correspond à l'id d'une autre activite
         else {
             switch (itemId) {
@@ -135,6 +137,7 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
             menu.getItem(i).setChecked(false);
             menu.findItem(stockCourant.getIdStock()).setChecked(true);
         }
+        vue.peuplerListeStockDansMenuDrawer();
         return true;
     }
 }

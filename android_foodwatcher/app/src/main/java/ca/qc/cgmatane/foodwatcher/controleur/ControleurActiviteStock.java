@@ -87,6 +87,7 @@ public class ControleurActiviteStock implements Controleur {
 
     public void supprimerStockCourant() {
         StockDAO.getInstance().supprimerStock(ControleurConteneurPrincipal.stockCourant);
+        ControleurConteneurPrincipal.stockCourant.setIdStock(StockDAO.getInstance().recupererListeStock().size());
         vue.peuplerListeStockDansMenuDrawer();
         vue.naviguerVueActiviteStock();
     }

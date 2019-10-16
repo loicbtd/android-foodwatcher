@@ -29,7 +29,6 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
-import ca.qc.cgmatane.foodwatcher.donnees.BaseDeDonnees;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
@@ -240,6 +239,5 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     public void naviguerVueActiviteStock() {
         Intent intent = new Intent(this, ActiviteStock.class);
         startActivity(intent);
-
     }
 }
