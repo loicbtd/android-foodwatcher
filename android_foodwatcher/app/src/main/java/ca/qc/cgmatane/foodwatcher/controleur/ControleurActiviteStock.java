@@ -202,4 +202,11 @@ public class ControleurActiviteStock implements Controleur {
     }
 
 
+    public void modifierProduit(ProduitStocke produitStocke) {
+        produitStockeDAO.modifierProduitStocke(produitStocke);
+    }
+
+    public void supprimerProduitStock(int position) {
+        produitStockeDAO.supprimerProduitDuStock(vue.getListeProduits().get(position));
+    }
 }
