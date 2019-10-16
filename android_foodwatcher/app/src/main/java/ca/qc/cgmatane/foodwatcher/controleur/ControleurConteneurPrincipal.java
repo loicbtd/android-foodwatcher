@@ -95,49 +95,56 @@ public class ControleurConteneurPrincipal implements Controleur, NavigationView.
 //                        "stockCourant.getIdStock()"+stockCourant.getIdStock(),
 //                Toast.LENGTH_SHORT).show();
 
-        // fermeture du drawer
-        vue.getDrawerLayout().closeDrawer(GravityCompat.START);
+        switch (itemId) {
+            // lancer ActiviteExemple
+            case R.id.conteneur_principal_drawer_action_naviguer_exemple:
+                intent = new Intent(vue.getApplicationContext(), ActiviteExemple.class);
+                vue.startActivityForResult(intent, ACTIVITE_EXEMPLE);
+                quitterMenuDrawerApresSelectionItem();
+                return true;
 
-        // si l'id de l'item sélectionné correspond à un l'id d'un stock
-        if (itemId > 0) {
-            stockCourant.setIdStock(itemId);
-            intent = new Intent(vue.getApplicationContext(), ActiviteStock.class);
-            vue.startActivity(intent);
-        } // sinon, s'il correspond à l'id d'une autre activite
-        else {
-            switch (itemId) {
-                    // lancer ActiviteExemple
-                case R.id.conteneur_principal_drawer_action_naviguer_exemple:
-                    intent = new Intent(vue.getApplicationContext(), ActiviteExemple.class);
-                    vue.startActivityForResult(intent, ACTIVITE_EXEMPLE);
-                    break;
-                    // lancer ActiviteAjouterStock
-                case R.id.conteneur_principal_drawer_action_naviguer_ajouter_stock:
-                    intent = new Intent(vue.getApplicationContext(), ActiviteAjouterStock.class);
-                    vue.startActivityForResult(intent, ACTIVITE_AJOUTER_STOCK);
-                    break;
-                    // lancer ActiviteTrouverMagasin
-                case R.id.conteneur_principal_drawer_action_naviguer_carte_magasin:
-                    intent = new Intent(vue.getApplicationContext(), ActiviteTrouverMagasin.class);
-                    vue.startActivityForResult(intent, ACTIVITY_CARTE_MAGASIN);
-                    break;
-                case R.id.conteneur_principal_drawer_action_naviguer_liste_course:
-                    intent = new Intent(vue.getApplicationContext(), ActiviteListeCourse.class);
-                    vue.startActivity(intent);
-                    break;
-                    // retourne false si l'item reçu ne correspond à aucune activité
-                default:
-                    return false;
-            }
+            // lancer ActiviteAjouterStock
+            case R.id.conteneur_principal_drawer_action_naviguer_ajouter_stock:
+                intent = new Intent(vue.getApplicationContext(), ActiviteAjouterStock.class);
+                vue.startActivityForResult(intent, ACTIVITE_AJOUTER_STOCK);
+                quitterMenuDrawerApresSelectionItem();
+                return true;
+
+            // lancer ActiviteTrouverMagasin
+            case R.id.conteneur_principal_drawer_action_naviguer_carte_magasin:
+                intent = new Intent(vue.getApplicationContext(), ActiviteTrouverMagasin.class);
+                vue.startActivityForResult(intent, ACTIVITY_CARTE_MAGASIN);
+                quitterMenuDrawerApresSelectionItem();
+                return true;
+
+            // lancer ActiviteListeCourse
+            case R.id.conteneur_principal_drawer_action_naviguer_liste_course:
+                intent = new Intent(vue.getApplicationContext(), ActiviteListeCourse.class);
+                vue.startActivity(intent);
+                quitterMenuDrawerApresSelectionItem();
+                return true;
         }
 
-        // ferme le drawer et déselectionne tous les items
+        for (Stock stock : vue.getListeStock()) {
+            if(stock.getIdStock() == itemId) {
+                stockCourant.setIdStock(itemId);
+                intent = new Intent(vue.getApplicationContext(), ActiviteStock.class);
+                vue.startActivity(intent);
+                quitterMenuDrawerApresSelectionItem();
+                return true;
+            }
+        }
+        vue.getDrawerLayout().closeDrawer(GravityCompat.START);
+        return false;
+    }
+
+    public void quitterMenuDrawerApresSelectionItem() {
+        vue.getDrawerLayout().closeDrawer(GravityCompat.START);
         Menu menu = vue.getNavigationView().getMenu();
         for (int i = 0; i < menu.size(); i++) {
             menu.getItem(i).setChecked(false);
             menu.findItem(stockCourant.getIdStock()).setChecked(true);
         }
         vue.peuplerListeStockDansMenuDrawer();
-        return true;
     }
 }
