@@ -3,6 +3,7 @@ package ca.qc.cgmatane.foodwatcher.donnees;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.List;
 import ca.qc.cgmatane.foodwatcher.modele.CategorieProduit;
 import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.UniteQuantite;
+
+import static android.content.ContentValues.TAG;
 
 public class ProduitDAO implements ProduitSQL {
 
@@ -68,7 +71,7 @@ public class ProduitDAO implements ProduitSQL {
     public Produit recupererProduitParGencode(String gencodeRecherche) {
         recupererListeProduit();
         for (Produit produit: listeProduit) {
-            if (produit.equals(gencodeRecherche)) return produit;
+            if (produit.getGencode().equals(gencodeRecherche)) return produit;
         }
         return null;
     }

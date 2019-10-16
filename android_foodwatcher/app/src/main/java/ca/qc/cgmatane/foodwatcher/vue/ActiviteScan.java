@@ -36,7 +36,11 @@ public class ActiviteScan extends AppCompatActivity implements BarcodeReader.Bar
 
         barcodeReader.playBeep();
 
-        Produit produit = ProduitDAO.getInstance().recupererProduitParGencode(barcode.displayValue);
+        String valeurGencodeLu = barcode.displayValue;
+        //On retire le dernier caractère de la chaîne lue car le format du codebar en génère un aléatoirement
+        String valeurSansDernierCaractere = valeurGencodeLu.substring(0, valeurGencodeLu.length()-1);
+
+        Produit produit = ProduitDAO.getInstance().recupererProduitParGencode(valeurSansDernierCaractere);
 
         Intent intentionRetour = new Intent();
         intentionRetour.putExtra("code", barcode.displayValue);
