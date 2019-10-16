@@ -30,6 +30,7 @@ import ca.qc.cgmatane.foodwatcher.R;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurActiviteStock;
 import ca.qc.cgmatane.foodwatcher.controleur.ControleurConteneurPrincipal;
 import ca.qc.cgmatane.foodwatcher.donnees.ProduitStockeDAO;
+import ca.qc.cgmatane.foodwatcher.modele.Produit;
 import ca.qc.cgmatane.foodwatcher.modele.ProduitStocke;
 
 public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVue, Toolbar.OnMenuItemClickListener {
@@ -72,15 +73,18 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
     }
 
     public void supprimer(int position){
-        produitStockeDAO = ProduitStockeDAO.getInstance();
-        produitStockeDAO.supprimerProduitDuStock(listeProduits.get(position));
+        controleurActiviteStock.supprimerProduitStock(position);
         listeProduits.remove(position);
         adapter.notifyItemRemoved(position);
-        setListeProduits(ProduitStockeDAO.getInstance().recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
+//        setListeProduits(ProduitStockeDAO.getInstance().recupererListeProduitStockeParIdStock(ControleurConteneurPrincipal.stockCourant.getIdStock()));
         afficherProduits();
         if(listeProduits.size() < 4){
             declencherNotification();
         }
+    }
+
+    public List<ProduitStocke> getListeProduits(){
+        return listeProduits;
     }
 
     public void afficherProduits(){
@@ -111,7 +115,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
             }else if(direction == ItemTouchHelper.RIGHT){
                 ProduitStocke produitStocke = listeProduits.get(viewHolder.getAdapterPosition());
                 produitStocke.setPresentListeCourse(!produitStocke.isPresentListeCourse());
-                produitStockeDAO.modifierProduitStocke(produitStocke);
+                controleurActiviteStock.modifierProduit(produitStocke);
                 adapter.notifyItemChanged(viewHolder.getAdapterPosition());
             }
         }
