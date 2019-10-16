@@ -42,7 +42,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
     private RecyclerView recyclerView;
     private AdapteurListeProduit adapter;
-    private Bitmap icon;
+
     private Button btn_view_stock_add_product;
     protected List<ProduitStocke> listeProduits;
     protected int idStock;
@@ -98,6 +98,7 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
         this.listeProduits = listeProduit;
     }
 
+
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -106,7 +107,14 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            supprimer(viewHolder.getAdapterPosition());
+            if (direction == ItemTouchHelper.LEFT){
+                supprimer(viewHolder.getAdapterPosition());
+            }else if(direction == ItemTouchHelper.RIGHT){
+                ProduitStocke produitStocke = listeProduits.get(viewHolder.getAdapterPosition());
+                produitStocke.setPresentListeCourse(!produitStocke.isPresentListeCourse());
+                produitStockeDAO.modifierProduitStocke(produitStocke);
+                adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+            }
         }
 
 
@@ -115,19 +123,30 @@ public class ActiviteStock extends ConteneurPrincipal implements ActiviteStockVu
             if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE){
                 Paint p = new Paint();
                 View itemView = viewHolder.itemView;
+                Bitmap iconnePoubelle;
+                Bitmap iconneCart;
                 //créé un drawable a partir de ic_delete_36 et conversion du drawable en bitmap
                 Drawable d = getResources().getDrawable(R.drawable.ic_delete_36);
-                icon = drawableToBitmap(d);
+                iconnePoubelle = drawableToBitmap(d);
+                if (listeProduits.get(viewHolder.getAdapterPosition()).isPresentListeCourse()){
+                    d = getResources().getDrawable(R.drawable.ic_remove_shopping_cart_24px);
+                }else{
+                    d = getResources().getDrawable(R.drawable.ic_add_shopping_cart_36px);
+                }
+
+                iconneCart = drawableToBitmap(d);
+
+
                 if (dX>0){
                     p.setARGB(255,255,50,50);
                     //dessine le rectangle rouge
 //                    c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(),dX + 18, (float) itemView.getBottom(),p);
-                    c.drawBitmap(icon, (float) itemView.getLeft()+ dpFromPx(100), (float) itemView.getTop() + ((float) itemView.getBottom() - (float) itemView.getTop() - icon.getHeight())/2,p );
+                    c.drawBitmap(iconneCart, (float) itemView.getLeft()+ dpFromPx(100), (float) itemView.getTop() + ((float) itemView.getBottom() - (float) itemView.getTop() - iconnePoubelle.getHeight())/2,p );
                 }  else {
                     p.setARGB(255,255,50,50);
                     //dessine le rectangle rouge
 //                    c.drawRect((float) itemView.getRight()+dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom(),p);
-                    c.drawBitmap(icon, (float) itemView.getRight() - dpFromPx(100)-icon.getWidth(), (float) itemView.getTop() + ((float) itemView.getBottom() - (float) itemView.getTop() - icon.getHeight())/2,p );
+                    c.drawBitmap(iconnePoubelle, (float) itemView.getRight() - dpFromPx(100)-iconnePoubelle.getWidth(), (float) itemView.getTop() + ((float) itemView.getBottom() - (float) itemView.getTop() - iconnePoubelle.getHeight())/2,p );
                 }
 
             }
